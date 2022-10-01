@@ -1,0 +1,341 @@
+html,
+body {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    left: 0px;
+    top: 0px;
+
+    background: linear-gradient(180deg, #393748 50%, rgba(57, 55, 72, 0) 155%);
+}
+
+#headertitle {
+    position: absolute;
+    width: 255px;
+    height: 89px;
+    left: 3%;
+    top: 0px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 45px;
+    line-height: 200px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#rightheader {
+    position: absolute;
+    width: 525px;
+    height: 90px;
+    right: 1%;
+    top: 0px;
+
+    display: flex;
+    align-items: center;
+}
+
+#rightheader>div {
+    flex-grow: 1;
+    align-items: center;
+    text-align: center;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+
+    color: #FFFFFF;
+}
+
+#imgtop {
+    position: absolute;
+    width: 105%;
+    height: 101%;
+    left: -2%;
+    top: 0px;
+    z-index: -1;
+
+    background: url(assets/game-development-academy-esports-player\ 1.jpg);
+    background-blend-mode: overlay;
+    background-size: cover;
+    filter: hue-rotate(20deg) saturate(70%) blur(8px) brightness(60%);
+}
+
+#bannertitle {
+    position: absolute;
+    width: 100%;
+    height: 266px;
+    left: 0px;
+    top: 300px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 120px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#bannersubtitle {
+    position: absolute;
+    width: 100%;
+    height: 123px;
+    left: 0;
+    top: 541px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 80px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #F3F3F3;
+}
+
+#bannerbuttons {
+    position: absolute;
+    width: 20%;
+    top: 700px;
+    left: calc(40%);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+
+}
+
+#registerbutton {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    background: #1A1A94;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+
+    line-height: 71px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#signinbutton {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    background: #8E8EDA;
+    border: 2px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+
+    line-height: 71px;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+
+#imgbottom {
+    position: absolute;
+    width: 105%;
+    height: 101%;
+    left: -2%;
+    top: 100%;
+    z-index: -1;
+
+    background: url(assets/esports-stocks\ 1.jpg);
+    background-blend-mode: overlay;
+    background-size: cover;
+    filter: hue-rotate(20deg) saturate(70%) blur(8px) brightness(60%);
+}
+
+#title2 {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    left: 0;
+    top: 110%;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 100px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#gamescarousel {
+    position: absolute;
+    width: 80%;
+    height: 430px;
+    left: 10%;
+    top: 123%;
+
+    display: flex;
+    gap: 20px;
+}
+
+#gamescarousel>.card {
+    flex-grow: 1;
+    position: relative;
+    border-radius: ;
+}
+
+.logo {
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    left: 8%;
+    top: 10%;
+    box-sizing: border-box;
+}
+
+.card:nth-child(1)>.logo {
+    background: url(assets/valologo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card:nth-child(2)>.logo {
+    background: url(assets/apexlogo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card:nth-child(3)>.logo {
+    background: url(assets/dota2logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.cardimage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    filter: brightness(40%) saturate(60%) blur(2px);
+    border: 5px solid #be01fd;
+}
+
+.card:nth-child(1)>.cardimage {
+    background: url(assets/valorantcard.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.card:nth-child(2)>.cardimage {
+    background: url(assets/apexcard.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.card:nth-child(3)>.cardimage {
+    background: url(assets/dota2card.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.label {
+    position: absolute;
+    left: 8%;
+    top: 35%;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 100px;
+
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+.playbutton {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 120px;
+    height: 45px;
+    left: 8%;
+    top: 60%;
+
+    background: linear-gradient(181.68deg, #00D856 1.42%, rgba(0, 107, 43, 0) 136.5%);
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 43px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#moregamesbutton {
+
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    top: 170%;
+    left: calc(50% - 200px/2 + 2.5px);
+
+    background: linear-gradient(181.68deg, #5F00D8 1.42%, rgba(0, 224, 211, 0) 136.5%);
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 58px;
+
+    align-items: center;
+    text-align: center;
+    margin: auto;
+
+    color: #FFFFFF;
+}
