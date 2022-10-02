@@ -4,29 +4,30 @@ body {
     font-family: 'Outfit', sans-serif;
     max-width: 100%;
     overflow-x: hidden;
+    min-height: 100%;
 }
 
 header {
     position: absolute;
     width: 100%;
-    height: 90px;
+    height: 80px;
     left: 0px;
     top: 0px;
 
-    background: linear-gradient(180deg, #393748 50%, rgba(57, 55, 72, 0) 155%);
+    background: linear-gradient(180deg, #0F292F 50%, rgba(20, 160, 152, 0) 155%);
 }
 
 #headertitle {
     position: absolute;
     width: 255px;
-    height: 89px;
+    height: 80px;
     left: 3%;
     top: 0px;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 800;
-    font-size: 45px;
+    font-weight: 600;
+    font-size: 36px;
     line-height: 200px;
 
     display: flex;
@@ -38,13 +39,15 @@ header {
 
 #rightheader {
     position: absolute;
-    width: 525px;
+    width: 40%;
+    max-width: 80%;
     height: 90px;
     right: 1%;
     top: 0px;
 
     display: flex;
     align-items: center;
+    gap: 10px
 }
 
 #rightheader>div {
@@ -55,9 +58,10 @@ header {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 28px;
 
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 #imgtop {
@@ -129,7 +133,7 @@ header {
 
     flex-grow: 1;
 
-    background: #1A1A94;
+    background: #0F292F;
     border: 1px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -144,6 +148,8 @@ header {
     text-align: center;
 
     color: #FFFFFF;
+
+    cursor: pointer;
 }
 
 #signinbutton {
@@ -151,21 +157,23 @@ header {
 
     flex-grow: 1;
 
-    background: #8E8EDA;
-    border: 2px solid #000000;
+    background: #501F3A;
+    border: 2px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 24px;
 
     line-height: 71px;
     align-items: center;
     text-align: center;
 
-    color: #000000;
+    color: #ffffff;
+
+    cursor: pointer;
 }
 
 #imgbottom {
@@ -206,7 +214,7 @@ header {
     width: 80%;
     height: 430px;
     left: 10%;
-    top: 123%;
+    top: 121%;
 
     display: flex;
     gap: 20px;
@@ -251,7 +259,7 @@ header {
     height: 100%;
     border-radius: 25px;
     filter: brightness(40%) saturate(60%) blur(2px);
-    border: 5px solid #be01fd;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.85);
 }
 
 .card:nth-child(1)>.cardimage {
@@ -272,7 +280,7 @@ header {
     background-position: center;
 }
 
-.label {
+.card>.label {
     position: absolute;
     left: 8%;
     top: 35%;
@@ -293,11 +301,11 @@ header {
 
     position: absolute;
     width: 120px;
-    height: 45px;
+    height: 40px;
     left: 8%;
     top: 60%;
 
-    background: linear-gradient(181.68deg, #00D856 1.42%, rgba(0, 107, 43, 0) 136.5%);
+    background: #0F292F;
     border: 1px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -305,8 +313,8 @@ header {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 43px;
+    font-size: 18px;
+    line-height: 38px;
 
     align-items: center;
     text-align: center;
@@ -317,25 +325,168 @@ header {
 #moregamesbutton {
 
     position: absolute;
-    width: 200px;
-    height: 60px;
-    top: 170%;
+    width: 180px;
+    height: 40px;
+    top: 160%;
     left: calc(50% - 200px/2 + 2.5px);
 
-    background: linear-gradient(181.68deg, #5F00D8 1.42%, rgba(0, 224, 211, 0) 136.5%);
-    border: 1px solid #FFFFFF;
+    background: #501f3aec;
+    border: 0.5px solid #ffffff60;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 58px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 39px;
 
     align-items: center;
     text-align: center;
     margin: auto;
 
+    color: #ffffffb7;
+}
+
+#stickybottom {
+
+    position: fixed;
+    width: 100%;
+    height: 138px;
+    left: 0px;
+    bottom: 0;
+
+    background: linear-gradient(360deg, rgba(137, 233, 105, 0.137) 3.95%, rgba(51, 152, 209, 0) 100%);
+}
+
+/* register.html */
+#registerbox {
+    position: absolute;
+    left: 33.61%;
+    right: 33.61%;
+    top: 15%;
+
+    background: #EFEFEF;
+    mix-blend-mode: normal;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px 30px 30px 30px;
+    overflow: hidden;
+}
+
+#registerbox>* {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#registertitle {
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+
+    color: #000000;
+}
+
+.inputbox {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.inputbox>.label {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #575757;
+    margin: 0;
+    padding: 0;
+    flex-grow: 0;
+}
+
+.inputbox>input {
+    box-sizing: border-box;
+    flex-grow: 1;
+    background: #FFFFFF;
+
+    border: 2px solid #AAAAAA;
+    border-radius: 4px;
+    min-height: 40px;
+}
+
+#registersubmit {
+    box-sizing: border-box;
+    flex-grow: 0;
+    height: 60px;
+    margin: 15px 0 20px 0;
+
+    background: #00A02D;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    line-height: 55px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    align-items: center;
+    text-align: center;
+
     color: #FFFFFF;
+}
+
+#alreadyaccount {
+    flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+
+/* signin.html */
+
+#signinsubmit {
+    box-sizing: border-box;
+    flex-grow: 0;
+    height: 60px;
+    margin: 15px 0 20px 0;
+
+    background: #00A02D;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    line-height: 55px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#noaccount {
+    flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
 }
