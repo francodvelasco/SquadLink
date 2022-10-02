@@ -39,7 +39,8 @@ class UserAdditionalForm(forms.Form):
     )
 
     user_platforms = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=PLATFORMS)
-    user_game = forms.CharField(max_length=100, choices=GAMES, default='VALO')
+    #user_game = forms.CharField(max_length=100, choices=GAMES, default='VALO')
+    user_game = forms.ChoiceField(choices=GAMES)
     rank = forms.CharField(max_length=100)
 
     # TODO: Link this up with the SquadLinkUserModel form

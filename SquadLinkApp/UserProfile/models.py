@@ -9,11 +9,10 @@ def profile_image_location(request, filename):
     return os.path.join('uploads', 'profile_images', filename)
 
 class SquadLinkUserModel(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
     profile_image = models.ImageField(upload_to=profile_image_location, null=True, blank=True)
-    friends = models.ForeignKey(settings.AUTH_USER_MODEL)
-    pending_requests = models.ForeignKey(settings.USER_AUTH_MODEL)
-    platforms = models.CharField()
+    friends = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friends')
+    platforms = models.CharField(max_length=100)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
