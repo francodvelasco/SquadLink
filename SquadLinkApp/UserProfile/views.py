@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from .forms import SquadLinkUserLogInForm, UserBaseForm, UserAdditionalForm
 
 # Create your views here.
+
+
 class SquadLinkUserCreationView(View):
     def get(self, request):
         page_contents = dict()
@@ -12,17 +14,18 @@ class SquadLinkUserCreationView(View):
         page_contents['user_add_form'] = UserAdditionalForm()
 
         return render(request, 'signup.html', page_contents)
-    
+
     def post(self, request):
         user_creation_form = UserBaseForm(request.POST, instance=request.user)
-        user_add_creation_form = UserAdditionalForm(request.POST, instance=request.user.squadlinkusermodel)
+        user_add_creation_form = UserAdditionalForm(
+            request.POST, instance=request.user.squadlinkusermodel)
 
         if user_creation_form.is_valid() and user_add_creation_form.is_valid():
             user_creation_form.save()
             user_add_creation_form.save()
 
-            username = user_creation_form.cleaned_data.get('username')
-            password = user_creation_form.cleaned_data.get('password1')
+            username = user_creation_form.cleaned_data.GET('username')
+            password = user_creation_form.cleaned_data.GET('password1')
 
             user = authenticate(username=username, password=password)
             login(request, user)
@@ -34,16 +37,17 @@ class SquadLinkUserCreationView(View):
 
             return render(request, 'signup.html', page_contents)
 
+
 class SquadLinkUserLogInView(View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('/home')
-        
+
         page_contents = dict()
         page_contents['form'] = SquadLinkUserLogInForm()
 
         return render(request, 'login.html', page_contents)
-    
+
     def post(self, request):
         if request.user.is_authenticated:
             return redirect('/home')
@@ -62,13 +66,12 @@ class SquadLinkUserLogInView(View):
             else:
                 # user does not exist, redirect to sign up page
                 return redirect(SquadLinkUserCreationView.as_view())
-        
+
         else:
             page_contents = dict()
             page_contents['form'] = login_form
 
             return render(request, 'login.html', page_contents)
-
 
 
 class SquadLinkUserView(View):
