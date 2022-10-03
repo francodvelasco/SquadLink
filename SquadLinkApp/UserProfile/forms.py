@@ -11,7 +11,7 @@ class UserBaseForm(UserCreationForm):
         model = User
         fields = ('username', 'password1', 'password2')
 
-    def __init__(self, request, *args, **kwargs) -> None:
+    def __init__(self, request=None, *args, **kwargs) -> None:
         super(UserCreationForm, self).__init__(request, *args, **kwargs)
         self.fields['username'].label = 'SquadLink Username'
         self.fields['password1'].label = 'Enter Password'
@@ -19,16 +19,6 @@ class UserBaseForm(UserCreationForm):
 
         self.fields['password2'].help_text = None
         self.fields['username'].help_text = None
-
-    # def save(self, commit=True):
-    #     if not commit:
-    #         raise NotImplementedError(
-    #             "Can't create User without database save")
-    #     user = super(UserBaseForm, self).save(commit=True)
-    #     user_profile = UserProfile(user=user, job_title=self.cleaned_data['job_title'],
-    #                                age=self.cleaned_data['age'])
-    #     user_profile.save()
-    #     return user, user_profile
 
 
 class UserAdditionalForm(forms.Form):

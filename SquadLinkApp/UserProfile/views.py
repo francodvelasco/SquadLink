@@ -9,30 +9,28 @@ from .forms import SquadLinkUserLogInForm, UserBaseForm, UserAdditionalForm
 
 class SquadLinkUserCreationView(View):
     def get(self, request):
-        page_contents = dict()
-        page_contents['user_form'] = UserBaseForm(request)
-        page_contents['user_add_form'] = UserAdditionalForm(request)
-
+        page_contents = {}
+        page_contents['user_forms'] = UserBaseForm()
+        page_contents['user_add_form'] = UserAdditionalForm()
         return render(request, 'signup.html', page_contents)
 
     def post(self, request):
-        user_creation_form = UserBaseForm(request.POST, instance=request.user)
-        user_add_creation_form = UserAdditionalForm(
-            request.POST, instance=request.user.squadlinkusermodel)
+        user_creation_form = UserBaseForm(request.POST)
+        user_add_creation_form = UserAdditionalForm(request.POST)
 
         if user_creation_form.is_valid() and user_add_creation_form.is_valid():
-            user_creation_form.save()
+            user = user_creation_form.save()
             user_add_creation_form.save()
 
-            username = user_creation_form.cleaned_data.GET('username')
-            password = user_creation_form.cleaned_data.GET('password1')
+            # username = user_creation_form.cleaned_data.GET('username')
+            # password = user_creation_form.cleaned_data.GET('password1')
 
-            user = authenticate(username=username, password=password)
+            # user = authenticate(username=username, password=password)
             login(request, user)
             return redirect("/home")
         else:
             page_contents = dict()
-            page_contents['user_form'] = user_creation_form
+            page_contents['user_forms'] = user_creation_form
             page_contents['user_add_form'] = user_add_creation_form
 
             return render(request, 'signup.html', page_contents)
@@ -75,7 +73,7 @@ class SquadLinkUserLogInView(View):
 
 
 class SquadLinkUserView(View):
-    @login_required
+    @ login_required
     def get(self, request):
         page_content = dict()
         page_content['user'] = request.user
