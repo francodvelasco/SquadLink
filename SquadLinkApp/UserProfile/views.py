@@ -8,8 +8,8 @@ from .forms import SquadLinkUserLogInForm, UserBaseForm, UserAdditionalForm
 class SquadLinkUserCreationView(View):
     def get(self, request):
         page_contents = dict()
-        page_contents['user_form'] = UserBaseForm()
-        page_contents['user_add_form'] = UserAdditionalForm()
+        page_contents['user_form'] = UserBaseForm(request)
+        page_contents['user_add_form'] = UserAdditionalForm(request)
 
         return render(request, 'signup.html', page_contents)
     
@@ -40,7 +40,7 @@ class SquadLinkUserLogInView(View):
             return redirect('/home')
         
         page_contents = dict()
-        page_contents['form'] = SquadLinkUserLogInForm()
+        page_contents['form'] = SquadLinkUserLogInForm(request=request)
 
         return render(request, 'login.html', page_contents)
     
@@ -48,7 +48,7 @@ class SquadLinkUserLogInView(View):
         if request.user.is_authenticated:
             return redirect('/home')
 
-        login_form = SquadLinkUserLogInForm(data=request.POST)
+        login_form = SquadLinkUserLogInForm(request.POST)
 
         if login_form.is_valid():
             username = login_form.cleaned_data.get('username')
