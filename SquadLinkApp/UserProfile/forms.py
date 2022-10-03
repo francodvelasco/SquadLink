@@ -29,8 +29,6 @@ class UserBaseForm(UserCreationForm):
     #                                age=self.cleaned_data['age'])
     #     user_profile.save()
     #     return user, user_profile
-    def get(self):
-        return False
 
 
 class UserAdditionalForm(forms.Form):
