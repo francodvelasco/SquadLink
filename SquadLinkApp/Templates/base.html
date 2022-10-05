@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,13 +12,14 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title> SquadLink | {% block title %} {% endblock %}</title>
 </head>
+
 <body>
     <header>
         <div id="headertitle">SquadLink</div>
         <div id="rightheader">
-            <div onclick="location.href='/'">Home</div>
+            <div onclick="location.href={% url 'home' %}">Home</div>
             <div>About</div>
-            <div>Account</div>
+            <div onclick="location.href={% url 'UserProfile:view-profile' %}">Account</div>
         </div>
     </header>
     <main>
@@ -26,4 +28,5 @@
     </main>
     <div id="stickybottom"></div>
 </body>
+
 </html>

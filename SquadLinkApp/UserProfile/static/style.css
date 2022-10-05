@@ -356,6 +356,8 @@ header {
     left: 0px;
     bottom: 0;
 
+    pointer-events: none;
+
     background: linear-gradient(360deg, rgba(137, 233, 105, 0.137) 3.95%, rgba(51, 152, 209, 0) 100%);
 }
 

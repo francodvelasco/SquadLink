@@ -4,6 +4,7 @@
 
 {% block content %}
 Profile Page
+
 {% if user.is_authenticated %}
 Hi {{ user.username }}!
 <a href="{% url 'logout' %}"> Log Out </a>
@@ -11,4 +12,5 @@ Hi {{ user.username }}!
 <p>You are not logged in</p>
 <a href="{% url 'UserProfile:log-in' %}">Log In</a>
 {% endif %}
+
 {% endblock %}
