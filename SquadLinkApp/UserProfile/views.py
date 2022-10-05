@@ -55,7 +55,7 @@ class SquadLinkUserCreationView(View):
 
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            return redirect('home')
         else:
             print(
                 f"Somethings is not valid | base: {user_creation_form.is_valid()}, {user_creation_form.errors} | add: {user_add_creation_form.is_valid()}, {user_add_creation_form.errors}")
@@ -80,7 +80,7 @@ class SquadLinkUserLogInView(View):
 
     def post(self, request):
         print("posting login")
-        login_form = SquadLinkUserLogInForm(request.POST)
+        login_form = SquadLinkUserLogInForm(data=request.POST)
         print(login_form)
         print(login_form.is_valid())
 
