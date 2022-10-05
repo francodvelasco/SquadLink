@@ -1,3 +1,4 @@
+from dataclasses import field
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
@@ -59,3 +60,10 @@ class UserAdditionalForm(forms.Form):
 class SquadLinkUserLogInForm(AuthenticationForm):
     def __init__(self, request, *args, **kwargs) -> None:
         super(SquadLinkUserLogInForm, self).__init__(request, *args, **kwargs)
+
+
+class SquadLinkUserUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = '__all__'

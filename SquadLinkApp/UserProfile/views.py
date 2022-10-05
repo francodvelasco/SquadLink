@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 
 from .models import SquadLinkUserModel
-from .forms import SquadLinkUserLogInForm, UserBaseForm, UserAdditionalForm
+from .forms import SquadLinkUserLogInForm, SquadLinkUserUpdateForm, UserBaseForm, UserAdditionalForm
 
 
 class SquadLinkHomeView(View):
@@ -104,9 +104,15 @@ class SquadLinkUserLogInView(View):
 
 
 class SquadLinkUserView(View):
-    @ login_required
-    def get(self, request):
-        page_content = dict()
-        page_content['user'] = self.request.user
 
-        return render(request, 'view_profile.html', page_content)
+    def get(self, request):
+        if request.user.is_authenticated:
+            user = request.user
+            form = SquadLinkUserUpdateForm(instance=user)
+            page_content = dict()
+            page_content['form'] = form
+
+            return render(request, 'view_profile.html', page_content)
+
+        else:
+            return redirect('UserProfile:sign-in')
