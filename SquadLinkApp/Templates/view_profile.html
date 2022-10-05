@@ -10,6 +10,7 @@ Profile Page
 
 Hi {{ user.username }}!
 
+{% csrf_token %}
 {{ form.as_p }}
 <br>
 <a href="{% url 'logout' %}"> Log Out </a>

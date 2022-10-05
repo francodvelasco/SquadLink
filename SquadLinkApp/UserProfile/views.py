@@ -71,36 +71,37 @@ class SquadLinkUserCreationView(View):
 class SquadLinkUserLogInView(View):
     def get(self, request):
         if request.user.is_authenticated:
-            return redirect('/')
+            return redirect('UserProfile:view-profile')
 
         page_contents = dict()
-        page_contents['form'] = SquadLinkUserLogInForm(request=request)
+        page_contents['form'] = SquadLinkUserLogInForm()
 
         return render(request, 'login.html', page_contents)
 
     def post(self, request):
-        if request.user.is_authenticated:
-            return redirect('/')
-
+        print("posting login")
         login_form = SquadLinkUserLogInForm(request.POST)
+        print(login_form)
+        print(login_form.is_valid())
 
         if login_form.is_valid():
+            print("im valid yeeyy")
             username = login_form.cleaned_data.get('username')
             password = login_form.cleaned_data.get('password')
 
+            print(login_form.cleaned_data.get('username'),
+                  login_form.cleaned_data.get('password'))
             user = authenticate(username=username, password=password)
 
             if user:
+                print(user)
                 login(request, user)
-                return redirect('/')
-            else:
-                return redirect(SquadLinkUserCreationView.as_view())
+                return redirect('home')
 
-        else:
-            page_contents = dict()
-            page_contents['form'] = login_form
+        page_contents = dict()
+        page_contents['form'] = login_form
 
-            return render(request, 'login.html', page_contents)
+        return render(request, 'login.html', page_contents)
 
 
 class SquadLinkUserView(View):

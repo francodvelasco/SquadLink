@@ -58,12 +58,11 @@ class UserAdditionalForm(forms.Form):
 
 
 class SquadLinkUserLogInForm(AuthenticationForm):
-    def __init__(self, request, *args, **kwargs) -> None:
+    def __init__(self, request=None, *args, **kwargs) -> None:
         super(SquadLinkUserLogInForm, self).__init__(request, *args, **kwargs)
 
 
 class SquadLinkUserUpdateForm(forms.ModelForm):
-
     class Meta:
         model = User
         fields = '__all__'
