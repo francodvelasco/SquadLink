@@ -19,7 +19,15 @@ class UserBaseForm(UserCreationForm):
 
         self.fields['password2'].help_text = None
         self.fields['username'].help_text = None
+    
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        users = User.objects.filter(username=username)
 
+        if users:
+            raise ValidationError("Username already exists")
+        else:
+            return username
 
 class UserAdditionalForm(forms.Form):
     PLATFORMS = (
@@ -40,14 +48,11 @@ class UserAdditionalForm(forms.Form):
         ('WOFW', 'World of Warcraft')
     )
 
+    profile_image = forms.ImageField()
     user_platforms = forms.MultipleChoiceField(
         widget=forms.CheckboxSelectMultiple, choices=PLATFORMS)
-    #user_game = forms.CharField(max_length=100, choices=GAMES, default='VALO')
-    user_game = forms.ChoiceField(choices=GAMES)
+    user_game = forms.ChoiceField(choices=GAMES, initial='VALO')
     rank = forms.CharField(max_length=100)
-
-    # TODO: Link this up with the SquadLinkUserModel form
-
 
 class SquadLinkUserLogInForm(AuthenticationForm):
     def __init__(self, request, *args, **kwargs) -> None:

@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#393748">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
+    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title> SquadLink | {% block title %} {% endblock %}</title>
 </head>
 <body>
+    <header>
+        <div id="headertitle">SquadLink</div>
+        <div id="rightheader">
+            <div onclick="location.href='/'">Home</div>
+            <div>About</div>
+            <div>Account</div>
+        </div>
+    </header>
     <main>
         {% block content %}
         {% endblock %}
     </main>
+    <div id="stickybottom"></div>
 </body>
 </html>
