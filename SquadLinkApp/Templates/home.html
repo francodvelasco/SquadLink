@@ -3,11 +3,43 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-Hi {{ user.username }}!
-<a href="{% url 'logout' %}"> Log Out </a>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'UserProfile:log-in' %}">Log In</a>
-{% endif %}
+
+<div id="imgtop"></div>
+<div id="bannertitle">Tired of playing alone?<br>Join SquadLink!</div>
+<div id="bannersubtitle">Find friends to play with. Find your Squad.</div>
+
+<div id="bannerbuttons">
+    {% if not user.is_authenticated %}
+    <div id="registerbutton" onclick="location.href=&quot;{% url 'UserProfile:register' %}&quot;">Register</div>
+    <div id="signinbutton" onclick="location.href=&quot;{% url 'UserProfile:sign-in' %}&quot;">Sign In</div>
+    {% endif %}
+</div>
+
+
+<div id="imgbottom"></div>
+<div id="title2">Dominate the battlefield together.</div>
+
+<div id="gamescarousel">
+    <div class="card">
+        <div class="cardimage"></div>
+        <div class="logo"></div>
+        <div class="label">Valorant</div>
+        <div class="playbutton">Play Now</div>
+    </div>
+    <div class="card">
+        <div class="cardimage"></div>
+        <div class="logo"></div>
+        <div class="label">Apex Legends</div>
+        <div class="playbutton">Play Now</div>
+    </div>
+    <div class="card">
+        <div class="cardimage"></div>
+        <div class="logo"></div>
+        <div class="label">DOTA 2</div>
+        <div class="playbutton">Play Now</div>
+    </div>
+</div>
+
+<div id="moregamesbutton">More games</div>
+
 {% endblock %}

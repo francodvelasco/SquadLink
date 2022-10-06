@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %}Log In{% endblock %}
+{% block title %}Sign In{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
+
+<div id="imgtop"></div>
+
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
+    <div id="registerbox">
+        {{ form.non_field_errors }}
+        <h2 id="registertitle">Sign in to your account</h2>
+        <div class="inputbox">
+            {{ form.username.errors }}
+            <p class="label">Username</p>
+            {{ form.username }}
+        </div>
+        <div class="inputbox">
+            {{ form.password.errors }}
+            <p class="label">Password</p>
+            {{ form.password }}
+        </div>
+
+        <button type="submit" id="signinsubmit">Log In</button>
 </form>
+<div id="noaccount">Don't have an account? <a href="{% url 'UserProfile:register' %}">Register</a></div>
+
+</div>
+
 {% endblock %}

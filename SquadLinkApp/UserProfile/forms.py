@@ -1,3 +1,4 @@
+from dataclasses import field
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
@@ -20,6 +21,15 @@ class UserBaseForm(UserCreationForm):
         self.fields['password2'].help_text = None
         self.fields['username'].help_text = None
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        users = User.objects.filter(username=username)
+
+        if users:
+            raise forms.ValidationError("Username already exists")
+        else:
+            return username
+
 
 class UserAdditionalForm(forms.Form):
     PLATFORMS = (
@@ -40,15 +50,19 @@ class UserAdditionalForm(forms.Form):
         ('WOFW', 'World of Warcraft')
     )
 
+    profile_image = forms.ImageField()
     user_platforms = forms.MultipleChoiceField(
         widget=forms.CheckboxSelectMultiple, choices=PLATFORMS)
-    #user_game = forms.CharField(max_length=100, choices=GAMES, default='VALO')
-    user_game = forms.ChoiceField(choices=GAMES)
+    user_game = forms.ChoiceField(choices=GAMES, initial='VALO')
     rank = forms.CharField(max_length=100)
-
-    # TODO: Link this up with the SquadLinkUserModel form
 
 
 class SquadLinkUserLogInForm(AuthenticationForm):
-    def __init__(self, request, *args, **kwargs) -> None:
+    def __init__(self, request=None, *args, **kwargs) -> None:
         super(SquadLinkUserLogInForm, self).__init__(request, *args, **kwargs)
+
+
+class SquadLinkUserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'

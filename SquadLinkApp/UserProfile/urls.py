@@ -4,7 +4,7 @@ from .views import SquadLinkUserLogInView, SquadLinkUserCreationView, SquadLinkU
 app_name = 'UserProfile'
 
 urlpatterns = [
-    path('create/', SquadLinkUserCreationView.as_view(), name='add-profile'),
-    path('log-in/', SquadLinkUserLogInView.as_view(), name='log-in'),
+    path('register/', SquadLinkUserCreationView.as_view(), name='register'),
+    path('sign-in/', SquadLinkUserLogInView.as_view(), name='sign-in'),
     path('view', SquadLinkUserView.as_view(), name='view-profile')
 ]

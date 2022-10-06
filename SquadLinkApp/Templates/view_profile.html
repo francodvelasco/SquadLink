@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<br><br><br><br><br>
+Profile Page
+
+
+Hi {{ user.username }}!
+
+{% csrf_token %}
+{{ form.as_p }}
+<br>
+<a href="{% url 'logout' %}"> Log Out </a>
+
+{% endblock %}

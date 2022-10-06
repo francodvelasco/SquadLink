@@ -1,13 +1,70 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ user_forms.as_p }}
-    {{ user_add_form.as_p }}
-    <button type="submit">Log In</button>
+    <div id="imgtop"></div>
+    <div id="registerbox">
+        <h2 id="registertitle">Create your account</h2>
+        {{ user_forms.non_field_errors }}
+        {{ user_add_form.non_field_errors }}
+        <!-- <div class="inputbox">
+            {{ user_forms.username.errors }}
+            <p class="label">Name</p>
+            {{ user_forms.username }}
+            <input type="text" name="name" id="registername">
+        </div> -->
+        <div class="inputbox">
+            {{ user_forms.username.errors }}
+            <p class="label">Username</p>
+            {{ user_forms.username }}
+            <!-- <input type="text" name="username" id="registerusername"> -->
+        </div>
+        <!-- <div class="inputbox">
+            <p class="label">Email Address</p> -->
+        <!-- <input type="email" name="email" id="registeremail"> -->
+        <!-- </div> -->
+        <div class="inputbox">
+            {{ user_forms.password1.errors }}
+            <p class="label">Password</p>
+            {{ user_forms.password1 }}
+        </div>
+        <div class="inputbox">
+            {{ user_forms.password2.errors }}
+            <p class="label">Confirm Password</p>
+            {{ user_forms.password2 }}
+        </div>
+
+        <div class="inputbox">
+            {{ user_add_form.user_platforms.errors }}
+            <p class="label">Platforms</p>
+            {{ user_add_form.user_platforms }}
+        </div>
+
+        <div class="inputbox">
+            {{ user_add_form.user_game.errors }}
+            <p class="label">Favorite Game</p>
+            {{ user_add_form.user_game }}
+        </div>
+
+        <div class="inputbox">
+            {{ user_add_form.profile_image.errors }}
+            <p class="label">Profile Image</p>
+            {{ user_add_form.profile_image }}
+        </div>
+
+        <div class="inputbox">
+            {{ user_add_form.rank.errors }}
+            <p class="label">Game Rank</p>
+            {{ user_add_form.rank }}
+        </div>
+
+        <button type="submit" id="registersubmit">Register</button>
+
+        <div id="alreadyaccount">Already have an account? <a href="{% url 'UserProfile:sign-in' %}">Sign in</a></div>
+    </div>
+
 </form>
 {% endblock %}
