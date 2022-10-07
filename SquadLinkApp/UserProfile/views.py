@@ -11,6 +11,7 @@ class SquadLinkHomeView(View):
     def get(self, request):
         page_contents = dict()
         page_contents['user'] = request.user
+        page_contents['user_add'] = request.user.squadlinkusermodel
 
         return render(request, 'home.html', page_contents)
 
@@ -51,9 +52,6 @@ class SquadLinkUserCreationView(View):
             login(request, user)
             return redirect('/')
         else:
-            print(f"Somethings is not valid | base: {user_creation_form.is_valid()}, {user_creation_form.errors} | add: {user_add_creation_form.is_valid()}, {user_add_creation_form.errors}")
-            print(f"Base: {user_creation_form.cleaned_data}")
-            print(f"Add: {user_add_creation_form.cleaned_data}")
             page_contents = dict()
             page_contents['user_forms'] = user_creation_form
             page_contents['user_add_form'] = user_add_creation_form
