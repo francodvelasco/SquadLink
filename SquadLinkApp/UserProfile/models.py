@@ -15,4 +15,4 @@ class SquadLinkUserModel(models.Model):
     game = models.CharField(max_length=100, blank=True, default='')
     rank = models.CharField(max_length=100, blank=True, default='')
     bio = models.CharField(max_length=280, blank=True, default='')
-    regions = models.CharField(max_length=100, blank=True)
+    region = models.CharField(max_length=100, blank=True)

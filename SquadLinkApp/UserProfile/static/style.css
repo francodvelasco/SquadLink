@@ -497,7 +497,7 @@ header {
 #custombg {
     position: absolute;
     width: 105%;
-    height: 101%;
+    height: 105%;
     left: -2%;
     
     z-index: -1;
@@ -510,11 +510,11 @@ header {
 #profilebg {
     position: absolute;
     width: 435px;
-    height: 860px;
+    height: 850px;
     left: 188px;
     top: 124px;
 
-    background: #080525;
+    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
 }
 
@@ -523,7 +523,7 @@ header {
     width: 100%;
     height: 215px;
 
-    background: url(assets/20218105037.png);
+    background: linear-gradient(180deg, #002A3C 0%, #005E86 100%);
     background-size: cover;
     background-position: center;
     border-radius: 34px;
@@ -531,12 +531,9 @@ header {
 
 #profilepic {
     position: absolute;
-    width: 39%;
-    height: 20%;
     left: 30%;
     top: 12%;
     
-    background: url(assets/ya-boy-kongming-anime.png);
     background-size: cover;
     background-position: center;
     border-radius: 84px;
@@ -575,19 +572,14 @@ header {
     color: #FFFFFF;
 }
 
-#profilebuttons {
-    position: absolute;
-    width: 80%;
-    top: 65%;     
-    left: calc(10%);
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
 #addfriend {
-    box-sizing: border-box;
+    position: absolute;
+    width: 180px;
+    height: 45px;
+    left: 216px;
+    top: 850px;
 
+    box-sizing: border-box;
     flex-grow: 1;
 
     background: #44AA15;
@@ -610,8 +602,13 @@ header {
 }
 
 #message {
-    box-sizing: border-box;
+    position: absolute;
+    width: 180px;
+    height: 45px;
+    left: 427px;
+    top: 850px;
 
+    box-sizing: border-box;
     flex-grow: 1;
 
     background: #2584B9;
@@ -640,7 +637,7 @@ header {
     left: 639px;
     top: 124px;
     
-    background: #080525;
+    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
 }
 
@@ -746,11 +743,11 @@ header {
 #moregamesbg {
     position: absolute;
     width: 615px;
-    height: 257px;
+    height: 300px;
     left: 643px;
     top: 632px;
 
-    background: #080525;
+    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
 }
 
@@ -846,7 +843,7 @@ header {
     left: 503px;
     top: 90px;
     
-    background: #080525;
+    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
     align-items: center;
 }
@@ -935,6 +932,36 @@ header {
     background: #9797972f;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+
+    cursor: pointer;
+}
+
+#logoutbutton {
+    position: absolute;
+    width: 120px;
+    top: 910px;     
+    left: 18.5%;
+    display: flex;
+    gap: 20px;
+    
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    background: #6B001A;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
+    line-height: 45px;
+
+    color: #FFFFFF;
 
     cursor: pointer;
 }
