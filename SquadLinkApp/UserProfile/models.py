@@ -14,3 +14,5 @@ class SquadLinkUserModel(models.Model):
     platforms = models.CharField(max_length=100, blank=True)
     game = models.CharField(max_length=100, blank=True, default='')
     rank = models.CharField(max_length=100, blank=True, default='')
+    bio = models.CharField(max_length=280, blank=True, default='')
+    regions = models.CharField(max_length=100, blank=True)

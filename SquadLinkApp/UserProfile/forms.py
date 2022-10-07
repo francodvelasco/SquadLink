@@ -36,7 +36,8 @@ class UserAdditionalForm(forms.Form):
         ('PC', 'PC'),
         ('PS', 'PlayStation'),
         ('XB', 'Xbox'),
-        ('NS', 'Nintendo Switch')
+        ('NS', 'Nintendo Switch'),
+        ('MB', 'Mobile')
     )
 
     GAMES = (
@@ -50,11 +51,22 @@ class UserAdditionalForm(forms.Form):
         ('WOFW', 'World of Warcraft')
     )
 
+    REGIONS = (
+        ('SG', 'Singapore'),
+        ('JP', 'Tokyo'),
+        ('HK', 'Hong Kong'),
+        ('KR', 'Seoul'),
+        ('IN', 'Mumbai'),
+        ('AU', 'Sydney')
+    )
+
+    region = forms.ChoiceField(choices=REGIONS, initial='SG')
     profile_image = forms.ImageField()
     user_platforms = forms.MultipleChoiceField(
         widget=forms.CheckboxSelectMultiple, choices=PLATFORMS)
     user_game = forms.ChoiceField(choices=GAMES, initial='VALO')
     rank = forms.CharField(max_length=100)
+    bio = forms.CharField(max_length=280)
 
 
 class SquadLinkUserLogInForm(AuthenticationForm):

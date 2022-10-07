@@ -14,7 +14,11 @@
         Register
     </a>
     <a href="{% url 'UserProfile:sign-in' %}" id="signinbutton">
-        Register
+        Sign In
+    </a>
+    {% else %}
+    <a href="{% url 'UserProfile:view-profile' %}" id="signinbutton">
+        View Profile
     </a>
     {% endif %}
 </div>

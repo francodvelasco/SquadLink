@@ -12,7 +12,47 @@ Hi {{ user.username }}!
 
 {% csrf_token %}
 {{ form.as_p }}
-<br>
+
+<div id="custombg"></div>
+
+<div id="profilecover"></div>
+<div id="settingsbutton" onclick="location.href='edit_profile.html'">Settings</div>
+<div id="profilepic">
+    <img src="{{ BASE_DIR }}/{{ user_add.profile_image }}" alt="Profile Image of {{ user.get_name }}" width="192" height="192">
+</div>
+<div id="profilename"> {{ user.username }} </div>
+<div id="profiletext">
+    <p><u>Bio</u><br> {{ user_add.bio }} </p>
+    <br>
+    <p><u>Region</u><br> {{ user_add.regions }} </p>
+    <p><u>Platforms</u><br> {{ user_add.platforms }} </p>
+</div>
+<div id="profilebuttons">
+    <div id="addfriend">Add Friend</div>
+    <div id="message">Message</div>
+</div>
+
+<div id="profilebg">
+    
+
+    <div id="moregamesbg"></div>
+    <div id="moregames">More Games</div>
+    <div id="gamephoto"></div>
+    <div id="gamephoto1"></div>
+    <div id="gamephoto2"></div>
+    <div id="gamephoto3"></div>
+    <div id="gamephoto4"></div>
+
+
+    <div id="profilegame"></div>
+    <div id="profilegamegradient"></div>
+    <div id="profilegamename">Main Game: {{ user_add.game }}</div>
+    <div id="profilegamephoto"></div>
+
+
 <a href="{% url 'logout' %}"> Log Out </a>
 
 {% endblock %}
+
+    
+    

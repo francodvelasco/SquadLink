@@ -12,7 +12,7 @@ class SquadLinkHomeView(View):
     def get(self, request):
         page_contents = dict()
         page_contents['user'] = request.user
-        page_contents['user_add'] = request.user.squadlinkusermodel
+        page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
 
         return render(request, 'home.html', page_contents)
 
@@ -40,13 +40,17 @@ class SquadLinkUserCreationView(View):
                 user_add_creation_form.cleaned_data.get('user_platforms'))
             user_game = user_add_creation_form.cleaned_data.get('user_game')
             rank = user_add_creation_form.cleaned_data.get('rank')
+            region = user_add_creation_form.cleaned_data.get('region')
+            bio = user_add_creation_form.cleaned_data.get('bio')
 
             sl_user_model = SquadLinkUserModel.objects.create(
                 user=user,
                 profile_image=profile_image,
                 platforms=user_platforms,
                 game=user_game,
-                rank=rank
+                rank=rank,
+                bio=bio,
+                region=region
             )
 
             sl_user_model.save()
@@ -58,13 +62,6 @@ class SquadLinkUserCreationView(View):
             login(request, user)
             return redirect('home')
         else:
-<<<<<<< HEAD
-=======
-            print(
-                f"Somethings is not valid | base: {user_creation_form.is_valid()}, {user_creation_form.errors} | add: {user_add_creation_form.is_valid()}, {user_add_creation_form.errors}")
-            print(f"Base: {user_creation_form.cleaned_data}")
-            print(f"Add: {user_add_creation_form.cleaned_data}")
->>>>>>> origin/main
             page_contents = dict()
             page_contents['user_forms'] = user_creation_form
             page_contents['user_add_form'] = user_add_creation_form
@@ -109,15 +106,12 @@ class SquadLinkUserLogInView(View):
 
 
 class SquadLinkUserView(View):
-
     def get(self, request):
         if request.user.is_authenticated:
-            user = request.user
-            form = SquadLinkUserUpdateForm(instance=user)
-            page_content = dict()
-            page_content['form'] = form
+            page_contents = dict()
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
 
-            return render(request, 'view_profile.html', page_content)
-
+            return render(request, 'view_profile.html', page_contents)
         else:
             return redirect('UserProfile:sign-in')
