@@ -223,7 +223,7 @@ header {
 #gamescarousel>.card {
     flex-grow: 1;
     position: relative;
-    border-radius: 8px;
+    border-radius: ;
 }
 
 .logo {
@@ -355,8 +355,6 @@ header {
     height: 138px;
     left: 0px;
     bottom: 0;
-
-    pointer-events: none;
 
     background: linear-gradient(360deg, rgba(137, 233, 105, 0.137) 3.95%, rgba(51, 152, 209, 0) 100%);
 }
@@ -491,4 +489,451 @@ header {
     text-align: center;
 
     color: #000000;
+}
+
+/* profile.html */
+
+#custombg {
+    position: absolute;
+    width: 105%;
+    height: 101%;
+    left: -2%;
+    
+    z-index: -1;
+
+    background: linear-gradient(180deg, #2C2F33 0%, #CB2D6F 210.74%);
+    background-blend-mode: overlay;
+    background-size: cover;
+}
+
+#profilebg {
+    position: absolute;
+    width: 435px;
+    height: 860px;
+    left: 188px;
+    top: 124px;
+
+    background: #080525;
+    border-radius: 34px;
+}
+
+#profilecover {
+    position: absolute;
+    width: 100%;
+    height: 215px;
+
+    background: url(assets/20218105037.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 34px;
+}
+
+#profilepic {
+    position: absolute;
+    width: 39%;
+    height: 20%;
+    left: 30%;
+    top: 12%;
+    
+    background: url(assets/ya-boy-kongming-anime.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 84px;
+}
+
+#profilename {
+    position: absolute;
+    left: 30%;
+    top: 30%;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 80px;
+
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;    
+}
+
+#profiletext {
+    position: absolute;
+    width: 100%;
+    top: 35%;
+    
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 40px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#profilebuttons {
+    position: absolute;
+    width: 80%;
+    top: 65%;     
+    left: calc(10%);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#addfriend {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    background: #44AA15;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+
+    line-height: 45px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+#message {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    background: #2584B9;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 45px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+#profilegame {
+    position: absolute;
+    width: 615px;
+    height: 486px;
+    left: 639px;
+    top: 124px;
+    
+    background: #080525;
+    border-radius: 34px;
+}
+
+#profilegamename {
+    position: absolute;
+    width: 372px;
+    height: 36px;
+    left: 681px;
+    top: 160px;
+    
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+
+    color: #FFFFFF;
+}
+
+#profilegamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/516575-285x380.jpg);
+    border-radius: 10px;
+}
+
+#usernamerank {
+    position: absolute;
+    width: 288px;
+    height: 120px;
+    left: 924px;
+    top: 227.2px;
+    
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 50px;
+
+    color: #FFFFFF;
+}
+
+#userdesc {
+    position: absolute;
+    width: 301px;
+    height: 250.8px;
+    left: 924px;
+    top: 359.2px;
+    
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+
+    color: #D1D1D1;
+}
+
+#settingsbutton {
+    position: absolute;
+    width: 110px;
+    top: 20px;     
+    left: calc(5%);
+    display: flex;
+    gap: 20px;
+    
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    background: #606060;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
+    line-height: 45px;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+#profilebuttons {
+    position: absolute;
+    width: 80%;
+    top: 65%;     
+    left: calc(10%);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#moregamesbg {
+    position: absolute;
+    width: 615px;
+    height: 257px;
+    left: 643px;
+    top: 632px;
+
+    background: #080525;
+    border-radius: 34px;
+}
+
+#gamephoto {
+    position: absolute;
+    width: 97px;
+    height: 144px;
+    left: 669px;
+    top: 697px;
+
+    background: url(assets/valorant.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#gamephoto1 {
+    position: absolute;
+    width: 96px;
+    height: 144px;
+    left: 786px;
+    top: 697px;
+
+    background: url(assets/apex.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#gamephoto2 {
+    position: absolute;
+    width: 97px;
+    height: 144px;
+    left: 901px;
+    top: 697px;
+    background: url(assets/csgo.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#gamephoto3 {
+    position: absolute;
+    width: 97px;
+    height: 144px;
+    left: 1018px;
+    top: 697px;
+
+    background: url(assets/fortnite.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#gamephoto4 {
+    position: absolute;
+    width: 97px;
+    height: 144px;
+    left: 1135px;
+    top: 697px;
+    background: url(assets/lol.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#moregames {
+    position: absolute;
+    width: 266px;
+    height: 36px;
+    left: 680px;
+    top: 647px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+/* edit_profile.html */
+
+#editbg {
+    position: absolute;
+    width: 435px;
+    height: 790px;
+    left: 503px;
+    top: 90px;
+    
+    background: #080525;
+    border-radius: 34px;
+    align-items: center;
+}
+
+#editdetails {
+    position: absolute;
+    width: 100%;
+    top: 300px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    color: #BFBFBF;
+}
+
+#editnamebutton {
+    position: absolute;
+    width: 45px;
+    height: 25px;
+    left: 365px;
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    background: #4B4B4B;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 80px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: #F4F4F4;
+
+    cursor: pointer;
+}
+
+#saveexitbuttons {
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    top: 85%;
+    left: 52%;
+
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 45px;
+    /* or 333% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#saveexit {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    background: #2679A7;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+
+#cancel {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    background: #9797972f;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    cursor: pointer;
 }
