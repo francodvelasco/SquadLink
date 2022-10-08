@@ -965,3 +965,220 @@ header {
 
     cursor: pointer;
 }
+
+/* squad_page.html */
+
+#squadbg {
+    position: absolute;
+    width: 841px;
+    height: 611px;
+    left: 69px;
+    top: 137px;
+
+    background: linear-gradient(180deg, #0F292F 5.73%, #501F3A 100%);
+    border-radius: 10px;
+}
+
+#squadbanner {
+    position: absolute;
+    width: 841px;
+    height: 91px;
+
+    background: linear-gradient(179.53deg, #323232 0.41%, #FFFFFF 612.95%);
+    border-radius: 10px;
+}
+
+#bannerlabel {
+    position: absolute;
+    width: 232px;
+    height: 31px;
+    left: 30px;
+    top: 30px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 40px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#squadsettings {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    position: absolute;
+    width: 132px;
+    height: 50px;
+    left: 682px;
+    top: 20px;
+    
+    background: #606060;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+
+    line-height: 45px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+#joinrequests {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    left: 470px;
+    top: 20px;
+    
+    background: #2D55E3;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+
+    line-height: 45px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+#squadmembers {
+    position: absolute;
+    width: 302px;
+    height: 43px;
+    left: 30px;
+    top: 150px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 40px;
+    /* or 143% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#invitemembers {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    position: absolute;
+    width: 111px;
+    height: 26px;
+    left: 37px;
+    top: 550px;
+    
+    background: #47A588;
+    border-radius: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+
+    align-items: center;
+    text-align: center;
+    
+    color: #F0F0F0;
+
+    cursor: pointer;
+}
+
+#seeallmembers {
+    box-sizing: border-box;
+
+    flex-grow: 1;
+
+    position: absolute;
+    width: 111px;
+    height: 26px;
+    left: 175px;
+    top: 550px;
+    
+    background: #2584B9;
+    border-radius: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    
+    align-items: center;
+    text-align: center;
+    
+    color: #F0F0F0;
+
+    cursor: pointer;
+}
+
+#squadgamedetails {
+    position: absolute;
+    width: 302px;
+    height: 43px;
+    left: 421px;
+    top: 170px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 40px;
+    /* or 143% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#chatbg {
+    position: absolute;
+    width: 468px;
+    height: 100%;
+    left: 105%;
+
+    background: linear-gradient(180deg, #0F292F 5.73%, #5A2C46 85.42%);
+    border-radius: 10px;
+}
+
+#chatbanner {
+    position: absolute;
+    width: 468px;
+    height: 91px;
+
+    background: linear-gradient(180deg, #444444 0%, #626262 100%);
+    border-radius: 10px;
+}
