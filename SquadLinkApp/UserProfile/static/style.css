@@ -657,7 +657,7 @@ header {
     color: #FFFFFF;
 }
 
-#profilegamephoto {
+#valogamephoto {
     position: absolute;
     width: 198px;
     height: 319.2px;
@@ -665,6 +665,91 @@ header {
     top: 227px;
 
     background: url(assets/516575-285x380.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#apexgamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/apex.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#dotagamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/dota2card.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#lolgamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/lol.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#mlbbgamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/mlbb.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#pokegamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/pkmn.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#csgogamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/csgo.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#wofwgamephoto {
+    position: absolute;
+    width: 198px;
+    height: 319.2px;
+    left: 684px;
+    top: 227px;
+
+    background: url(assets/wow.jpg);
+    background-size: cover;
     border-radius: 10px;
 }
 

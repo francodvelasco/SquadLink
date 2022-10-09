@@ -35,11 +35,26 @@
 <div id="profilegame"></div>
 <div id="profilegamegradient"></div>
 <div id="profilegamename">Main Game: {{ user_add.game }}</div>
-<div id="profilegamephoto"></div>
-<div id="usernamerank">Tagline: tester#1929<br>Rank: Ascendant 3</div>div>
-<div id="userdesc">Greetings! I play on SEA, NA (150ms), and JP (60ms). If you prefer it, we can communicate through Discord, just chat with me. Hope we enjoy playing together! Thanks.</div>
+{% if user_add.game == "VALO" %}
+    <div id="valogamephoto"></div>
+{% elif user_add.game == "APEX" %}
+    <div id="apexgamephoto"></div>
+{% elif user_add.game == "DOTA" %}
+    <div id="dotagamephoto"></div>
+{% elif user_add.game == "LEAG" %}
+    <div id="lolgamephoto"></div>
+{% elif user_add.game == "MLBB" %}
+    <div id="mlbbgamephoto"></div>
+{% elif user_add.game == "POKE" %}
+    <div id="pokegamephoto"></div>
+{% elif user_add.game == "CSGO" %}
+    <div id="csgogamephoto"></div>
+{% elif user_add.game == "WOFW" %}
+    <div id="wofwgamephoto"></div>
+{% endif %}
 
-
+<div id="usernamerank">Tagline: {{ user.username }}<br>Rank: {{ user_add.rank }}</div>div>
+{% comment %} <div id="userdesc">Greetings! I play on SEA, NA (150ms), and JP (60ms). If you prefer it, we can communicate through Discord, just chat with me. Hope we enjoy playing together! Thanks.</div> {% endcomment %}
 
 <div id="logoutbutton"><a href="{% url 'logout' %}">Log Out</a></div>
 
