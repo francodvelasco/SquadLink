@@ -11,8 +11,10 @@ from .forms import SquadLinkUserLogInForm, SquadLinkUserUpdateForm, UserBaseForm
 class SquadLinkHomeView(View):
     def get(self, request):
         page_contents = dict()
-        page_contents['user'] = request.user
-        page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+
+        if request.user.is_authenticated:
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
 
         return render(request, 'home.html', page_contents)
 
@@ -36,7 +38,7 @@ class SquadLinkUserCreationView(View):
 
             profile_image = user_add_creation_form.cleaned_data.get(
                 'profile_image')
-            user_platforms = ','.join(
+            user_platforms = ', '.join(
                 user_add_creation_form.cleaned_data.get('user_platforms'))
             user_game = user_add_creation_form.cleaned_data.get('user_game')
             rank = user_add_creation_form.cleaned_data.get('rank')

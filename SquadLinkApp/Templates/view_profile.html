@@ -10,7 +10,7 @@
     <div id="profilecover"></div>
     <div id="settingsbutton" onclick="location.href='edit_profile.html'">Settings</div>
     <div id="profilepic">
-        <img src="{{ BASE_DIR }}/{{ user_add.profile_image }}" alt="Profile Image of {{ user.username }}" width="192" height="192">
+        <img src="{{ user_add.profile_image }}" alt="Profile Image of {{ user.username }}" width="192" height="192">
     </div>
     <div id="profilename">{{user.username}}</div>
     <div id="profiletext">
