@@ -69,13 +69,14 @@
 
         <div class="inputbox">
             {{ user_add_form.bio.errors }}
-            <p class="label">Bio (200 words limit)</p>
+            <p class="label">Bio (200 characters limit)</p>
             {{ user_add_form.bio }}
         </div>
 
         <button type="submit" id="registersubmit">Register</button>
 
         <div id="alreadyaccount">Already have an account? <a href="{% url 'UserProfile:sign-in' %}">Sign in</a></div>
+    
     </div>
 
 </form>

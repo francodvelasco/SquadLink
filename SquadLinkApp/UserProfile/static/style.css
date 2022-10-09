@@ -50,7 +50,8 @@ header {
     gap: 10px
 }
 
-#rightheader>div {
+#rightheader>div,
+#rightheader>a {
     flex-grow: 1;
     align-items: center;
     text-align: center;
@@ -62,6 +63,11 @@ header {
 
     color: #FFFFFF;
     cursor: pointer;
+}
+
+#rightheader>a {
+    all: none;
+    text-decoration: none;
 }
 
 #imgtop {
@@ -150,6 +156,8 @@ header {
     color: #FFFFFF;
 
     cursor: pointer;
+
+    text-decoration: none;
 }
 
 #signinbutton {
@@ -174,6 +182,8 @@ header {
     color: #ffffff;
 
     cursor: pointer;
+
+    text-decoration: none;
 }
 
 #imgbottom {
@@ -327,7 +337,7 @@ header {
     position: absolute;
     width: 180px;
     height: 40px;
-    top: 160%;
+    top: 170%;
     left: calc(50% - 200px/2 + 2.5px);
 
     background: #501f3aec;
@@ -366,7 +376,7 @@ header {
     position: absolute;
     left: 33.61%;
     right: 33.61%;
-    top: 15%;
+    top: 10%;
 
     background: #EFEFEF;
     mix-blend-mode: normal;
@@ -499,7 +509,7 @@ header {
     width: 105%;
     height: 105%;
     left: -2%;
-    
+
     z-index: -1;
 
     background: linear-gradient(180deg, #2C2F33 0%, #CB2D6F 210.74%);
@@ -533,7 +543,7 @@ header {
     position: absolute;
     left: 30%;
     top: 12%;
-    
+
     background-size: cover;
     background-position: center;
     border-radius: 84px;
@@ -552,15 +562,15 @@ header {
 
     align-items: center;
     text-align: center;
-    
-    color: #FFFFFF;    
+
+    color: #FFFFFF;
 }
 
 #profiletext {
     position: absolute;
     width: 100%;
     top: 35%;
-    
+
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
@@ -636,7 +646,7 @@ header {
     height: 486px;
     left: 639px;
     top: 124px;
-    
+
     background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
 }
@@ -647,7 +657,7 @@ header {
     height: 36px;
     left: 681px;
     top: 160px;
-    
+
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
@@ -656,6 +666,7 @@ header {
 
     color: #FFFFFF;
 }
+
 
 #valogamephoto {
     position: absolute;
@@ -667,6 +678,7 @@ header {
     background: url(assets/516575-285x380.jpg);
     background-size: cover;
     border-radius: 10px;
+    background-position: ce;
 }
 
 #apexgamephoto {
@@ -759,7 +771,7 @@ header {
     height: 120px;
     left: 924px;
     top: 227.2px;
-    
+
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 600;
@@ -775,7 +787,7 @@ header {
     height: 250.8px;
     left: 924px;
     top: 359.2px;
-    
+
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
@@ -788,11 +800,11 @@ header {
 #settingsbutton {
     position: absolute;
     width: 110px;
-    top: 20px;     
+    top: 20px;
     left: calc(5%);
     display: flex;
     gap: 20px;
-    
+
     box-sizing: border-box;
     flex-grow: 1;
 
@@ -818,7 +830,7 @@ header {
 #profilebuttons {
     position: absolute;
     width: 80%;
-    top: 65%;     
+    top: 65%;
     left: calc(10%);
     display: flex;
     gap: 20px;
@@ -927,7 +939,7 @@ header {
     height: 790px;
     left: 503px;
     top: 90px;
-    
+
     background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
     align-items: center;
@@ -962,11 +974,11 @@ header {
     font-weight: 300;
     font-size: 12px;
     line-height: 80px;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     color: #F4F4F4;
 
     cursor: pointer;
@@ -1024,11 +1036,11 @@ header {
 #logoutbutton {
     position: absolute;
     width: 120px;
-    top: 910px;     
+    top: 910px;
     left: 18.5%;
     display: flex;
     gap: 20px;
-    
+
     box-sizing: border-box;
     flex-grow: 1;
 
@@ -1050,6 +1062,15 @@ header {
 
     cursor: pointer;
 }
+
+#logoutbutton>a,
+#logoutbutton>a:visited {
+    all: none;
+    text-decoration: none;
+
+    color: #FFFFFF;
+}
+
 
 /* squad_page.html */
 
@@ -1103,7 +1124,7 @@ header {
     height: 50px;
     left: 682px;
     top: 20px;
-    
+
     background: #606060;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1133,7 +1154,7 @@ header {
     height: 50px;
     left: 470px;
     top: 20px;
-    
+
     background: #2D55E3;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1183,7 +1204,7 @@ header {
     height: 26px;
     left: 37px;
     top: 550px;
-    
+
     background: #47A588;
     border-radius: 10px;
 
@@ -1195,7 +1216,7 @@ header {
 
     align-items: center;
     text-align: center;
-    
+
     color: #F0F0F0;
 
     cursor: pointer;
@@ -1211,7 +1232,7 @@ header {
     height: 26px;
     left: 175px;
     top: 550px;
-    
+
     background: #2584B9;
     border-radius: 10px;
 
@@ -1220,10 +1241,10 @@ header {
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
-    
+
     align-items: center;
     text-align: center;
-    
+
     color: #F0F0F0;
 
     cursor: pointer;

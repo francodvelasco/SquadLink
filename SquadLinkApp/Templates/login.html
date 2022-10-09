@@ -6,11 +6,11 @@
 
 <div id="imgtop"></div>
 
-<form method="post">
-    {% csrf_token %}
-    <div id="registerbox">
-        {{ form.non_field_errors }}
+<div id="registerbox">
+    <form method="post">
+        {% csrf_token %}
         <h2 id="registertitle">Sign in to your account</h2>
+        {{ form.non_field_errors }}
         <div class="inputbox">
             {{ form.username.errors }}
             <p class="label">Username</p>
@@ -23,8 +23,8 @@
         </div>
 
         <button type="submit" id="signinsubmit">Log In</button>
-</form>
-<div id="noaccount">Don't have an account? <a href="{% url 'UserProfile:register' %}">Register</a></div>
+    </form>
+    <div id="noaccount">Don't have an account? <a href="{% url 'UserProfile:register' %}">Register</a></div>
 
 </div>
 
