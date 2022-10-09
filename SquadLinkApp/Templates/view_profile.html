@@ -4,15 +4,61 @@
 
 {% block content %}
 
-<br><br><br><br><br>
-Profile Page
+<div id="custombg"></div>
+
+<div id="profilebg">
+    <div id="profilecover"></div>
+    <div id="settingsbutton" onclick="location.href='edit_profile.html'">Settings</div>
+    <div id="profilepic">
+        <img src="{{ BASE_DIR }}/{{ user_add.profile_image }}" alt="Profile Image of {{ user.username }}" width="192" height="192">
+    </div>
+    <div id="profilename">{{user.username}}</div>
+    <div id="profiletext">
+        <p><u>Bio</u><br>{{ user_add.bio }}</p>
+        <p><u>Region</u><br>{{ user_add.region }}</p>
+        <p><u>Platforms</u><br>{{ user_add.platforms }}</p>
+    </div>
+</div>
+
+<div id="addfriend">Add Friend</div>
+<div id="message">Message</div>
+
+<div id="moregamesbg"></div>
+<div id="moregames">More Games</div>
+<div id="gamephoto"></div>
+<div id="gamephoto1"></div>
+<div id="gamephoto2"></div>
+<div id="gamephoto3"></div>
+<div id="gamephoto4"></div>
 
 
-Hi {{ user.username }}!
+<div id="profilegame"></div>
+<div id="profilegamegradient"></div>
+<div id="profilegamename">Main Game: {{ user_add.game }}</div>
+{% if user_add.game == "VALO" %}
+    <div id="valogamephoto"></div>
+{% elif user_add.game == "APEX" %}
+    <div id="apexgamephoto"></div>
+{% elif user_add.game == "DOTA" %}
+    <div id="dotagamephoto"></div>
+{% elif user_add.game == "LEAG" %}
+    <div id="lolgamephoto"></div>
+{% elif user_add.game == "MLBB" %}
+    <div id="mlbbgamephoto"></div>
+{% elif user_add.game == "POKE" %}
+    <div id="pokegamephoto"></div>
+{% elif user_add.game == "CSGO" %}
+    <div id="csgogamephoto"></div>
+{% elif user_add.game == "WOFW" %}
+    <div id="wofwgamephoto"></div>
+{% endif %}
 
-{% csrf_token %}
-{{ form.as_p }}
-<br>
-<a href="{% url 'logout' %}"> Log Out </a>
+<div id="usernamerank">Tagline: {{ user.username }}<br>Rank: {{ user_add.rank }}</div>div>
+{% comment %} <div id="userdesc">Greetings! I play on SEA, NA (150ms), and JP (60ms). If you prefer it, we can communicate through Discord, just chat with me. Hope we enjoy playing together! Thanks.</div> {% endcomment %}
+
+<div id="logoutbutton"><a href="{% url 'logout' %}">Log Out</a></div>
 
 {% endblock %}
+
+    
+    

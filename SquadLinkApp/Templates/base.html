@@ -17,9 +17,13 @@
     <header>
         <div id="headertitle">SquadLink</div>
         <div id="rightheader">
-            <div onclick="location.href=&quot;{% url 'home' %}&quot;">Home</div>
+            <a href="{% url 'home' %}">
+                Home
+            </a>
             <div>About</div>
-            <div onclick="location.href=&quot;{% url 'UserProfile:view-profile' %}&quot;">Account</div>
+            <a href="{% url 'UserProfile:view-profile' %}">
+                Account
+            </a>
         </div>
     </header>
     <main>

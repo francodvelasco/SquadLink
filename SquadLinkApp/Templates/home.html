@@ -10,8 +10,16 @@
 
 <div id="bannerbuttons">
     {% if not user.is_authenticated %}
-    <div id="registerbutton" onclick="location.href=&quot;{% url 'UserProfile:register' %}&quot;">Register</div>
-    <div id="signinbutton" onclick="location.href=&quot;{% url 'UserProfile:sign-in' %}&quot;">Sign In</div>
+    <a href="{% url 'UserProfile:register' %}" id="registerbutton">
+        Register
+    </a>
+    <a href="{% url 'UserProfile:sign-in' %}" id="signinbutton">
+        Sign In
+    </a>
+    {% else %}
+    <a href="{% url 'UserProfile:view-profile' %}" id="signinbutton">
+        View Profile
+    </a>
     {% endif %}
 </div>
 

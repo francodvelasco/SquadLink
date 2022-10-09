@@ -61,6 +61,18 @@
             {{ user_add_form.rank }}
         </div>
 
+        <div class="inputbox">
+            {{ user_add_form.region.errors }}
+            <p class="label">Region</p>
+            {{ user_add_form.region }}
+        </div>
+
+        <div class="inputbox">
+            {{ user_add_form.bio.errors }}
+            <p class="label">Bio (200 words limit)</p>
+            {{ user_add_form.bio }}
+        </div>
+
         <button type="submit" id="registersubmit">Register</button>
 
         <div id="alreadyaccount">Already have an account? <a href="{% url 'UserProfile:sign-in' %}">Sign in</a></div>
