@@ -678,7 +678,7 @@ header {
     background: url(assets/516575-285x380.jpg);
     background-size: cover;
     border-radius: 10px;
-    background-position: ce;
+    background-position: center;
 }
 
 #apexgamephoto {
@@ -739,6 +739,7 @@ header {
     background: url(assets/pkmn.jpg);
     background-size: cover;
     border-radius: 10px;
+    background-position: center;
 }
 
 #csgogamephoto {
