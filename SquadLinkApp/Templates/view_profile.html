@@ -6,57 +6,89 @@
 
 <div id="custombg"></div>
 
-<div id="profilebg">
-    <div id="profilecover"></div>
-    <div id="settingsbutton" onclick="location.href='edit_profile.html'">Settings</div>
-    <div id="profilepic">
-        <img src="{{ user_add.profile_image }}" alt="Profile Image of {{ user.username }}" width="192" height="192">
+<div id="wrapper1">
+
+    <div id="profilebg">
+        <div id="profilecover"></div>
+        <div id="settingsbutton" onclick="location.href='edit_profile.html'">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.5 1.375L15.25 5.33333L5.5 15.625H1.75V11.6667L11.5 1.375Z" stroke="white" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Customize
+        </div>
+
+        <div id="profilepic">
+            <img src="{{ user_add.profile_image }}" alt="Profile Image of {{ user.username }}" width="192" height="192">
+        </div>
+
+        <div id="detailsleft">
+            <div id="profilename">{{user.username}}</div>
+
+            <p><u>Bio</u><br>{{ user_add.bio }}</p>
+            <div id="wrapperbuttons">
+                <div id="addfriend">Add Friend</div>
+                <div id="message">Message</div>
+            </div>
+            <p><u>Region</u><br>{{ user_add.region }}</p>
+            <p><u>Platforms</u><br>{{ user_add.platforms }}</p>
+
+
+        </div>
+
     </div>
-    <div id="profilename">{{user.username}}</div>
-    <div id="profiletext">
-        <p><u>Bio</u><br>{{ user_add.bio }}</p>
-        <p><u>Region</u><br>{{ user_add.region }}</p>
-        <p><u>Platforms</u><br>{{ user_add.platforms }}</p>
+
+    <div id="wrapperright">
+
+        <div id="profilegame">
+
+            <div id="profilegamename">Main Game: {{ user_add.game }}</div>
+
+            <div id="photo">
+
+                {% if user_add.game == "VALO" %}
+                <div id="valogamephoto"></div>
+                {% elif user_add.game == "APEX" %}
+                <div id="apexgamephoto"></div>
+                {% elif user_add.game == "DOTA" %}
+                <div id="dotagamephoto"></div>
+                {% elif user_add.game == "LEAG" %}
+                <div id="lolgamephoto"></div>
+                {% elif user_add.game == "MLBB" %}
+                <div id="mlbbgamephoto"></div>
+                {% elif user_add.game == "POKE" %}
+                <div id="pokegamephoto"></div>
+                {% elif user_add.game == "CSGO" %}
+                <div id="csgogamephoto"></div>
+                {% elif user_add.game == "WOFW" %}
+                <div id="wofwgamephoto"></div>
+                {% endif %}
+            </div>
+            <div id="usernamerank">Tagline: <span style="color:#4D7EFF">{{ user.username }}</span><br>
+                Rank: <span style="color:#00FA28">{{ user_add.rank }}</span>
+            </div>
+
+            {% comment %} <div id="userdesc">Greetings! I play on SEA, NA (150ms), and JP (60ms). If you prefer it, we
+                can
+                communicate through Discord, just chat with me. Hope we enjoy playing together! Thanks.</div>
+            {% endcomment %}
+
+        </div>
+
+        <div id="moregamesbg">
+
+            <div id="moregames">More Games</div>
+            <div id="moregamesphoto">
+
+                <div id="gamephoto"></div>
+                <div id="gamephoto1"></div>
+                <div id="gamephoto2"></div>
+                <div id="gamephoto3"></div>
+                <div id="gamephoto4"></div>
+            </div>
+        </div>
     </div>
+
 </div>
-
-<div id="addfriend">Add Friend</div>
-<div id="message">Message</div>
-
-<div id="moregamesbg"></div>
-<div id="moregames">More Games</div>
-<div id="gamephoto"></div>
-<div id="gamephoto1"></div>
-<div id="gamephoto2"></div>
-<div id="gamephoto3"></div>
-<div id="gamephoto4"></div>
-
-
-<div id="profilegame"></div>
-<div id="profilegamegradient"></div>
-<div id="profilegamename">Main Game: {{ user_add.game }}</div>
-
-{% if user_add.game == "VALO" %}
-<div id="valogamephoto"></div>
-{% elif user_add.game == "APEX" %}
-<div id="apexgamephoto"></div>
-{% elif user_add.game == "DOTA" %}
-<div id="dotagamephoto"></div>
-{% elif user_add.game == "LEAG" %}
-<div id="lolgamephoto"></div>
-{% elif user_add.game == "MLBB" %}
-<div id="mlbbgamephoto"></div>
-{% elif user_add.game == "POKE" %}
-<div id="pokegamephoto"></div>
-{% elif user_add.game == "CSGO" %}
-<div id="csgogamephoto"></div>
-{% elif user_add.game == "WOFW" %}
-<div id="wofwgamephoto"></div>
-{% endif %}
-<div id="usernamerank">Tagline: {{ user.username }}<br>Rank: {{ user_add.rank }}</div>div>
-{% comment %} <div id="userdesc">Greetings! I play on SEA, NA (150ms), and JP (60ms). If you prefer it, we can
-    communicate through Discord, just chat with me. Hope we enjoy playing together! Thanks.</div> {% endcomment %}
-
 <div id="logoutbutton"><a href="{% url 'logout' %}">Log Out</a></div>
-
 {% endblock %}

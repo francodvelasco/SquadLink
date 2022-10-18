@@ -7,6 +7,10 @@ body {
     min-height: 100%;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 header {
     position: absolute;
     width: 100%;
@@ -503,7 +507,7 @@ header {
     color: #000000;
 }
 
-
+/* view_profile.html */
 #custombg {
     position: absolute;
     width: 105%;
@@ -517,21 +521,39 @@ header {
     background-size: cover;
 }
 
-#profilebg {
+#wrapper1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
     position: absolute;
-    width: 435px;
-    height: 850px;
-    left: 188px;
+    width: 1066px;
+    height: 860px;
+    left: calc(50% - 1066px/2 + 3px);
     top: 124px;
+
+}
+
+#profilebg {
+
+    width: 435px;
+    height: 860px;
 
     background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
 }
 
+
 #profilecover {
+
     position: absolute;
-    width: 100%;
+    width: 435px;
     height: 215px;
+    left: calc(50% - 435px/2 - 315.5px);
+    top: 0px;
 
     background: linear-gradient(180deg, #002A3C 0%, #005E86 100%);
     background-size: cover;
@@ -540,19 +562,20 @@ header {
 }
 
 #profilepic {
+
     position: absolute;
-    left: 30%;
-    top: 12%;
+    width: 167px;
+    height: 167px;
+    left: calc(50% - 167px/2 - 315.5px);
+    top: 107px;
 
     background-size: cover;
     background-position: center;
     border-radius: 84px;
+    border: 1px dotted gray;
 }
 
 #profilename {
-    position: absolute;
-    left: 30%;
-    top: 30%;
 
     font-family: 'Outfit';
     font-style: normal;
@@ -566,29 +589,7 @@ header {
     color: #FFFFFF;
 }
 
-#profiletext {
-    position: absolute;
-    width: 100%;
-    top: 35%;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 40px;
-
-    text-align: center;
-
-    color: #FFFFFF;
-}
-
 #addfriend {
-    position: absolute;
-    width: 180px;
-    height: 45px;
-    left: 216px;
-    top: 850px;
-
     box-sizing: border-box;
     flex-grow: 1;
 
@@ -612,11 +613,6 @@ header {
 }
 
 #message {
-    position: absolute;
-    width: 180px;
-    height: 45px;
-    left: 427px;
-    top: 850px;
 
     box-sizing: border-box;
     flex-grow: 1;
@@ -641,11 +637,13 @@ header {
 }
 
 #profilegame {
-    position: absolute;
+    position: relative;
     width: 615px;
     height: 486px;
-    left: 639px;
-    top: 124px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 
     background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
@@ -655,8 +653,8 @@ header {
     position: absolute;
     width: 372px;
     height: 36px;
-    left: 681px;
-    top: 160px;
+    left: calc(50% - 372px/2 - 79.5px);
+    top: 36px;
 
     font-family: 'Outfit';
     font-style: normal;
@@ -667,112 +665,60 @@ header {
     color: #FFFFFF;
 }
 
-
-#valogamephoto {
+#profilegame>#photo>* {
     position: absolute;
     width: 198px;
     height: 319.2px;
-    left: 684px;
-    top: 227px;
+    left: calc(50% - 198px/2 - 163.5px);
+    top: 103px;
 
-    background: url(assets/516575-285x380.jpg);
-    background-size: cover;
     border-radius: 10px;
+    background-size: cover;
     background-position: center;
+}
+
+#valogamephoto {
+    background: url(assets/516575-285x380.jpg);
 }
 
 #apexgamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
 
     background: url(assets/apex.jpg);
-    background-size: cover;
-    border-radius: 10px;
 }
 
 #dotagamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
-
     background: url(assets/dota2card.jpg);
-    background-size: cover;
-    border-radius: 10px;
 }
 
 #lolgamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
-
     background: url(assets/lol.jpg);
-    background-size: cover;
-    border-radius: 10px;
 }
 
 #mlbbgamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
-
     background: url(assets/mlbb.jpg);
-    background-size: cover;
-    border-radius: 10px;
 }
 
 #pokegamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
-
     background: url(assets/pkmn.jpg);
-    background-size: cover;
-    border-radius: 10px;
-    background-position: center;
 }
 
 #csgogamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
-
     background: url(assets/csgo.jpg);
-    background-size: cover;
-    border-radius: 10px;
 }
 
 #wofwgamephoto {
-    position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: 684px;
-    top: 227px;
-
     background: url(assets/wow.jpg);
-    background-size: cover;
-    border-radius: 10px;
 }
 
 #usernamerank {
     position: absolute;
     width: 288px;
     height: 120px;
-    left: 924px;
-    top: 227.2px;
+    left: calc(50% - 288px/2 + 121.5px);
+    top: 103.2px;
 
+    width: 288px;
+    height: 120px;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 600;
@@ -783,11 +729,8 @@ header {
 }
 
 #userdesc {
-    position: absolute;
     width: 301px;
     height: 250.8px;
-    left: 924px;
-    top: 359.2px;
 
     font-family: 'Outfit';
     font-style: normal;
@@ -798,18 +741,18 @@ header {
     color: #D1D1D1;
 }
 
-#settingsbutton {
+#profilebg>#settingsbutton {
     position: absolute;
-    width: 110px;
-    top: 20px;
-    left: calc(5%);
-    display: flex;
-    gap: 20px;
+    width: auto;
+    height: 29px;
+    left: 21px;
+    top: 14px;
+    padding: 0 10px 0 10px;
 
     box-sizing: border-box;
     flex-grow: 1;
 
-    background: #606060;
+    background: #E3B02D;
     border: 1px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -817,15 +760,84 @@ header {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     justify-content: center;
 
-    line-height: 45px;
+    line-height: 28px;
 
     color: #FFFFFF;
 
     cursor: pointer;
+}
+
+#wrapper1 #detailsleft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 5px;
+    isolation: isolate;
+
+    position: absolute;
+    width: 435px;
+    height: 521px;
+    left: calc(50% - 435px/2 - 315.5px);
+    top: 286px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 40px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#wrapper1 #detailsleft>* {
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 4;
+    margin: 0;
+}
+
+#wrapper1 #detailsleft>p {
+    padding: 0 20px 0 20px;
+}
+
+#wrapper1 #wrapperbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 31px;
+
+    width: 391px;
+    height: 45px;
+}
+
+#wrapper1 #wrapperright {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 28px;
+
+    width: 615px;
+    height: 771px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
 
 #profilebuttons {
@@ -839,36 +851,73 @@ header {
 }
 
 #moregamesbg {
-    position: absolute;
-    width: 615px;
-    height: 300px;
-    left: 643px;
-    top: 632px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px 26px 31px;
+    gap: 14px;
+
+    width: 100%;
+    height: 262px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 
     background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
 }
 
-#gamephoto {
-    position: absolute;
+#moregames {
+    width: 266px;
+    height: 36px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #FFFFFF;
+}
+
+#moregamesbg>#moregamesphoto {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    width: 564px;
+    height: 144px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+
+#moregamesbg>#moregamesphoto>div {
     width: 97px;
     height: 144px;
-    left: 669px;
-    top: 697px;
+    border-radius: 10px;
+}
+
+#gamephoto {
 
     background: url(assets/valorant.jpg);
     background-size: cover;
     background-position: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
 }
 
 #gamephoto1 {
-    position: absolute;
-    width: 96px;
-    height: 144px;
-    left: 786px;
-    top: 697px;
 
     background: url(assets/apex.jpg);
     background-size: cover;
@@ -878,11 +927,6 @@ header {
 }
 
 #gamephoto2 {
-    position: absolute;
-    width: 97px;
-    height: 144px;
-    left: 901px;
-    top: 697px;
     background: url(assets/csgo.jpg);
     background-size: cover;
     background-position: center;
@@ -891,11 +935,6 @@ header {
 }
 
 #gamephoto3 {
-    position: absolute;
-    width: 97px;
-    height: 144px;
-    left: 1018px;
-    top: 697px;
 
     background: url(assets/fortnite.jpg);
     background-size: cover;
@@ -905,11 +944,6 @@ header {
 }
 
 #gamephoto4 {
-    position: absolute;
-    width: 97px;
-    height: 144px;
-    left: 1135px;
-    top: 697px;
     background: url(assets/lol.jpg);
     background-size: cover;
     background-position: center;
@@ -917,29 +951,10 @@ header {
     border-radius: 10px;
 }
 
-#moregames {
-    position: absolute;
-    width: 266px;
-    height: 36px;
-    left: 680px;
-    top: 647px;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-    color: #FFFFFF;
-}
 
 /* edit_profile.html */
 
 #editbg {
-    position: absolute;
-    width: 435px;
-    height: 790px;
-    left: 503px;
-    top: 90px;
 
     background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
     border-radius: 34px;
@@ -947,7 +962,6 @@ header {
 }
 
 #editdetails {
-    position: absolute;
     width: 100%;
     top: 300px;
     font-family: 'Outfit';
@@ -959,10 +973,8 @@ header {
 }
 
 #editnamebutton {
-    position: absolute;
     width: 45px;
     height: 25px;
-    left: 365px;
     box-sizing: border-box;
     flex-grow: 1;
 
@@ -986,11 +998,8 @@ header {
 }
 
 #saveexitbuttons {
-    position: absolute;
     width: 300px;
     height: 60px;
-    top: 85%;
-    left: 52%;
 
     display: flex;
     gap: 20px;
@@ -1000,7 +1009,6 @@ header {
     font-style: normal;
     font-size: 20px;
     line-height: 45px;
-    /* or 333% */
 
     display: flex;
     align-items: center;
@@ -1035,12 +1043,10 @@ header {
 }
 
 #logoutbutton {
-    position: absolute;
+    position: fixed;
     width: 120px;
-    top: 910px;
-    left: 18.5%;
-    display: flex;
-    gap: 20px;
+    bottom: 5%;
+    right: 5%;
 
     box-sizing: border-box;
     flex-grow: 1;
@@ -1187,7 +1193,6 @@ header {
     font-weight: 600;
     font-size: 28px;
     line-height: 40px;
-    /* or 143% */
 
     display: flex;
     align-items: center;
