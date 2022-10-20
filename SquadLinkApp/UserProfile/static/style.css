@@ -11,6 +11,47 @@ body {
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f5f5f500;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f518;
+    border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-radius: 8px;
+    background-image: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0.44, rgba(122, 153, 217, 0.5)),
+            color-stop(0.72, rgba(73, 125, 189, 0.5)),
+            color-stop(0.86, rgba(28, 58, 148, 0.5)));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    width: 8px;
+    border-radius: 8px;
+    background-image: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0.44, rgb(122, 153, 217)),
+            color-stop(0.72, rgb(73, 125, 189)),
+            color-stop(0.86, rgb(28, 58, 148)));
+}
+
+::-webkit-scrollbar-button:end:increment {
+    height: 5%;
+}
+
+::-webkit-scrollbar-button:start:decrement {
+    height: 5%;
+}
+
 header {
     position: absolute;
     width: 100%;
@@ -1081,12 +1122,7 @@ header {
 
 /* squad_page.html */
 
-#squadpage * {
-    border: 1px solid red;
-}
-
 #squadpage {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1095,16 +1131,19 @@ header {
     gap: 23px;
 
     position: absolute;
-    width: 1333px;
-    height: 690px;
-    left: calc(50% - 1333px/2 + 0.5px);
-    top: calc(50% - 690px/2 - 30px);
+    width: 70%;
+    height: 80%;
+    left: calc(50% - 70%/2 + 0.5px);
+    top: calc(50% - 80%/2 + 80px/2 - 10px);
 }
 
 #squadbox {
+    display: flex;
+    flex-direction: column;
 
-    width: 842px;
-    height: 690px;
+    position: relative;
+    width: 100%;
+    height: 100%;
 
     background: linear-gradient(180deg, #0F292F 10.94%, #292F3F 89.06%);
 
@@ -1113,6 +1152,8 @@ header {
     flex: none;
     order: 0;
     flex-grow: 0;
+
+    border-radius: 10px;
 }
 
 #squadpage #squadheader {
@@ -1159,11 +1200,11 @@ header {
     background: url(TaskForce141_Logo_MWII.png);
     border-radius: 84px;
 
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
+
+    border: 1px dotted gray;
 }
 
 #squadpage #squadtitle h1 {
@@ -1226,10 +1267,10 @@ header {
     font-weight: 600;
     font-size: 15px;
     line-height: 80px;
-    /* or 533% */
 
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
 
     color: #FFFFFF;
@@ -1257,6 +1298,7 @@ header {
 
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
 
     color: #FFFFFF;
@@ -1271,13 +1313,13 @@ header {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px 24px;
+    padding: 0px 24px 0 24px;
     gap: 35px;
 
     position: absolute;
     left: 0%;
     right: 0%;
-    top: 14.73%;
+    top: 13%;
     bottom: 0%;
 }
 
@@ -1286,14 +1328,12 @@ header {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 12px;
+    gap: 15px;
     isolation: isolate;
 
-    width: 257px;
-    height: 588.36px;
-
-
-    /* Inside auto layout */
+    position: relative;
+    width: 30%;
+    height: 100%;
 
     flex: none;
     order: 0;
@@ -1306,16 +1346,12 @@ header {
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
-    line-height: 40px;
-    /* or 143% */
+    margin: 0;
 
     display: flex;
     align-items: center;
 
     color: #FFFFFF;
-
-
-    /* Inside auto layout */
 
     flex: none;
     order: 0;
@@ -1323,37 +1359,60 @@ header {
     z-index: 0;
 }
 
+#squadpage #members #memberlist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+    isolation: isolate;
+
+    position: relative;
+    width: 100%;
+    height: 20%;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+
+    overflow: auto;
+    border-radius: 20px;
+}
+
 #squadpage #members .member {
-    width: 257px;
-    height: 117px;
+    position: relative;
+    width: 100%;
+    height: 150px;
 
     flex: none;
     order: 1;
     flex-grow: 0;
     z-index: 1;
 
-    background: #201E2E;
+    background: linear-gradient(360deg, rgba(174, 56, 253, 0.356) 3.95%, rgba(51, 152, 209, 0) 100%);
+
     mix-blend-mode: normal;
     border-radius: 20px;
 }
 
 #squadpage #members .member .photo {
     position: absolute;
-    height: 78px;
-    left: 0%;
-    right: 68.09%;
-    top: 55px;
+    height: 65%;
+    aspect-ratio: 1/1;
+    left: 3%;
+    top: 0;
 
     background: url(FW2WqsSVEAAAfKj.jpg);
     border-radius: 20px;
+    border: 1px dotted gray;
 }
 
 #squadpage #members .member .username {
     position: absolute;
     height: 24px;
-    left: 3.11%;
-    right: 49.81%;
-    top: 139px;
+    left: 3%;
+    bottom: 10px;
 
     font-family: 'Outfit';
     font-style: normal;
@@ -1371,27 +1430,23 @@ header {
 #squadpage #members .member .settings {
     position: absolute;
     height: 18px;
-    left: 87.55%;
     right: 5.84%;
-    top: 60px;
+    top: 5px;
 }
 
 #squadpage #members .member .addfriend {
     position: absolute;
-    width: 80px;
+    width: 65px;
     height: 17px;
-    left: 169px;
-    top: 145px;
+    right: 10px;
+    bottom: 10px;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 10px;
-    line-height: 20px;
-    /* or 200% */
+    line-height: 16px;
 
-    display: flex;
-    align-items: center;
     text-align: center;
 
     color: #1A1A1A;
@@ -1408,17 +1463,14 @@ header {
     padding: 0px;
     gap: 10px;
 
-    position: absolute;
-    width: 256.88px;
+    position: relative;
+    width: 100%;
     height: 33px;
-    left: calc(50% - 256.88px/2 - 0px);
-    bottom: 24.36px;
-
-
-    /* Inside auto layout */
+    left: 0;
+    bottom: 10px;
 
     flex: none;
-    order: 4;
+    order: 3;
     flex-grow: 0;
     z-index: 4;
 }
@@ -1426,27 +1478,22 @@ header {
 #squadpage #members #invitebar #invitename {
     box-sizing: border-box;
 
-    width: 173.88px;
     height: 33px;
-
-    /* Surface */
+    padding-left: 5px;
 
     background: #FFFFFF;
-    /* Border / Subtle */
 
     border: 2px solid #AAAAAA;
     border-radius: 4px;
 
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
-    flex-grow: 0;
+    flex-grow: 1;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 10px;
+    line-height: 30px;
 
     color: #111111;
 
@@ -1456,22 +1503,16 @@ header {
     width: 73px;
     height: 30px;
 
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
-    line-height: 20px;
-    /* or 143% */
+    line-height: 29px;
 
-    display: flex;
-    align-items: center;
     text-align: center;
 
     color: #F0F0F0;
@@ -1487,13 +1528,11 @@ header {
     padding: 0px;
     gap: 6px;
 
-    width: 502px;
-    height: 501.31px;
+    height: 80%;
 
+    position: relative;
 
-    /* Inside auto layout */
-
-    flex: none;
+    flex: 0;
     order: 1;
     flex-grow: 1;
 }
@@ -1503,8 +1542,7 @@ header {
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
-    line-height: 40px;
-    /* identical to box height, or 143% */
+    margin: 0;
 
     display: flex;
     align-items: center;
@@ -1520,104 +1558,72 @@ header {
 }
 
 #squadpage #squaddetails #banner {
-    width: 502px;
-    height: 235.23px;
+    width: 100%;
+    height: 40%;
 
-
-    /* Inside auto layout */
+    object-fit: cover;
+    object-position: center;
 
     flex: none;
     order: 1;
     align-self: stretch;
     flex-grow: 1;
+    border-radius: 5px;
 }
 
 #squadpage #squaddetails #specificdetails {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: wrap;
     padding: 0px;
-    gap: 35px;
+    column-gap: 150px;
 
-    width: 502px;
-    height: 95.96px;
-
-
-    /* Inside auto layout */
+    width: 100%;
 
     flex: none;
     order: 2;
     align-self: stretch;
     flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* identical to box height, or 200% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
 }
 
-#squadpage #squaddetails #specificdetails #left {
-    width: 172px;
-    height: 95.96px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
+#squadpage #squaddetails #specificdetails p {
+    width: fit-content;
     order: 0;
-    flex-grow: 0;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 40px;
-    /* identical to box height, or 200% */
-
-    display: flex;
-    align-items: center;
-
-    color: #FFFFFF;
+    margin: 0;
 }
 
-#squadpage #squaddetails #specificdetails #right {
-    width: 240px;
-    height: 68.23px;
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 40px;
-    /* identical to box height, or 200% */
-
-    display: flex;
-    align-items: center;
-
-    color: #FFFFFF;
-}
-
-#squadpage #squaddetails #specificdetails #description {
-    width: 502px;
+#squadpage #squaddetails #description {
+    position: relative;
+    width: 100%;
     height: 112.12px;
-
-
-    /* Inside auto layout */
 
     flex: none;
     order: 3;
     flex-grow: 0;
+
 }
 
-#squadpage #squaddetails #specificdetails #description h3 {
+#squadpage #squaddetails #description h3 {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 40px;
-    /* identical to box height, or 200% */
 
     display: flex;
     align-items: center;
@@ -1625,75 +1631,66 @@ header {
     color: #FFFFFF;
 }
 
-#squadpage #squaddetails #specificdetails #description p {
+#squadpage #squaddetails #description p {
     position: absolute;
     left: 0%;
     right: 0%;
-    top: 88.03%;
     bottom: 0%;
+    width: 100%;
 
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
-    line-height: 30px;
-    /* or 188% */
-
 
     color: #D1D1D1;
 }
 
 #squadpage #readygroup {
+    display: flex;
     position: absolute;
-    width: 150px;
-    height: 57px;
-    right: 11px;
-    bottom: 0px;
+    text-align: center;
+    bottom: 10px;
+    right: 10px;
+    flex-direction: column;
+    align-items: center;
 }
 
+
 #squadpage #readygroup #readybutton {
-    position: absolute;
-    width: 122px;
-    height: 34px;
-    left: calc(50% - 122px/2);
-    top: 0px;
+    width: 120px;
+    height: 35px;
 
     background: #8AE969;
     border-radius: 10px;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    /* or 125% */
+    font-weight: 1000;
+    font-size: 18px;
+    line-height: 33px;
 
-    display: flex;
-    align-items: center;
     text-align: center;
 
     color: #000000;
 }
 
-#squadpage #readygroup #readybutton p {
-    position: absolute;
-    width: 150px;
-    height: 28px;
-    left: calc(50% - 150px/2);
-    bottom: 0px;
+#squadpage #readygroup p {
+    position: relative;
+    width: max-content;
+    top: 3px;
 
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 500;
-    font-size: 8px;
+    font-weight: 400;
+    font-size: 10px;
     line-height: 11px;
-    /* or 138% */
 
-    display: flex;
-    align-items: center;
     text-align: center;
 
-    color: #BFBFBF;
+    color: #bfbfbfb6;
+    padding: 0;
+    margin: 0;
 }
 
 #squadpage #chatbox {
@@ -1702,8 +1699,6 @@ header {
     height: 690px;
 
     background: linear-gradient(180deg, rgba(39, 47, 62, 0.942708) 15.62%, rgba(15, 41, 47, 0.942708) 92.19%);
-
-    /* Inside auto layout */
 
     flex: none;
     order: 1;
@@ -1761,9 +1756,6 @@ header {
 
     width: 169px;
     height: 34px;
-
-
-    /* Inside auto layout */
 
     flex: none;
     order: 1;
