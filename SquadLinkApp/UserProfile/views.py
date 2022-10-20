@@ -82,22 +82,15 @@ class SquadLinkUserLogInView(View):
         return render(request, 'login.html', page_contents)
 
     def post(self, request):
-        print("posting login")
         login_form = SquadLinkUserLogInForm(data=request.POST)
-        print(login_form)
-        print(login_form.is_valid())
 
         if login_form.is_valid():
-            print("im valid yeeyy")
             username = login_form.cleaned_data.get('username')
             password = login_form.cleaned_data.get('password')
 
-            print(login_form.cleaned_data.get('username'),
-                  login_form.cleaned_data.get('password'))
             user = authenticate(username=username, password=password)
 
             if user:
-                print(user)
                 login(request, user)
                 return redirect('home')
 
