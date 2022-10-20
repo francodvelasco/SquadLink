@@ -1081,188 +1081,227 @@ header {
 
 /* squad_page.html */
 
-#squadbg {
-    position: absolute;
-    width: 841px;
-    height: 611px;
-    left: 69px;
-    top: 137px;
-
-    background: linear-gradient(180deg, #0F292F 5.73%, #501F3A 100%);
-    border-radius: 10px;
+#squadpage * {
+    border: 1px solid red;
 }
 
-#squadbanner {
+#squadpage {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 23px;
+
     position: absolute;
-    width: 841px;
-    height: 91px;
+    width: 1333px;
+    height: 690px;
+    left: calc(50% - 1333px/2 + 0.5px);
+    top: calc(50% - 690px/2 - 30px);
+}
+
+#squadbox {
+
+    width: 842px;
+    height: 690px;
+
+    background: linear-gradient(180deg, #0F292F 10.94%, #292F3F 89.06%);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#squadpage #squadheader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 20px;
+    gap: 99px;
+    isolation: isolate;
+
+    position: absolute;
+    height: 90px;
+    left: 0%;
+    right: 0%;
+    top: 0px;
 
     background: linear-gradient(179.53deg, #323232 0.41%, #FFFFFF 612.95%);
     border-radius: 10px;
 }
 
-#bannerlabel {
-    position: absolute;
+#squadpage #squadtitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 18px;
+
+    width: 314px;
+    height: 64px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
+}
+
+#squadpage #squadtitle #icon {
+    width: 64px;
+    height: 64px;
+
+    background: url(TaskForce141_Logo_MWII.png);
+    border-radius: 84px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#squadpage #squadtitle h1 {
     width: 232px;
     height: 31px;
-    left: 30px;
-    top: 30px;
 
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 600;
     font-size: 35px;
     line-height: 40px;
+    /* or 114% */
 
     display: flex;
     align-items: center;
     text-align: center;
 
     color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
 
-#squadsettings {
-    box-sizing: border-box;
-
-    flex-grow: 1;
+#squadpage #squadbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 21px;
 
     position: absolute;
-    width: 132px;
-    height: 50px;
-    left: 682px;
-    top: 20px;
+    width: 293.71px;
+    height: 33.88px;
+    right: 24.29px;
+    top: calc(50% - 33.88px/2);
 
-    background: #606060;
-    border: 2px solid #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
 
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+}
+
+#squadpage #squadbuttons #customize {
+    width: 140px;
+    height: 33.13px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 15px;
+    line-height: 80px;
+    /* or 533% */
 
-    line-height: 45px;
+    display: flex;
     align-items: center;
     text-align: center;
 
     color: #FFFFFF;
-
-    cursor: pointer;
-}
-
-#joinrequests {
-    box-sizing: border-box;
-
-    flex-grow: 1;
-
-    position: absolute;
-    width: 200px;
-    height: 50px;
-    left: 470px;
-    top: 20px;
 
     background: #2D55E3;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+}
+
+#squadpage #squadbuttons #settings {
+    width: 132.71px;
+    height: 33.88px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
-
-    line-height: 45px;
-    align-items: center;
-    text-align: center;
-
-    color: #FFFFFF;
-
-    cursor: pointer;
-}
-
-#squadmembers {
-    position: absolute;
-    width: 302px;
-    height: 43px;
-    left: 30px;
-    top: 150px;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 40px;
+    font-size: 16px;
+    line-height: 80px;
+    /* or 500% */
 
     display: flex;
     align-items: center;
+    text-align: center;
 
     color: #FFFFFF;
-}
 
-#invitemembers {
-    box-sizing: border-box;
-
-    flex-grow: 1;
-
-    position: absolute;
-    width: 111px;
-    height: 26px;
-    left: 37px;
-    top: 550px;
-
-    background: #47A588;
+    background: #606060;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-
-    align-items: center;
-    text-align: center;
-
-    color: #F0F0F0;
-
-    cursor: pointer;
 }
 
-#seeallmembers {
-    box-sizing: border-box;
-
-    flex-grow: 1;
+#squadpage #squadcontent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 24px;
+    gap: 35px;
 
     position: absolute;
-    width: 111px;
-    height: 26px;
-    left: 175px;
-    top: 550px;
-
-    background: #2584B9;
-    border-radius: 10px;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-
-    align-items: center;
-    text-align: center;
-
-    color: #F0F0F0;
-
-    cursor: pointer;
+    left: 0%;
+    right: 0%;
+    top: 14.73%;
+    bottom: 0%;
 }
 
-#squadgamedetails {
-    position: absolute;
-    width: 302px;
-    height: 43px;
-    left: 421px;
-    top: 170px;
+#squadpage #members {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+    isolation: isolate;
 
+    width: 257px;
+    height: 588.36px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#squadpage #members h2 {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 600;
@@ -1274,23 +1313,656 @@ header {
     align-items: center;
 
     color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
 }
 
-#chatbg {
-    position: absolute;
-    width: 468px;
-    height: 100%;
-    left: 105%;
+#squadpage #members .member {
+    width: 257px;
+    height: 117px;
 
-    background: linear-gradient(180deg, #0F292F 5.73%, #5A2C46 85.42%);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+
+    background: #201E2E;
+    mix-blend-mode: normal;
+    border-radius: 20px;
+}
+
+#squadpage #members .member .photo {
+    position: absolute;
+    height: 78px;
+    left: 0%;
+    right: 68.09%;
+    top: 55px;
+
+    background: url(FW2WqsSVEAAAfKj.jpg);
+    border-radius: 20px;
+}
+
+#squadpage #members .member .username {
+    position: absolute;
+    height: 24px;
+    left: 3.11%;
+    right: 49.81%;
+    top: 139px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 80px;
+    /* or 533% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#squadpage #members .member .settings {
+    position: absolute;
+    height: 18px;
+    left: 87.55%;
+    right: 5.84%;
+    top: 60px;
+}
+
+#squadpage #members .member .addfriend {
+    position: absolute;
+    width: 80px;
+    height: 17px;
+    left: 169px;
+    top: 145px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 20px;
+    /* or 200% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #1A1A1A;
+
+    background: #8AE969;
     border-radius: 10px;
 }
 
-#chatbanner {
+#squadpage #members #invitebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    width: 256.88px;
+    height: 33px;
+    left: calc(50% - 256.88px/2 - 0px);
+    bottom: 24.36px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 4;
+    flex-grow: 0;
+    z-index: 4;
+}
+
+#squadpage #members #invitebar #invitename {
+    box-sizing: border-box;
+
+    width: 173.88px;
+    height: 33px;
+
+    /* Surface */
+
+    background: #FFFFFF;
+    /* Border / Subtle */
+
+    border: 2px solid #AAAAAA;
+    border-radius: 4px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 10px;
+
+    color: #111111;
+
+}
+
+#squadpage #members #invitebar #invitebutton {
+    width: 73px;
+    height: 30px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #F0F0F0;
+
+    background: #47A588;
+    border-radius: 10px;
+}
+
+#squadpage #squaddetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 6px;
+
+    width: 502px;
+    height: 501.31px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+#squadpage #squaddetails h2 {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 40px;
+    /* identical to box height, or 143% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#squadpage #squaddetails #banner {
+    width: 502px;
+    height: 235.23px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+#squadpage #squaddetails #specificdetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+
+    width: 502px;
+    height: 95.96px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#squadpage #squaddetails #specificdetails #left {
+    width: 172px;
+    height: 95.96px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* identical to box height, or 200% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#squadpage #squaddetails #specificdetails #right {
+    width: 240px;
+    height: 68.23px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* identical to box height, or 200% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#squadpage #squaddetails #specificdetails #description {
+    width: 502px;
+    height: 112.12px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+#squadpage #squaddetails #specificdetails #description h3 {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* identical to box height, or 200% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#squadpage #squaddetails #specificdetails #description p {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 88.03%;
+    bottom: 0%;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    /* or 188% */
+
+
+    color: #D1D1D1;
+}
+
+#squadpage #readygroup {
+    position: absolute;
+    width: 150px;
+    height: 57px;
+    right: 11px;
+    bottom: 0px;
+}
+
+#squadpage #readygroup #readybutton {
+    position: absolute;
+    width: 122px;
+    height: 34px;
+    left: calc(50% - 122px/2);
+    top: 0px;
+
+    background: #8AE969;
+    border-radius: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* or 125% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+
+#squadpage #readygroup #readybutton p {
+    position: absolute;
+    width: 150px;
+    height: 28px;
+    left: calc(50% - 150px/2);
+    bottom: 0px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 11px;
+    /* or 138% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #BFBFBF;
+}
+
+#squadpage #chatbox {
     position: absolute;
     width: 468px;
-    height: 91px;
+    height: 690px;
+
+    background: linear-gradient(180deg, rgba(39, 47, 62, 0.942708) 15.62%, rgba(15, 41, 47, 0.942708) 92.19%);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#squadpage #chatbox #chatheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+
+    position: absolute;
+    height: 90px;
+    left: 0%;
+    right: 0%;
+    top: 0px;
 
     background: linear-gradient(180deg, #444444 0%, #626262 100%);
     border-radius: 10px;
 }
+
+#squadpage #chatbox #chatheader h2 {
+    width: 232px;
+    height: 31px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 40px;
+    /* or 114% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#squadpage #chatbox #chatheader #membericons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 11px;
+
+    width: 169px;
+    height: 34px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#squadpage #chatbox #chatheader #membericons .membericon {
+    width: 34px;
+    height: 34px;
+
+    background: url(png-clipart-three-red-and-one-blue-dice-illustration-dice-euclidean-adobe-illustrator-dice-happy-birthday-vector-images-data);
+    border: 2px solid #7A8194;
+    filter: drop-shadow(4px 4px 24px rgba(0, 0, 0, 0.45));
+    border-radius: 30px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#squadpage #chatlog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 11px;
+
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 14.89%;
+    bottom: 12.11%;
+
+    background: linear-gradient(180deg, rgba(19, 15, 64, 0.942708) 5.73%, #292F3F 85.42%);
+    border-radius: 10px;
+}
+
+#squadpage #chatlog .time {
+    width: 74px;
+    height: 17px;
+
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#squadpage #chatlog .chatbubbleme {
+    width: 365px;
+    height: 60px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#squadpage #chatlog .chatbubbleme .chatmessage {
+    position: absolute;
+    width: 324px;
+    left: 51.5px;
+    top: 8.54%;
+    bottom: 79.55%;
+
+    background: #373E4E;
+    border-radius: 20px;
+
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+
+    color: #FFFFFF;
+}
+
+#squadpage #chatlog .chatbubbleme .icon {
+    position: absolute;
+    width: 36px;
+    left: 380.5px;
+    top: 10.92%;
+    bottom: 81.93%;
+
+    background: url(FSiFMo-VgAAM_nz);
+    border: 1px solid #FFFFFF;
+    filter: drop-shadow(4px 4px 24px rgba(0, 0, 0, 0.45));
+    border-radius: 30px;
+}
+
+#squadpage #chatlog .chatbubbleother {
+    width: 356px;
+    height: 50px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+#squadpage #chatlog .chatbubbleother .message {
+    position: absolute;
+    width: 311px;
+    height: 50px;
+    left: 101px;
+    top: 114px;
+
+    background: #272A35;
+    border-radius: 20px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 1px;
+
+    color: #FFFFFF;
+}
+
+#squadpage #chatlog .chatbubbleother .icon {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 56px;
+    top: 121px;
+
+    background: url(FW2WqsSVEAAAfKj.jpg);
+    border: 1px solid #FFFFFF;
+    filter: drop-shadow(4px 4px 24px rgba(0, 0, 0, 0.45));
+    border-radius: 30px;
+}
+
+#squadpage #typebox {
+    position: absolute;
+    width: 415px;
+    height: 45.17px;
+    left: 28px;
+    top: 606.43px;
+
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#squadpage #typeinput {
+    position: absolute;
+    left: 10.75%;
+    right: 42.91%;
+    top: 89.53%;
+    bottom: 7.53%;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 1px;
+
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#squadpage #chaticon {
+    position: absolute;
+    width: 60.36px;
+    height: 45.17px;
+    left: 382.64px;
+    top: 606.43px;
+
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+}
+
+/* dsdsd */
