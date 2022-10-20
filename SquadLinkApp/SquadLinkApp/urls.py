@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('UserProfile.urls', namespace='UserProfile')),
     path('accounts/', include("django.contrib.auth.urls")),
+    path('lobby/', include('SquadLobby.urls', namespace='SquadLobby')),
     path('', SquadLinkHomeView.as_view(), name='home'),
 ]
