@@ -49,6 +49,37 @@ class LobbyDetailsView(View):
         page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
 
         return render(request, 'FILE-NAME.html', page_contents)
+    
+    def post(self, request, pk):
+        if request.user.is_authenticated:
+            lobby = SquadLinkLobby.objects.get(pk=pk)
+
+            if request.user != lobby.creator:
+                return self.get(request, pk)
+
+            form = LobbyAddMembersForm(request.POST)
+            username_search = form.cleaned_data.get('username')
+
+            user_to_add = SquadLinkUserModel.objects.filter(user_set__username=username_search).first()
+
+            if user_to_add:
+                lobby.squad_members.add(user_to_add)
+                lobby.save()
+
+                return self.get(request, pk)
+            else:
+                page_contents = dict()
+
+                if request.user.is_authenticated:
+                    page_contents['user'] = request.user
+                    page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+
+                page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
+                page_contents['no_user_found'] = True
+
+                return render(request, 'FILE-NAME.html', page_contents)
+        else:
+            return redirect('UserProfile:sign-in')
 
 class LobbyListView(View):
     def get(self, request):
@@ -76,7 +107,7 @@ class LobbyEditView(View):
 
         # Only the lobby creator can edit the lobby
         # Future iteration: query parameter to show error
-        if request.user != lobby.user:
+        if request.user != lobby.creator:
             return redirect('SquadLobby:lobby-list')
 
         platform_dict_reverse = dict((name, code) for code, name in LobbyCreateForm.PLATFORMS)

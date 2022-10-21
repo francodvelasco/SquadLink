@@ -1,8 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-import SquadLinkApp.settings as settings
+from django.contrib.auth.models import User
 import os
 
 def profile_image_location(request, filename):

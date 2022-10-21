@@ -72,3 +72,6 @@ class LobbyCreateForm(forms.Form):
     )
 
     squad_size = forms.IntegerField(min_value=2)
+
+class LobbyAddMembersForm(forms.Form):
+    username = forms.CharField(max_length=150)
