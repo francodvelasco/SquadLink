@@ -614,7 +614,7 @@ header {
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    border: 1px dotted gray;
+    border: 4px double white;
 }
 
 #profilename {
