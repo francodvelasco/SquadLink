@@ -2134,3 +2134,253 @@ header {
 #createsquad #createbutton:hover {
     background: #61c73f;
 }
+
+
+/* edit_squad.html */
+
+
+#editsquad {
+    height: 80%;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 5%;
+
+    position: absolute;
+    top: 120px;
+
+    padding: 0 20% 0 20%;
+
+    color: white;
+}
+
+#editsquad #squaddetails {
+    flex: 1 0 20%;
+
+    background: linear-gradient(180deg, #0F292F 5.73%, #292F3F 85.42%);
+    border-radius: 10px;
+
+    text-align: center;
+    padding: 10px;
+}
+
+#editsquad h1 {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#editsquad #managemembers {
+    flex: 1 0 20%;
+
+    text-align: center;
+
+    background: linear-gradient(180deg, #0F292F 5.73%, #292F3F 85.42%);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#editsquad #buttons {
+    text-align: center;
+    position: relative;
+    align-self: flex-end;
+}
+
+#editsquad #buttons a {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 60px;
+
+    color: #F4F4F4;
+
+    text-decoration: none;
+}
+
+#editsquad #buttons button {
+    width: 120px;
+    height: 50px;
+
+    background: #2679A7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+
+    color: #F4F4F4;
+}
+
+
+#editsquad #details {
+    position: relative;
+    height: calc(80% - 50px);
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: space-between;
+    gap: 10px 50px;
+
+    padding: 0 20px 0px 20px;
+    margin: 0;
+}
+
+#editsquad .detail {
+    position: relative;
+    min-width: 200px;
+    flex: 1;
+}
+
+#editsquad .detail .checkbox {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    color: #b8b8b8;
+    accent-color: #413474;
+}
+
+#editsquad .detail .checkbox * {
+    flex: none;
+    margin-left: 10px;
+}
+
+#editsquad .detail select {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #b8b8b8;
+}
+
+#editsquad .detail textarea {
+    width: 100%;
+    background-color: #b8b8b8;
+}
+
+
+#editsquad #members {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0px;
+    gap: 10px;
+    isolation: isolate;
+
+    position: relative;
+    width: 100%;
+    height: calc(100% - 100px);
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+
+    overflow: auto;
+    border-radius: 20px;
+}
+
+#editsquad #members .member {
+    position: relative;
+    width: calc(50% - 5px);
+    height: 150px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+
+    background: linear-gradient(360deg, rgba(174, 56, 253, 0.356) 3.95%, rgba(51, 152, 209, 0) 100%);
+
+    mix-blend-mode: normal;
+    border-radius: 20px;
+}
+
+#editsquad #members .member .photo {
+    position: absolute;
+    height: 65%;
+    aspect-ratio: 1/1;
+    left: 10px;
+    top: 0;
+
+    background: url(FW2WqsSVEAAAfKj.jpg);
+    border-radius: 20px;
+    border: 1px dotted gray;
+}
+
+#editsquad #members .member .username {
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#editsquad #members .member .settings {
+    position: absolute;
+    height: 18px;
+    right: 5.84%;
+    top: 5px;
+}
+
+#editsquad #members .member .addfriend {
+    position: absolute;
+    width: 65px;
+    height: 17px;
+    right: 10px;
+    bottom: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+
+    text-align: center;
+
+    color: #1A1A1A;
+
+    background: #8AE969;
+    border-radius: 10px;
+}
+
+#editsquad #members .member .accept {
+    position: absolute;
+    height: 15px;
+    right: 45px;
+    bottom: 13px;
+}
+
+#editsquad #members .member .reject {
+    position: absolute;
+    height: 15px;
+    right: 10px;
+    bottom: 13px;
+}
