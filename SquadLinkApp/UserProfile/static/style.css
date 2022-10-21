@@ -2272,8 +2272,8 @@ header {
 #editsquad .detail textarea {
     width: 100%;
     background-color: #b8b8b8;
+    border-radius: 5px;
 }
-
 
 #editsquad #members {
     display: flex;
