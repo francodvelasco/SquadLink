@@ -603,16 +603,17 @@ header {
 }
 
 #profilepic {
-
     position: absolute;
     width: 167px;
     height: 167px;
     left: calc(50% - 167px/2 - 315.5px);
     top: 107px;
+}
 
+#profilepic img {
     background-size: cover;
     background-position: center;
-    border-radius: 84px;
+    border-radius: 50%;
     border: 1px dotted gray;
 }
 
