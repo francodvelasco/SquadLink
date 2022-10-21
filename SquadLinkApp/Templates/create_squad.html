@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="..\UserProfile\static\style.css">
+    <title>SquadLink | Squad Page</title>
+</head>
+
+<body>
+
+    <header>
+        <div id="headertitle">SquadLink</div>
+        <div id="rightheader">
+            <div onclick="location.href='home.html'">Home</div>
+            <div>About</div>
+            <div onclick="location.href='profile.html'">Account</div>
+        </div>
+    </header>
+    <div id="imgtop"></div>
+
+
+    <div id="createsquad">
+        <h1>Squad Creation</h1>
+        <div id="box">
+            <h2>Choose your game:</h2>
+            <div id="gamesscroll">
+                <div class="gameoption">
+                    <img src="..\UserProfile\static\assets\valorantcard.jpg" alt="">
+                    <h3>Valorant</h3>
+                </div>
+                <div class="gameoption">
+                    <img src="..\UserProfile\static\assets\apexcard.jpg" alt="">
+                    <h3>Apex Legends</h3>
+                </div>
+                <div class="gameoption">
+                    <img src="" alt="">
+                    <h3>Fortnite</h3>
+                </div>
+                <div class="gameoption">
+                    <img src="" alt="">
+                    <h3>Fall Guys</h3>
+                </div>
+                <div class="gameoption">
+                    <img src="" alt="">
+                    <h3>League of Legends</h3>
+                </div>
+                <div class="gameoption">
+                    <img src="..\UserProfile\static\assets\dota2card.jpg" alt="">
+                    <h3>DOTA 2</h3>
+                </div>
+            </div>
+            <div id="line"></div>
+            <h2>Squad details:</h2>
+            <div id="details">
+                <div class="detail">
+                    <Label>Game mode</Label><br>
+                    <select name="Game mode" id="">
+                        <option value="" disabled selected hidden>...</option>
+                        <option value="">Competitive</option>
+                    </select>
+                </div>
+                <div class="detail">
+                    <Label>Rank</Label><br>
+                    <select name="" id="">
+                        <option value="" disabled selected hidden>...</option>
+                    </select>
+                </div>
+                <div class="detail">
+                    <Label>Platform</Label><br>
+                    <div class="checkbox">
+                        <input type="checkbox" name="en" id="en" value="English">PC
+                        <input type="checkbox" name="ph" id="ph" value="Filipino">Console
+                        <input type="checkbox" name="en" id="en" value="English">XBox
+                    </div>
+                </div>
+                <div class="detail">
+                    <Label>Server</Label><br>
+                    <select name="" id="">
+                        <option value="" disabled selected hidden>...</option>
+                    </select>
+                </div>
+                <div class="detail">
+                    <Label>Language</Label><br>
+                    <div class="checkbox">
+                        <input type="checkbox" name="en" id="en" value="English">English
+                        <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
+                        <input type="checkbox" name="en" id="en" value="English">English
+                        <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
+                        <input type="checkbox" name="en" id="en" value="English">English
+                        <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
+                    </div>
+                </div>
+                <div class="detail">
+                    <Label>Lobby Size</Label><br>
+                    <select name="" id="">
+                        <option value="" disabled selected hidden>...</option>
+                    </select>
+                </div>
+                <div class="detail">
+                    <Label>Competitiveness</Label><br>
+                    <select name="" id="">
+                        <option value="" disabled selected hidden>...</option>
+                    </select>
+                </div>
+            </div>
+            <p><a href="">Click here for more details regarding squad details.</a></p>
+
+            <button id="createbutton" type="button">Create Squad</button>
+        </div>
+
+    </div>
+
+
+
+    <div id="stickybottom"></div>
+</body>
+
+</html>
