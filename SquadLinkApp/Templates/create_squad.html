@@ -1,43 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Create Squad{% endblock %}
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
-    </style>
+{% load static %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
 
-    <link rel="stylesheet" type="text/css" href="..\UserProfile\static\style.css">
-    <title>SquadLink | Squad Page</title>
-</head>
-
-<body>
-
-    <header>
-        <div id="headertitle">SquadLink</div>
-        <div id="rightheader">
-            <div onclick="location.href='home.html'">Home</div>
-            <div>About</div>
-            <div onclick="location.href='profile.html'">Account</div>
-        </div>
-    </header>
+    {% csrf_token %}
     <div id="imgtop"></div>
-
-
     <div id="createsquad">
         <h1>Squad Creation</h1>
+        {{ user_forms.non_field_errors }}
+        {{ user_add_form.non_field_errors }}
         <div id="box">
             <h2>Choose your game:</h2>
             <div id="gamesscroll">
                 <div class="gameoption">
-                    <img src="..\UserProfile\static\assets\valorantcard.jpg" alt="">
+                    <img src="{% static 'assets\valorantcard.jpg' %}" alt="">
                     <h3>Valorant</h3>
                 </div>
                 <div class="gameoption">
-                    <img src="..\UserProfile\static\assets\apexcard.jpg" alt="">
+                    <img src="{% static 'assets\apexcard.jpg' %}" alt="">
                     <h3>Apex Legends</h3>
                 </div>
                 <div class="gameoption">
@@ -53,74 +36,123 @@
                     <h3>League of Legends</h3>
                 </div>
                 <div class="gameoption">
-                    <img src="..\UserProfile\static\assets\dota2card.jpg" alt="">
+                    <img src="{% static 'assets\dota2card.jpg' %}" alt="">
                     <h3>DOTA 2</h3>
                 </div>
             </div>
             <div id="line"></div>
+
+
             <h2>Squad details:</h2>
             <div id="details">
+
                 <div class="detail">
-                    <Label>Game mode</Label><br>
-                    <select name="Game mode" id="">
-                        <option value="" disabled selected hidden>...</option>
-                        <option value="">Competitive</option>
-                    </select>
+                    {{ form.squad_name.errors }}
+                    <Label>Squad Name</Label><br>
+                    {{ form.squad_name }}
                 </div>
                 <div class="detail">
-                    <Label>Rank</Label><br>
-                    <select name="" id="">
-                        <option value="" disabled selected hidden>...</option>
-                    </select>
+                    {{ form.description.errors }}
+                    <Label>Description</Label><br>
+                    {{ form.description }}
                 </div>
                 <div class="detail">
-                    <Label>Platform</Label><br>
-                    <div class="checkbox">
-                        <input type="checkbox" name="en" id="en" value="English">PC
-                        <input type="checkbox" name="ph" id="ph" value="Filipino">Console
-                        <input type="checkbox" name="en" id="en" value="English">XBox
-                    </div>
+                    {{ form.photo.errors }}
+                    <Label>Squad Photo</Label><br>
+                    {{ form.photo }}
                 </div>
                 <div class="detail">
-                    <Label>Server</Label><br>
-                    <select name="" id="">
-                        <option value="" disabled selected hidden>...</option>
-                    </select>
+                    {{ form.platforms.errors }}
+                    <Label>Platforms</Label><br>
+                    {{ form.platforms }}
                 </div>
                 <div class="detail">
-                    <Label>Language</Label><br>
-                    <div class="checkbox">
-                        <input type="checkbox" name="en" id="en" value="English">English
-                        <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
-                        <input type="checkbox" name="en" id="en" value="English">English
-                        <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
-                        <input type="checkbox" name="en" id="en" value="English">English
-                        <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
-                    </div>
+                    {{ form.game.errors }}
+                    <Label>Game</Label><br>
+                    {{ form.game }}
                 </div>
                 <div class="detail">
-                    <Label>Lobby Size</Label><br>
-                    <select name="" id="">
-                        <option value="" disabled selected hidden>...</option>
-                    </select>
+                    {{ form.region.errors }}
+                    <Label>Region</Label><br>
+                    {{ form.region }}
                 </div>
                 <div class="detail">
-                    <Label>Competitiveness</Label><br>
-                    <select name="" id="">
-                        <option value="" disabled selected hidden>...</option>
-                    </select>
+                    {{ form.rank_lower_bound.errors }}
+                    <Label>Lowest Rank</Label><br>
+                    {{ form.rank_lower_bound }}
+                    <br>
+                    {{ form.rank_upper_bound.errors }}
+                    <Label>Highest Rank</Label><br>
+                    {{ form.rank_upper_bound }}
                 </div>
+                <div class="detail">
+                    {{ form.languages.errors }}
+                    <Label>Languages</Label><br>
+                    {{ form.languages }}
+                </div>
+                <div class="detail">
+                    {{ form.squad_size.errors }}
+                    <Label>Squad Size</Label><br>
+                    {{ form.squad_size }}
+                </div>
+
+                <!-- <div class="detail">
+                <Label>Game mode</Label><br>
+                <select name="Game mode" id="">
+                    <option value="" disabled selected hidden>...</option>
+                    <option value="">Competitive</option>
+                </select>
+            </div>
+            <div class="detail">
+                <Label>Rank</Label><br>
+                <select name="" id="">
+                    <option value="" disabled selected hidden>...</option>
+                </select>
+            </div>
+            <div class="detail">
+                <Label>Platform</Label><br>
+                <div class="checkbox">
+                    <input type="checkbox" name="en" id="en" value="English">PC
+                    <input type="checkbox" name="ph" id="ph" value="Filipino">Console
+                    <input type="checkbox" name="en" id="en" value="English">XBox
+                </div>
+            </div>
+            <div class="detail">
+                <Label>Server</Label><br>
+                <select name="" id="">
+                    <option value="" disabled selected hidden>...</option>
+                </select>
+            </div>
+            <div class="detail">
+                <Label>Language</Label><br>
+                <div class="checkbox">
+                    <input type="checkbox" name="en" id="en" value="English">English
+                    <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
+                    <input type="checkbox" name="en" id="en" value="English">English
+                    <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
+                    <input type="checkbox" name="en" id="en" value="English">English
+                    <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
+                </div>
+            </div>
+            <div class="detail">
+                <Label>Lobby Size</Label><br>
+                <select name="" id="">
+                    <option value="" disabled selected hidden>...</option>
+                </select>
+            </div>
+            <div class="detail">
+                <Label>Competitiveness</Label><br>
+                <select name="" id="">
+                    <option value="" disabled selected hidden>...</option>
+                </select>
+            </div> -->
             </div>
             <p><a href="">Click here for more details regarding squad details.</a></p>
 
-            <button id="createbutton" type="button">Create Squad</button>
+            <button id="createbutton" type="submit">Create Squad</button>
         </div>
 
     </div>
 
-
-
-    <div id="stickybottom"></div>
-</body>
-
-</html>
+</form>
+{% endblock %}
