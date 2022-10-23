@@ -19,7 +19,7 @@ class LobbyCreateView(View):
 
             return render(request, 'create_squad.html', page_contents)
         else:
-            redirect('UserProfile:sign-in')
+            return redirect('UserProfile:sign-in')
 
     def post(self, request):
         lobby_create_form = LobbyCreateForm(request.POST, request.FILES)
@@ -27,8 +27,10 @@ class LobbyCreateView(View):
         if not request.user.is_authenticated:
             return redirect('UserProfile:sign-in')
         elif lobby_create_form.is_valid():
+            user = SquadLinkUserModel.objects.get(
+                user=request.user)
             lobby_model = SquadLinkLobby.custom_manager.create(
-                user=request.user, form=lobby_create_form)
+                creator=user, form=lobby_create_form)
             lobby_model.save()
 
             return redirect('SquadLobby:lobby-list')
@@ -52,7 +54,7 @@ class LobbyDetailsView(View):
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
 
-        page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
+        page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
 
         return render(request, 'FILE-NAME.html', page_contents)
 
@@ -66,7 +68,7 @@ class LobbyListView(View):
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
 
-        page_contents['lobbies'] = SquadLinkLobby.objects.all()
+        page_contents['lobbies'] = SquadLinkLobby.custom_manager.all()
 
         return render(request, 'FILE-NAME.html', page_contents)
 
@@ -82,7 +84,7 @@ class LobbyEditView(View):
         else:
             return redirect('UserProfile:sign-in')
 
-        lobby = SquadLinkLobby.objects.get(pk=pk)
+        lobby = SquadLinkLobby.custom_manager.get(pk=pk)
 
         # Only the lobby creator can edit the lobby
         # Future iteration: query parameter to show error
@@ -118,7 +120,7 @@ class LobbyEditView(View):
 
     def post(self, request, pk):
         form = LobbyCreateForm(request.POST, request.FILES)
-        lobby_model = SquadLinkLobby.objects.get(pk=pk)
+        lobby_model = SquadLinkLobby.custom_manager.get(pk=pk)
 
         lobby_model.update_from_form(form)
 
