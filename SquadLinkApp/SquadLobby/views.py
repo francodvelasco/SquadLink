@@ -104,12 +104,12 @@ class LobbyEditView(View):
             'squad_name': lobby.squad_name,
             'description': lobby.description,
             'photo': lobby.photo,
-            'platforms': list(map(lambda name: platform_dict_reverse[name], lobby.platforms.split(','))),
+            'platforms': list(map(lambda name: platform_dict_reverse[name.strip()], lobby.platforms.split(','))),
             'game': game_dict_reverse[lobby.game],
             'region': region_dict_reverse[lobby.region],
             'rank_lower_bound': lobby.rank_lower_bound,
             'rank_higher_bound': lobby.rank_higher_bound,
-            'languages': list(map(lambda name: lang_dict_reverse[name], lobby.languages.split(','))),
+            'languages': list(map(lambda name: lang_dict_reverse[name.strip()], lobby.languages.split(','))),
             'squad_size': lobby.squad_size
         }
 
