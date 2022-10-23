@@ -56,7 +56,7 @@ class LobbyDetailsView(View):
 
         page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
 
-        return render(request, 'FILE-NAME.html', page_contents)
+        return render(request, 'squad_page.html', page_contents)
 
 
 class LobbyListView(View):
@@ -70,7 +70,7 @@ class LobbyListView(View):
 
         page_contents['lobbies'] = SquadLinkLobby.custom_manager.all()
 
-        return render(request, 'FILE-NAME.html', page_contents)
+        return render(request, 'lobby_list.html', page_contents)
 
 
 class LobbyEditView(View):
@@ -88,7 +88,7 @@ class LobbyEditView(View):
 
         # Only the lobby creator can edit the lobby
         # Future iteration: query parameter to show error
-        if request.user != lobby.user:
+        if request.user != lobby.creator.user:
             return redirect('SquadLobby:lobby-list')
 
         platform_dict_reverse = dict((name, code)
@@ -116,7 +116,7 @@ class LobbyEditView(View):
         page_contents['form'] = LobbyCreateForm(
             request.POST or None, request.FILES or None, initial=lobby_dict)
 
-        return render(request, 'FILE-NAME.html', page_contents)
+        return render(request, 'edit_squad.html', page_contents)
 
     def post(self, request, pk):
         form = LobbyCreateForm(request.POST, request.FILES)

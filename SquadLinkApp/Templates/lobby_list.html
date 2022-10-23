@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Squad{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<div id="imgtop"></div>
+
+<div id="lobbylist">
+    <h1>Lobbies</h1>
+    <div id="box">
+        <ul>
+            {% for lobby in lobbies %}
+            <a href={% url 'SquadLobby:lobby-details' pk=lobby.pk %}>
+                <li>
+                    <div class="left">
+                        <h3>{{ lobby.squad_name }}</h3>
+                        <img src="{{ lobby.photo.url }}" alt="Squad Photo of {{ lobby.squad_name }}" height="100px">
+                        {{ lobby.game }} <br>
+                        {{ lobby.description }}<br>
+                    </div>
+                    <div class="right">
+                        {{ lobby.rank_lower_bound }}<br>
+                        {{ lobby.rank_higher_bound }}<br>
+                        {{ lobby.languages }}<br>
+                        {{ lobby.region }}<br>
+                        {{ lobby.platforms }}<br>
+                        {{ lobby.squad_size }}<br>
+                    </div>
+                </li>
+            </a>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

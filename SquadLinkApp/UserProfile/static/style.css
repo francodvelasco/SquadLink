@@ -2394,3 +2394,102 @@ header {
     right: 10px;
     bottom: 13px;
 }
+
+
+/* lobby_list.html */
+
+
+#lobbylist {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+
+    height: calc(100% - 150px);
+}
+
+#lobbylist h1 {
+    text-align: center;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    margin: 0px 0 5px 0;
+
+    color: #FFFFFF;
+    flex: none;
+}
+
+#lobbylist #box {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    min-width: 800px;
+    background: linear-gradient(180deg, #0F292F 0%, #292F3F 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    max-height: calc(100% - 80px);
+
+    flex: none;
+    overflow-y: auto;
+}
+
+#lobbylist ul {
+    color: #FFFFFF;
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0;
+    height: auto;
+
+    margin: 0;
+}
+
+#lobbylist a {
+    padding: 0px;
+    margin: 0px;
+    color: inherit;
+    text-decoration: inherit;
+    margin: 0 0 20px 0;
+    background: linear-gradient(140deg, #58a2b3 0%, #a31d8d 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+#lobbylist li {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+    width: 100%;
+    margin: 0;
+}
+
+#lobbylist li>div {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#lobbylist h3 {
+    margin: 0;
+    text-align: center;
+}
+
+#lobbylist .left {
+    text-align: center;
+}
+
+#lobbylist .left>* {
+    align-self: center;
+}
