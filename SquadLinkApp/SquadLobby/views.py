@@ -57,6 +57,40 @@ class LobbyDetailsView(View):
         page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
 
         return render(request, 'squad_page.html', page_contents)
+    
+    def post(self, request, pk):
+        if request.user.is_authenticated:
+            lobby = SquadLinkLobby.objects.get(pk=pk)
+            current_user_model = SquadLinkUserModel.objects.get(
+                user=request.user)
+
+            form = LobbyAddMembersForm(request.POST)
+            username_search = form.cleaned_data.get('username')
+
+            user_to_add = None
+            if current_user_model == lobby.creator:
+                user_to_add = SquadLinkUserModel.objects.filter(user_set__username=username_search).first()
+            else:
+                user_to_add = SquadLinkUserModel.objects.filter(user_set__username=request.user.get_username()).first()
+
+            if user_to_add:
+                lobby.squad_members.add(user_to_add)
+                lobby.save()
+
+                return self.get(request, pk)
+            else:
+                page_contents = dict()
+
+                if request.user.is_authenticated:
+                    page_contents['user'] = request.user
+                    page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+
+                page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
+                page_contents['no_user_found'] = True
+
+                return render(request, 'FILE-NAME.html', page_contents)
+        else:
+            return redirect('UserProfile:sign-in')
 
 
 class LobbyListView(View):
