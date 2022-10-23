@@ -115,7 +115,6 @@ class LobbyEditView(View):
 
         page_contents['form'] = LobbyCreateForm(
             request.POST or None, request.FILES or None, initial=lobby_dict)
-
         return render(request, 'edit_squad.html', page_contents)
 
     def post(self, request, pk):

@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Create Squad{% endblock %}
+{% block title %}{{ form.squad_name.value }} (Edit){% endblock %}
 
 {% load static %}
 {% block content %}
 
+<div id="imgtop"></div>
 <div id="editsquad">
     <div id="squaddetails">
         <h1>
@@ -12,59 +13,55 @@
         </h1>
 
         <div id="details">
+
             <div class="detail">
-                <Label>Game mode</Label><br>
-                <select name="Game mode" id="">
-                    <option value="" disabled selected hidden>...</option>
-                    <option value="">Competitive</option>
-                </select>
+                {{ form.squad_name.errors }}
+                <Label>Squad Name</Label><br>
+                {{ form.squad_name }}
             </div>
             <div class="detail">
-                <Label>Rank</Label><br>
-                <select name="" id="">
-                    <option value="" disabled selected hidden>...</option>
-                </select>
-            </div>
-            <div class="detail">
-                <Label>Platform</Label><br>
-                <div class="checkbox">
-                    <input type="checkbox" name="en" id="en" value="English">PC
-                    <input type="checkbox" name="ph" id="ph" value="Filipino">Console
-                    <input type="checkbox" name="en" id="en" value="English">XBox
-                </div>
-            </div>
-            <div class="detail">
-                <Label>Server</Label><br>
-                <select name="" id="">
-                    <option value="" disabled selected hidden>...</option>
-                </select>
-            </div>
-            <div class="detail">
-                <Label>Language</Label><br>
-                <div class="checkbox">
-                    <input type="checkbox" name="en" id="en" value="English">English
-                    <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
-                    <input type="checkbox" name="en" id="en" value="English">English
-                    <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
-                    <input type="checkbox" name="en" id="en" value="English">English
-                    <input type="checkbox" name="ph" id="ph" value="Filipino">Filipino
-                </div>
-            </div>
-            <div class="detail">
-                <Label>Lobby Size</Label><br>
-                <select name="" id="">
-                    <option value="" disabled selected hidden>...</option>
-                </select>
-            </div>
-            <div class="detail">
-                <Label>Competitiveness</Label><br>
-                <select name="" id="">
-                    <option value="" disabled selected hidden>...</option>
-                </select>
-            </div>
-            <div class="detail">
+                {{ form.description.errors }}
                 <Label>Description</Label><br>
-                <textarea type="text" name="" id=""></textarea>
+                {{ form.description }}
+            </div>
+            <div class="detail">
+                {{ form.photo.errors }}
+                <Label>Squad Photo</Label><br>
+                {{ form.photo }}
+            </div>
+            <div class="detail">
+                {{ form.platforms.errors }}
+                <Label>Platforms</Label><br>
+                {{ form.platforms }}
+            </div>
+            <div class="detail">
+                {{ form.game.errors }}
+                <Label>Game</Label><br>
+                {{ form.game }}
+            </div>
+            <div class="detail">
+                {{ form.region.errors }}
+                <Label>Region</Label><br>
+                {{ form.region }}
+            </div>
+            <div class="detail">
+                {{ form.rank_lower_bound.errors }}
+                <Label>Lowest Rank</Label><br>
+                {{ form.rank_lower_bound }}
+                <br>
+                {{ form.rank_upper_bound.errors }}
+                <Label>Highest Rank</Label><br>
+                {{ form.rank_upper_bound }}
+            </div>
+            <div class="detail">
+                {{ form.languages.errors }}
+                <Label>Languages</Label><br>
+                {{ form.languages }}
+            </div>
+            <div class="detail">
+                {{ form.squad_size.errors }}
+                <Label>Squad Size</Label><br>
+                {{ form.squad_size }}
             </div>
         </div>
     </div>
@@ -74,6 +71,7 @@
         </h1>
 
         <div id="members">
+
             <div class="member">
                 <div class="photo">img here</div>
                 <div class="username">22el<span></span>#4265<span></span></div>

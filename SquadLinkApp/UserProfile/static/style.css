@@ -2150,7 +2150,7 @@ header {
 
 
 #editsquad {
-    height: 80%;
+    height: calc(90% - 60px);
     width: 100%;
 
     display: flex;
@@ -2181,7 +2181,7 @@ header {
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
-    line-height: 40px;
+    margin: 10px 0 10px 0;
 
     text-align: center;
 
@@ -2243,16 +2243,24 @@ header {
     flex-wrap: wrap;
     align-items: stretch;
     align-content: space-between;
+
     gap: 10px 50px;
 
     padding: 0 20px 0px 20px;
     margin: 0;
+
+    font-size: 14px;
 }
 
 #editsquad .detail {
     position: relative;
     min-width: 200px;
     flex: 1;
+    text-align: left;
+}
+
+#editsquad .detail label {
+    font-size: 16px;
 }
 
 #editsquad .detail .checkbox {
@@ -2264,7 +2272,6 @@ header {
     flex-wrap: wrap;
     position: relative;
     width: 100%;
-    color: #b8b8b8;
     accent-color: #413474;
 }
 
@@ -2274,14 +2281,13 @@ header {
 }
 
 #editsquad .detail select {
-    width: 100%;
+    width: auto;
     border-radius: 5px;
-    background-color: #b8b8b8;
 }
 
-#editsquad .detail textarea {
+#editsquad .detail textarea,
+#editsquad .detail input[type=text] {
     width: 100%;
-    background-color: #b8b8b8;
     border-radius: 5px;
 }
 
