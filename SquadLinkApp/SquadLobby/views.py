@@ -53,14 +53,15 @@ class LobbyDetailsView(View):
             page_contents['user'] = request.user
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
+            page_contents['form'] = LobbyAddMembersForm()
 
         page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
 
         return render(request, 'squad_page.html', page_contents)
-    
+
     def post(self, request, pk):
         if request.user.is_authenticated:
-            lobby = SquadLinkLobby.objects.get(pk=pk)
+            lobby = SquadLinkLobby.custom_manager.get(pk=pk)
             current_user_model = SquadLinkUserModel.objects.get(
                 user=request.user)
 
@@ -69,9 +70,11 @@ class LobbyDetailsView(View):
 
             user_to_add = None
             if current_user_model == lobby.creator:
-                user_to_add = SquadLinkUserModel.objects.filter(user_set__username=username_search).first()
+                user_to_add = SquadLinkUserModel.objects.filter(
+                    user_set__username=username_search).first()
             else:
-                user_to_add = SquadLinkUserModel.objects.filter(user_set__username=request.user.get_username()).first()
+                user_to_add = SquadLinkUserModel.objects.filter(
+                    user_set__username=request.user.get_username()).first()
 
             if user_to_add:
                 lobby.squad_members.add(user_to_add)
@@ -83,7 +86,8 @@ class LobbyDetailsView(View):
 
                 if request.user.is_authenticated:
                     page_contents['user'] = request.user
-                    page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+                    page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                        user=request.user)
 
                 page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
                 page_contents['no_user_found'] = True

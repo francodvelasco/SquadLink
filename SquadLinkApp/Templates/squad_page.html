@@ -10,7 +10,9 @@
     <div id="squadbox">
         <div id="squadheader">
             <div id="squadtitle">
-                <div id="icon">img</div>
+                <div id="icon">
+                    <img src="{{ lobby.photo.url }}" alt="Image of {{ lobby.squad_name }}" width="192" height="192">
+                </div>
                 <h1>{{ lobby.squad_name }}</h1>
             </div>
             <div id="squadbuttons">
@@ -76,10 +78,21 @@
 
 
                 </div>
-                <div id="invitebar">
-                    <div id="invitename">blabla#2312</div>
-                    <div id="invitebutton">Invite</div>
-                </div>
+                <form method="post" enctype="multipart/form-data">
+                    <div id="invitebar">
+
+                        <div id="invitename">
+
+                            {% csrf_token %}
+
+                            {{ form.username.errors }}
+                            {{ form.username }}
+                        </div>
+                        <button type="submit" id="invitebutton">
+                            Invite
+                        </button>
+                    </div>
+                </form>
             </div>
             <div id="squaddetails">
                 <h2>Game: {{ lobby.game }}</h2>

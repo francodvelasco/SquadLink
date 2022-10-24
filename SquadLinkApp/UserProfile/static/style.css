@@ -1208,14 +1208,21 @@ header {
     width: 64px;
     height: 64px;
 
-    background: url(TaskForce141_Logo_MWII.png);
-    border-radius: 84px;
+    border-radius: 50%;
 
     flex: none;
     order: 0;
     flex-grow: 0;
 
-    border: 1px dotted gray;
+    border: 2px double gray;
+}
+
+#squadpage #squadtitle #icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+
 }
 
 #squadpage #squadtitle h1 {
@@ -1469,6 +1476,7 @@ header {
 #squadpage #members #invitebar {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     padding: 0px;
@@ -1497,7 +1505,7 @@ header {
     border: 2px solid #AAAAAA;
     border-radius: 4px;
 
-    flex: none;
+    flex: 1 1;
     order: 0;
     flex-grow: 1;
     font-family: 'Outfit';
@@ -1508,6 +1516,13 @@ header {
 
     color: #111111;
 
+}
+
+#squadpage #members #invitebar #invitename {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
 }
 
 #squadpage #members #invitebar #invitebutton {
@@ -1522,7 +1537,7 @@ header {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 29px;
+    line-height: 23px;
 
     text-align: center;
 
@@ -2498,4 +2513,40 @@ header {
 
 #lobbylist .left>* {
     align-self: center;
+}
+
+#createsquadbutton {
+    position: fixed;
+    width: 200px;
+    bottom: 5%;
+    right: 5%;
+
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    background: #0e7097;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
+    line-height: 45px;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+#createsquadbutton>a,
+#createsquadbutton>a:visited {
+    all: none;
+    text-decoration: none;
+
+    color: #FFFFFF;
 }
