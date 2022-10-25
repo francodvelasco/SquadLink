@@ -488,12 +488,12 @@ header {
 
 .inputbox input[type=file] {
     box-sizing: border-box;
-    flex-grow: 1;
+    flex-grow: 0;
     background: none;
     border: none;
 
     border-radius: 4px;
-    min-height: 40px;
+    min-height: 0;
 }
 
 .inputbox a {
@@ -1228,9 +1228,8 @@ header {
 
     /* Inside auto layout */
 
-    flex: none;
+    flex: 1;
     order: 0;
-    flex-grow: 0;
     z-index: 0;
 }
 
@@ -1256,7 +1255,7 @@ header {
 }
 
 #squadpage #squadtitle h1 {
-    width: 232px;
+    width: auto;
     height: 31px;
 
     font-family: 'Outfit';
@@ -1444,6 +1443,10 @@ header {
     border-radius: 20px;
 }
 
+#squadpage #members .member:first-child {
+    background: linear-gradient(360deg, rgba(253, 56, 89, 0.356) 3.95%, rgba(51, 152, 209, 0) 100%);
+}
+
 #squadpage #members .member .photo {
     position: absolute;
     height: 65%;
@@ -1451,9 +1454,16 @@ header {
     left: 3%;
     top: 0;
 
-    background: url(FW2WqsSVEAAAfKj.jpg);
     border-radius: 20px;
     border: 1px dotted gray;
+}
+
+#squadpage #members .member .photo img {
+
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 #squadpage #members .member .username {
@@ -1724,7 +1734,7 @@ header {
     font-style: normal;
     font-weight: 1000;
     font-size: 18px;
-    line-height: 33px;
+    vertical-align: baseline;
 
     text-align: center;
 
@@ -2135,7 +2145,7 @@ header {
     flex-wrap: wrap;
     position: relative;
     width: 100%;
-    color: #b8b8b8;
+    color: #ffffff;
     accent-color: #413474;
 }
 
@@ -2147,7 +2157,7 @@ header {
 #createsquad .detail select {
     width: 100%;
     border-radius: 5px;
-    background-color: #b8b8b8;
+    background-color: #ffffff;
 }
 
 #createsquad a {
@@ -2163,7 +2173,7 @@ header {
     font-family: 'Outfit';
     font-style: normal;
     font-size: 10px;
-    color: #b3b3b3;
+    color: #ffffff;
 }
 
 #createsquad #createbutton {
@@ -2515,6 +2525,12 @@ header {
     display: block;
 }
 
+#lobbylist .owned {
+    background: linear-gradient(140deg, rgb(153, 19, 41) 0%, #c780bb 100%);
+    border: 3px solid #3a0707;
+    box-shadow: 2px 2px 5px #2c1a1a;
+}
+
 #lobbylist li {
     display: flex;
     flex-direction: row;
@@ -2543,6 +2559,14 @@ header {
 
 #lobbylist .left>* {
     align-self: center;
+}
+
+#lobbylist .right {
+    gap: 10px;
+}
+
+#lobbylist .right p {
+    margin: 0;
 }
 
 #createsquadbutton {

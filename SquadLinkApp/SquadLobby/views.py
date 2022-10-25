@@ -69,38 +69,31 @@ class LobbyDetailsView(View):
             current_user_model = SquadLinkUserModel.objects.get(
                 user=request.user)
 
-            form = LobbyAddMembersForm(request.POST)
-            # username_search = form.cleaned_data.get('username')
-            username_search = request.POST['username']
+            # form = LobbyAddMembersForm(request.POST)
 
-            # user_to_add = None
-            # print('\nHELP US', current_user_model, "sdadas", lobby.creator)
-            # if current_user_model == lobby.creator:
-            #     user_to_add = SquadLinkUserModel.objects.filter(
-            #         user__username=username_search).first()
-            # else:
-            #     # user_to_add = SquadLinkUserModel.objects.filter(user__username=request.user.username).first()
-            #     user_to_add = current_user_model
+            if current_user_model == lobby.creator:
+                username_search = request.POST['username']
+                user_found = User.objects.get(username=username_search)
+                print("I am the owner: ", user_found.id)
+                user_add_found = SquadLinkUserModel.objects.get(
+                    id=user_found.id-2)
 
-            if username_search:
-                # print('this is THE UISER TO ADD', user_to_add)
-                # lobby.squad_members.add(SquadLinkUserModel.objects.filter(
-                #     user__username=username_search).first())
-                user_add = User.objects.get(username=username_search)
-                print()
-                print()
-                print()
-                print(user_add.id)
-                print(SquadLinkUserModel.objects.get(
-                    id=user_add.id))
-                lobby.squad_members.add(SquadLinkUserModel.objects.get(
-                    id=user_add.id).pk-2)
+                # print("Being added:", user_add_found.user.id,
+                #       user_add_found.user.username, " - user_add", user_add_found.id)
+                # print("creator:", lobby.creator.user.id,
+                #       lobby.creator.user.username, "- user_add", lobby.creator.id)
 
-                # print("\n", SquadLinkUserModel._meta.fields)
-                # print("\n", SquadLinkUserModel._meta.fields[1]._meta.fields)
-                # print("\n", SquadLinkUserModel.objects.filter(user=username_search))
-                print("LOBBMEMEMMEE", lobby._meta.fields)
-                print("LOBBMEMEMMEE", lobby.squad_members.all())
+                if (user_add_found != lobby.creator):
+                    lobby.squad_members.add(user_add_found)
+            else:
+                user_add_found = current_user_model
+                print("I am not the owner: ", user_add_found.id)
+                lobby.squad_members.add(user_add_found)
+
+            if user_add_found:
+                print(user_add_found.id)
+                # print(SquadLinkUserModel.objects.get(id=user_add.id).pk-2)
+
                 lobby.save()
 
                 return self.get(request, pk)

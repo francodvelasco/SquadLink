@@ -99,26 +99,28 @@ class SquadLinkUserEditView(View):
         if request.user.is_authenticated:
             form = UserAdditionalForm(request.POST, request.FILES)
 
-            profile_image = form.cleaned_data.get('profile_image')
-            user_platforms = ', '.join(form.cleaned_data.get('user_platforms'))
-            user_game = form.cleaned_data.get('user_game')
-            rank = form.cleaned_data.get('rank')
-            region = form.cleaned_data.get('region')
-            bio = form.cleaned_data.get('bio')
+            if form.is_valid():
+                profile_image = form.cleaned_data.get('profile_image')
+                user_platforms = ', '.join(
+                    form.cleaned_data.get('user_platforms'))
+                user_game = form.cleaned_data.get('user_game')
+                rank = form.cleaned_data.get('rank')
+                region = form.cleaned_data.get('region')
+                bio = form.cleaned_data.get('bio')
 
-            sl_user_model = SquadLinkUserModel.objects.create(
-                user=request.user,
-                profile_image=profile_image,
-                platforms=user_platforms,
-                game=user_game,
-                rank=rank,
-                bio=bio,
-                region=region
-            )
+                sl_user_model = SquadLinkUserModel.objects.create(
+                    user=request.user,
+                    profile_image=profile_image,
+                    platforms=user_platforms,
+                    game=user_game,
+                    rank=rank,
+                    bio=bio,
+                    region=region
+                )
 
-            sl_user_model.save()
+                sl_user_model.save()
 
-            return redirect('home')
+            return redirect('UserProfile:view-profile')
         else:
             return redirect('UserProfile:sign-in')
 

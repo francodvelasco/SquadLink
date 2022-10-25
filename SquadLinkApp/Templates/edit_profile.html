@@ -24,6 +24,11 @@
             {{ form.profile_image }}
         </div>
         <div class="inputbox">
+            {{ form.user.errors }}
+            <p class="label">Profile Picture</p>
+            {{ form.profile_image }}
+        </div>
+        <div class="inputbox">
             {{ form.user_game.errors }}
             <p class="label">Favorite Game</p>
             {{ form.user_game }}

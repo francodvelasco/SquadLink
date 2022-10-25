@@ -15,6 +15,8 @@
                 </div>
                 <h1>{{ lobby.squad_name }}</h1>
             </div>
+
+            {% if user == lobby.creator.user %}
             <div id="squadbuttons">
                 <a href={% url 'SquadLobby:lobby-edit' pk=lobby.pk %}>
                     <div id="customize"><svg width="21" height="22" viewBox="0 0 21 22" fill="none"
@@ -43,6 +45,7 @@
                     Settings
                 </div>
             </div>
+            {% endif %}
         </div>
         <div id="squadcontent">
             <div id="members">
@@ -103,6 +106,8 @@
 
 
                 </div>
+
+                {% if user == lobby.creator.user %}
                 <form method="post" enctype="multipart/form-data">
                     <div id="invitebar">
 
@@ -118,6 +123,7 @@
                         </button>
                     </div>
                 </form>
+                {% endif %}
             </div>
             <div id="squaddetails">
                 <h2>Game: {{ lobby.game }}</h2>
@@ -134,11 +140,24 @@
                     <p>{{ lobby.description }}</p>
                 </div>
             </div>
+
         </div>
         <div clear="both"></div>
         <div id="readygroup">
-            <div id="readybutton">Ready!</div>
+
+            {% if user == lobby.creator.user %}
+            <button id="readybutton">Ready!
+            </button>
             <p>*Clicking ready will notify all members</p>
+            {% else %}
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <button id="readybutton" type="submit">Join Squad
+                </button>
+            </form>
+
+            {% endif %}
         </div>
     </div>
     <!-- <div id="chatbox">
