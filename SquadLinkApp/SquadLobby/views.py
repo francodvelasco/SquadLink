@@ -3,6 +3,9 @@ from django.views import View
 from UserProfile.models import SquadLinkUserModel
 from .models import SquadLinkLobby
 
+from django.contrib.auth.models import User
+
+
 from .forms import *
 # Create your views here.
 
@@ -57,6 +60,7 @@ class LobbyDetailsView(View):
 
         page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
 
+        # print(page_contents['lobby'].squad_members)
         return render(request, 'squad_page.html', page_contents)
 
     def post(self, request, pk):
@@ -66,18 +70,37 @@ class LobbyDetailsView(View):
                 user=request.user)
 
             form = LobbyAddMembersForm(request.POST)
-            username_search = form.cleaned_data.get('username')
+            # username_search = form.cleaned_data.get('username')
+            username_search = request.POST['username']
 
-            user_to_add = None
-            if current_user_model == lobby.creator:
-                user_to_add = SquadLinkUserModel.objects.filter(
-                    user_set__username=username_search).first()
-            else:
-                user_to_add = SquadLinkUserModel.objects.filter(
-                    user_set__username=request.user.get_username()).first()
+            # user_to_add = None
+            # print('\nHELP US', current_user_model, "sdadas", lobby.creator)
+            # if current_user_model == lobby.creator:
+            #     user_to_add = SquadLinkUserModel.objects.filter(
+            #         user__username=username_search).first()
+            # else:
+            #     # user_to_add = SquadLinkUserModel.objects.filter(user__username=request.user.username).first()
+            #     user_to_add = current_user_model
 
-            if user_to_add:
-                lobby.squad_members.add(user_to_add)
+            if username_search:
+                # print('this is THE UISER TO ADD', user_to_add)
+                # lobby.squad_members.add(SquadLinkUserModel.objects.filter(
+                #     user__username=username_search).first())
+                user_add = User.objects.get(username=username_search)
+                print()
+                print()
+                print()
+                print(user_add.id)
+                print(SquadLinkUserModel.objects.get(
+                    id=user_add.id))
+                lobby.squad_members.add(SquadLinkUserModel.objects.get(
+                    id=user_add.id).pk-2)
+
+                # print("\n", SquadLinkUserModel._meta.fields)
+                # print("\n", SquadLinkUserModel._meta.fields[1]._meta.fields)
+                # print("\n", SquadLinkUserModel.objects.filter(user=username_search))
+                print("LOBBMEMEMMEE", lobby._meta.fields)
+                print("LOBBMEMEMMEE", lobby.squad_members.all())
                 lobby.save()
 
                 return self.get(request, pk)
@@ -92,7 +115,7 @@ class LobbyDetailsView(View):
                 page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
                 page_contents['no_user_found'] = True
 
-                return render(request, 'FILE-NAME.html', page_contents)
+                return render(request, 'squad_page.html', page_contents)
         else:
             return redirect('UserProfile:sign-in')
 
@@ -159,6 +182,7 @@ class LobbyEditView(View):
         form = LobbyCreateForm(request.POST, request.FILES)
         lobby_model = SquadLinkLobby.custom_manager.get(pk=pk)
 
+        # print(request.POST['game'])
         lobby_model.update_from_form(form)
 
         return redirect('SquadLobby:lobby-details', pk=pk)

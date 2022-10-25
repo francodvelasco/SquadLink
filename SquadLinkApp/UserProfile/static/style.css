@@ -625,6 +625,7 @@ header {
     border-radius: 50%;
     border: 4px double white;
     aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 #profilename {

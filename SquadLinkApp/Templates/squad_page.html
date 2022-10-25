@@ -50,13 +50,38 @@
 
                 <div id="memberlist">
 
-                    {% for member in squad_members %}
                     <div class="member">
                         <div class="photo">
-                            <img src="{{ member.profile_image.url }}"
-                                alt="Profile picture of {{member.user.username}}{{ member.username }}" height="100px">
+                            <img src="{{ lobby.creator.profile_image.url }}"
+                                alt="Profile picture of {{lobby.creator.user.username}}" height="100px">
                         </div>
-                        <div class="username">{{member.user.username}}{{ member.username }}<span></span></div>
+                        <div class="username">{{lobby.creator.user.username}}
+                        </div>
+                        <div class="settings">
+                            <svg width="17" height="19" viewBox="0 0 17 19" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.50008 10.3867C8.89128 10.3867 9.20841 10.0509 9.20841 9.63672C9.20841 9.22251 8.89128 8.88672 8.50008 8.88672C8.10888 8.88672 7.79175 9.22251 7.79175 9.63672C7.79175 10.0509 8.10888 10.3867 8.50008 10.3867Z"
+                                    stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M13.4583 10.3867C13.8495 10.3867 14.1667 10.0509 14.1667 9.63672C14.1667 9.22251 13.8495 8.88672 13.4583 8.88672C13.0671 8.88672 12.75 9.22251 12.75 9.63672C12.75 10.0509 13.0671 10.3867 13.4583 10.3867Z"
+                                    stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M3.54159 10.3867C3.93279 10.3867 4.24992 10.0509 4.24992 9.63672C4.24992 9.22251 3.93279 8.88672 3.54159 8.88672C3.15038 8.88672 2.83325 9.22251 2.83325 9.63672C2.83325 10.0509 3.15038 10.3867 3.54159 10.3867Z"
+                                    stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </div>
+                        <div class="addfriend">Add Friend</div>
+                    </div>
+
+                    {% for member in lobby.squad_members.all %}
+                    <div class="member">
+                        <div class="photo">
+                            <img src="{{ member.user.profile_image.url }}"
+                                alt="Profile picture of {{member.user.username}}" height="100px">
+                        </div>
+                        <div class="username">{{member.user.username}}<span></span></div>
                         <div class="settings">
                             <svg width="17" height="19" viewBox="0 0 17 19" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
