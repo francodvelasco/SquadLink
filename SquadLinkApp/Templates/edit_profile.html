@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div id="custombg"></div>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="registerbox">
+        <h2 id="registertitle">Update your profile</h2>
+        {{ form.non_field_errors }}
+        {{ form.non_field_errors }}
+
+        <div class="inputbox">
+            {{ form.bio.errors }}
+            <p class="label">Bio</p>
+            {{ form.bio }}
+        </div>
+        <div class="inputbox">
+            {{ form.profile_image.errors }}
+            <p class="label">Profile Picture</p>
+            {{ form.profile_image }}
+        </div>
+        <div class="inputbox">
+            {{ form.user_game.errors }}
+            <p class="label">Favorite Game</p>
+            {{ form.user_game }}
+        </div>
+
+        <div class="inputbox">
+            {{ form.rank.errors }}
+            <p class="label">Rank</p>
+            {{ form.rank }}
+        </div>
+
+        <a href="javascript:history.back()" id="backbutton">Back</a>
+        <button type="submit" id="registersubmit">Update</button>
+
+    </div>
+
+</form>
+{% endblock %}

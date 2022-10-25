@@ -10,12 +10,15 @@
 
     <div id="profilebg">
         <div id="profilecover"></div>
-        <div id="settingsbutton" onclick="location.href='edit_profile.html'">
-            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.5 1.375L15.25 5.33333L5.5 15.625H1.75V11.6667L11.5 1.375Z" stroke="white" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            Customize
+        <div id="settingsbutton">
+            <a href={% url 'UserProfile:edit-profile' %}>
+
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5 1.375L15.25 5.33333L5.5 15.625H1.75V11.6667L11.5 1.375Z" stroke="white"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Customize
+            </a>
         </div>
 
         <div id="profilepic">

@@ -14,11 +14,13 @@ class SquadLinkHomeView(View):
 
         if request.user.is_authenticated:
             page_contents['user'] = request.user
-            page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
 
         return render(request, 'home.html', page_contents)
 
 # Create your views here.
+
 
 class SquadLinkUserCreationView(View):
     def get(self, request):
@@ -69,16 +71,17 @@ class SquadLinkUserCreationView(View):
 
             return render(request, 'signup.html', page_contents)
 
+
 class SquadLinkUserEditView(View):
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('UserProfile:sign-in')
-        
+
         page_contents = dict()
         user_add = SquadLinkUserModel.objects.get(
-                user=request.user)
+            user=request.user)
 
-        user_details_dict = { 
+        user_details_dict = {
             'region': user_add.region,
             'profile_image': user_add.profile_image,
             'user_platforms': list(map(lambda name: name.strip(), user_add.platforms.split(','))),
@@ -89,8 +92,8 @@ class SquadLinkUserEditView(View):
 
         page_contents['form'] = UserAdditionalForm(
             request.POST or None, request.FILES or None, initial=user_details_dict)
-        
-        return render(request, 'FILE-NAME.html', page_contents)
+
+        return render(request, 'edit_profile.html', page_contents)
 
     def post(self, request):
         if request.user.is_authenticated:
@@ -118,6 +121,7 @@ class SquadLinkUserEditView(View):
             return redirect('home')
         else:
             return redirect('UserProfile:sign-in')
+
 
 class SquadLinkUserLogInView(View):
     def get(self, request):
@@ -153,7 +157,8 @@ class SquadLinkUserView(View):
         if request.user.is_authenticated:
             page_contents = dict()
             page_contents['user'] = request.user
-            page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
 
             return render(request, 'view_profile.html', page_contents)
         else:
