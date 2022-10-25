@@ -5,12 +5,15 @@ from django.dispatch import receiver
 import SquadLinkApp.settings as settings
 import os
 
+
 def profile_image_location(request, filename):
     return os.path.join('uploads', 'profile_images', filename)
 
+
 class SquadLinkUserModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = models.ImageField(upload_to="upload/", null=True, blank=True)
+    profile_image = models.ImageField(
+        upload_to="upload/", null=True, blank=True)
     platforms = models.CharField(max_length=100, blank=True)
     game = models.CharField(max_length=100, blank=True, default='')
     rank = models.CharField(max_length=100, blank=True, default='')

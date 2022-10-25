@@ -11,8 +11,8 @@ def lobby_image_location(request, filename):
 
 class SquadLinkLobbyManager(models.Manager):
     def create(self, *args, **kwargs):
-        user = kwargs['user'] if 'user' in kwargs and isinstance(
-            kwargs['user'], SquadLinkUserModel) else None
+        user = kwargs['creator'] if 'creator' in kwargs and isinstance(
+            kwargs['creator'], SquadLinkUserModel) else None
         form = kwargs['form'] if 'form' in kwargs and isinstance(
             kwargs['form'], LobbyCreateForm) else None
         # print(user, form)
@@ -34,7 +34,7 @@ class SquadLinkLobbyManager(models.Manager):
 
             kwargs['rank_lower_bound'] = form.cleaned_data.get(
                 'rank_lower_bound')
-            kwargs['rank_upper_bound'] = form.cleaned_data.get(
+            kwargs['rank_higher_bound'] = form.cleaned_data.get(
                 'rank_upper_bound')
 
             lang_dict = dict(LobbyCreateForm.LANGUAGES)
@@ -42,6 +42,8 @@ class SquadLinkLobbyManager(models.Manager):
                 map(lambda code: lang_dict[code], form.cleaned_data.get('languages')))
 
             kwargs['squad_size'] = form.cleaned_data.get('squad_size')
+
+            del kwargs['form']
 
         # for key, value in kwargs.items():
         #     print("{} is {}".format(key, value))

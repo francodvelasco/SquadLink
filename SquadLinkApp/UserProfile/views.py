@@ -20,7 +20,6 @@ class SquadLinkHomeView(View):
 
 # Create your views here.
 
-
 class SquadLinkUserCreationView(View):
     def get(self, request):
         page_contents = {}
@@ -70,6 +69,55 @@ class SquadLinkUserCreationView(View):
 
             return render(request, 'signup.html', page_contents)
 
+class SquadLinkUserEditView(View):
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('UserProfile:sign-in')
+        
+        page_contents = dict()
+        user_add = SquadLinkUserModel.objects.get(
+                user=request.user)
+
+        user_details_dict = { 
+            'region': user_add.region,
+            'profile_image': user_add.profile_image,
+            'user_platforms': list(map(lambda name: name.strip(), user_add.platforms.split(','))),
+            'user_game': user_add.game,
+            'rank': user_add.rank,
+            'bio': user_add.bio
+        }
+
+        page_contents['form'] = UserAdditionalForm(
+            request.POST or None, request.FILES or None, initial=user_details_dict)
+        
+        return render(request, 'FILE-NAME.html', page_contents)
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            form = UserAdditionalForm(request.POST, request.FILES)
+
+            profile_image = form.cleaned_data.get('profile_image')
+            user_platforms = ', '.join(form.cleaned_data.get('user_platforms'))
+            user_game = form.cleaned_data.get('user_game')
+            rank = form.cleaned_data.get('rank')
+            region = form.cleaned_data.get('region')
+            bio = form.cleaned_data.get('bio')
+
+            sl_user_model = SquadLinkUserModel.objects.create(
+                user=request.user,
+                profile_image=profile_image,
+                platforms=user_platforms,
+                game=user_game,
+                rank=rank,
+                bio=bio,
+                region=region
+            )
+
+            sl_user_model.save()
+
+            return redirect('home')
+        else:
+            return redirect('UserProfile:sign-in')
 
 class SquadLinkUserLogInView(View):
     def get(self, request):

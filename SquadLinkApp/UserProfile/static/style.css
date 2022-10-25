@@ -627,6 +627,7 @@ header {
     border-radius: 50%;
     border: 4px double white;
     aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 #profilename {
@@ -1210,14 +1211,21 @@ header {
     width: 64px;
     height: 64px;
 
-    background: url(TaskForce141_Logo_MWII.png);
-    border-radius: 84px;
+    border-radius: 50%;
 
     flex: none;
     order: 0;
     flex-grow: 0;
 
-    border: 1px dotted gray;
+    border: 2px double gray;
+}
+
+#squadpage #squadtitle #icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+
 }
 
 #squadpage #squadtitle h1 {
@@ -1471,6 +1479,7 @@ header {
 #squadpage #members #invitebar {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     padding: 0px;
@@ -1499,7 +1508,7 @@ header {
     border: 2px solid #AAAAAA;
     border-radius: 4px;
 
-    flex: none;
+    flex: 1 1;
     order: 0;
     flex-grow: 1;
     font-family: 'Outfit';
@@ -1510,6 +1519,13 @@ header {
 
     color: #111111;
 
+}
+
+#squadpage #members #invitebar #invitename {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
 }
 
 #squadpage #members #invitebar #invitebutton {
@@ -1524,7 +1540,7 @@ header {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 29px;
+    line-height: 23px;
 
     text-align: center;
 
@@ -2152,7 +2168,7 @@ header {
 
 
 #editsquad {
-    height: 80%;
+    height: calc(90% - 60px);
     width: 100%;
 
     display: flex;
@@ -2183,7 +2199,7 @@ header {
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
-    line-height: 40px;
+    margin: 10px 0 10px 0;
 
     text-align: center;
 
@@ -2245,16 +2261,24 @@ header {
     flex-wrap: wrap;
     align-items: stretch;
     align-content: space-between;
+
     gap: 10px 50px;
 
     padding: 0 20px 0px 20px;
     margin: 0;
+
+    font-size: 14px;
 }
 
 #editsquad .detail {
     position: relative;
     min-width: 200px;
     flex: 1;
+    text-align: left;
+}
+
+#editsquad .detail label {
+    font-size: 16px;
 }
 
 #editsquad .detail .checkbox {
@@ -2266,7 +2290,6 @@ header {
     flex-wrap: wrap;
     position: relative;
     width: 100%;
-    color: #b8b8b8;
     accent-color: #413474;
 }
 
@@ -2276,14 +2299,13 @@ header {
 }
 
 #editsquad .detail select {
-    width: 100%;
+    width: auto;
     border-radius: 5px;
-    background-color: #b8b8b8;
 }
 
-#editsquad .detail textarea {
+#editsquad .detail textarea,
+#editsquad .detail input[type=text] {
     width: 100%;
-    background-color: #b8b8b8;
     border-radius: 5px;
 }
 
@@ -2395,4 +2417,139 @@ header {
     height: 15px;
     right: 10px;
     bottom: 13px;
+}
+
+
+/* lobby_list.html */
+
+
+#lobbylist {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+
+    height: calc(100% - 150px);
+}
+
+#lobbylist h1 {
+    text-align: center;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    margin: 0px 0 5px 0;
+
+    color: #FFFFFF;
+    flex: none;
+}
+
+#lobbylist #box {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    min-width: 800px;
+    background: linear-gradient(180deg, #0F292F 0%, #292F3F 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    max-height: calc(100% - 80px);
+
+    flex: none;
+    overflow-y: auto;
+}
+
+#lobbylist ul {
+    color: #FFFFFF;
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0;
+    height: auto;
+
+    margin: 0;
+}
+
+#lobbylist a {
+    padding: 0px;
+    margin: 0px;
+    color: inherit;
+    text-decoration: inherit;
+    margin: 0 0 20px 0;
+    background: linear-gradient(140deg, #58a2b3 0%, #a31d8d 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+#lobbylist li {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+    width: 100%;
+    margin: 0;
+}
+
+#lobbylist li>div {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#lobbylist h3 {
+    margin: 0;
+    text-align: center;
+}
+
+#lobbylist .left {
+    text-align: center;
+}
+
+#lobbylist .left>* {
+    align-self: center;
+}
+
+#createsquadbutton {
+    position: fixed;
+    width: 200px;
+    bottom: 5%;
+    right: 5%;
+
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    background: #0e7097;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
+    line-height: 45px;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+#createsquadbutton>a,
+#createsquadbutton>a:visited {
+    all: none;
+    text-decoration: none;
+
+    color: #FFFFFF;
 }
