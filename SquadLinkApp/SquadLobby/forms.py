@@ -75,3 +75,33 @@ class LobbyCreateForm(forms.Form):
 
 class LobbyAddMembersForm(forms.Form):
     username = forms.CharField(max_length=150)
+
+class LobbySearchForm(forms.Form):
+    search_term = forms.CharField(max_length=128)
+    match_profile = forms.BooleanField()
+
+    platforms = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        choices=LobbyCreateForm.PLATFORMS
+    )
+
+    games = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        choices=LobbyCreateForm.GAMES
+    )
+
+    region = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        choices=LobbyCreateForm.REGIONS
+    )
+
+    rank_lower_bound = forms.CharField(max_length=100)
+    rank_upper_bound = forms.CharField(max_length=100)
+
+    languages = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        choices=LobbyCreateForm.LANGUAGES
+    )
+
+    min_squad_size = forms.IntegerField(min_value=2)
+    max_squad_size = forms.IntegerField(min_value=2)
