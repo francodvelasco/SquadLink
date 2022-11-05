@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Squad Search{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<div id="imgtop"></div>
+
+<div id="lobbysearch">
+    <h1>Search Squad</h1>
+    <div id="box">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ search_form.as_div }}
+            <button type="submit" id="invitebutton">
+                Search
+            </button>
+        </form>
+    </div>
+</div>
+<div id="createsquadbutton"><a href="{% url 'SquadLobby:lobby-create' %}">Create Squad</a></div>
+
+{% endblock %}

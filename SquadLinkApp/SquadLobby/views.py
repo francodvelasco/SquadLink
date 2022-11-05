@@ -181,8 +181,9 @@ class LobbyEditView(View):
             lobby_model.update_from_form(form)
 
             return redirect('SquadLobby:lobby-details', pk=pk)
-        
+
         return self.get(request, pk)
+
 
 class LobbySearchView(View):
     def get(self, request):
@@ -192,11 +193,11 @@ class LobbySearchView(View):
             page_contents['user'] = request.user
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
-        
+
         page_contents['search_form'] = LobbySearchForm()
 
-        return render(request, 'FILE-NAME.html', page_contents)
-    
+        return render(request, 'lobby_search.html', page_contents)
+
     def post(self, request):
         form = LobbySearchForm(request.POST)
         page_contents = dict()
@@ -210,23 +211,23 @@ class LobbySearchView(View):
 
             if search_term:
                 search_filter &= Q(squad_name__icontains=search_term)
-            
+
             # search based on checked attributes
             platform_filter = Q()
             platform_choices = form.cleaned_data.get('platforms')
             for platform in platform_choices:
                 platform_filter |= Q(platforms__icontains=platform)
-            
+
             game_filter = Q()
             game_choices = form.cleaned_data.get('games')
             for game in game_choices:
                 game_filter |= Q(game__icontains=game)
-            
+
             region_filter = Q()
             region_choices = form.cleaned_data.get('region')
             for region in region_choices:
                 region_filter |= Q(region__icontains=region)
-            
+
             language_filter = Q()
             language_choices = form.cleaned_data.get('languages')
             for language in language_choices:
@@ -239,9 +240,10 @@ class LobbySearchView(View):
             rank_hi_bound = form.cleaned_data.get('rank_upper_bound')
             if rank_hi_bound:
                 rank_filter |= Q(rank_higher_bound__icontains=rank_hi_bound)
-            
+
             squad_size_filter = Q()
-            min_squad_size, max_squad_size = form.cleaned_data.get('min_squad_size'), form.cleaned_data.get('max_squad_size')
+            min_squad_size, max_squad_size = form.cleaned_data.get(
+                'min_squad_size'), form.cleaned_data.get('max_squad_size')
             if min_squad_size:
                 squad_size_filter &= Q(squad_size__gte=min_squad_size)
             if max_squad_size:
@@ -254,30 +256,33 @@ class LobbySearchView(View):
 
                 for platform in user_platforms:
                     platform_filter |= Q(platforms__icontains=platform)
-                
+
                 user_game = user.game
                 game_filter |= Q(game__icontains=user_game)
 
                 user_rank = user.rank
-                rank_filter |= (Q(rank_lower_bound__icontains=user_rank) | Q(rank_higher_bound__icontains=user_rank))
+                rank_filter |= (Q(rank_lower_bound__icontains=user_rank) | Q(
+                    rank_higher_bound__icontains=user_rank))
 
-            search_filter &= (platform_filter & game_filter & region_filter & language_filter & rank_filter & squad_size_filter)
+            search_filter &= (platform_filter & game_filter & region_filter &
+                              language_filter & rank_filter & squad_size_filter)
 
             if request.user.is_authenticated:
                 page_contents['user'] = request.user
                 page_contents['user_add'] = SquadLinkUserModel.objects.get(
                     user=request.user)
-            
-            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(search_filter)
 
-            return render(request, 'FILE-NAME.html', page_contents)
+            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(
+                search_filter)
+
+            return render(request, 'lobby_list.html', page_contents)
         else:
             if request.user.is_authenticated:
                 page_contents['user'] = request.user
                 page_contents['user_add'] = SquadLinkUserModel.objects.get(
                     user=request.user)
-            
+
             page_contents['search_form'] = form
             page_contents['search_error'] = 'Invalid Search Query'
 
-            return render(request, 'FILE-NAME.html', page_contents)
+            return render(request, 'lobby_search.html', page_contents)
