@@ -2605,22 +2605,37 @@ header {
     color: #FFFFFF;
 }
 
-#lobbysearch * {
-    border: 1px solid red;
-}
 
 #lobbysearch {
     position: relative;
     margin: 80px 0 0 0;
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
 #lobbysearch #box {
     position: relative;
-    width: min(1000px, 80%);
+    width: min(600px, 60%);
 
+    max-width: 1200px;
+    background: linear-gradient(180deg, #0F292F 0%, #292F3F 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    max-height: calc(100% - 80px);
+
+    flex: none;
+    overflow-y: auto;
+}
+
+#lobbysearch #searchbutton {
+    position: absolute;
+    right: 30px;
+}
+
+#lobbysearch input {
+    margin-left: 30px;
 }

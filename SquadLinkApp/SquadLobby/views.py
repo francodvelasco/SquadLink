@@ -217,7 +217,8 @@ class LobbySearchView(View):
             platform_dict = dict(LobbyCreateForm.PLATFORMS)
             platform_choices = form.cleaned_data.get('platforms')
             for platform in platform_choices:
-                platform_filter |= Q(platforms__icontains=platform_dict[platform])
+                platform_filter |= Q(
+                    platforms__icontains=platform_dict[platform])
 
             game_filter = Q()
             game_dict = dict(LobbyCreateForm.GAMES)
@@ -235,7 +236,8 @@ class LobbySearchView(View):
             language_dict = dict(LobbyCreateForm.LANGUAGES)
             language_choices = form.cleaned_data.get('languages')
             for language in language_choices:
-                language_filter |= Q(language__icontains=language_dict[language])
+                language_filter |= Q(
+                    language__icontains=language_dict[language])
 
             rank_filter = Q()
             rank_lo_bound = form.cleaned_data.get('rank_lower_bound')
@@ -256,10 +258,11 @@ class LobbySearchView(View):
             if match_profile and request.user.is_authenticated:
                 # match based off profile data
                 user = SquadLinkUserModel.objects.get(user=request.user)
-                user_platforms = set(map(strip, user.platforms.split(',')))
+                user_platforms = set(map(str.strip, user.platforms.split(',')))
 
                 for platform in user_platforms:
-                    platform_filter |= Q(platforms__icontains=platform_dict[platform])
+                    platform_filter |= Q(
+                        platforms__icontains=platform_dict[platform])
 
                 user_game = user.game
                 game_filter |= Q(game__icontains=game_dict[user_game])

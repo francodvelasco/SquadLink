@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Squad Search{% endblock %}
+{% block title %} Squad Search {% endblock %}
 
 {% load static %}
 {% block content %}
@@ -15,7 +15,7 @@
             {% csrf_token %}
 
             {{ search_form.as_div }}
-            <button type="submit" id="invitebutton">
+            <button type="submit" id="searchbutton">
                 Search
             </button>
         </form>
