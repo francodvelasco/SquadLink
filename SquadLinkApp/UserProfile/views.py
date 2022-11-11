@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.db.models import F
 
 from .models import SquadLinkUserModel
 from .forms import SquadLinkUserLogInForm, SquadLinkUserUpdateForm, UserBaseForm, UserAdditionalForm
@@ -108,17 +109,15 @@ class SquadLinkUserEditView(View):
                 region = form.cleaned_data.get('region')
                 bio = form.cleaned_data.get('bio')
 
-                sl_user_model = SquadLinkUserModel.objects.create(
-                    user=request.user,
-                    profile_image=profile_image,
-                    platforms=user_platforms,
-                    game=user_game,
-                    rank=rank,
-                    bio=bio,
-                    region=region
-                )
+                user_to_update = SquadLinkUserModel.objects.get(user=request.user)
+                user_to_update.profile_image = profile_image
+                user_to_update.platforms = user_platforms
+                user_to_update.game = user_game
+                user_to_update.rank = rank
+                user_to_update.region = region
+                user_to_update.bio = bio
 
-                sl_user_model.save()
+                user_to_update.save()
 
             return redirect('UserProfile:view-profile')
         else:

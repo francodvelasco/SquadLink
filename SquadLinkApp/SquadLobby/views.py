@@ -53,15 +53,15 @@ class LobbyDetailsView(View):
     def get(self, request, pk):
         page_contents = dict()
 
+        page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
+
         if request.user.is_authenticated:
             page_contents['user'] = request.user
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
             page_contents['form'] = LobbyAddMembersForm()
+            page_contents['is_member'] = page_contents['user_add'] in page_contents['lobby'].squad_members
 
-        page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
-
-        # print(page_contents['lobby'].squad_members)
         return render(request, 'squad_page.html', page_contents)
 
     def post(self, request, pk):
@@ -70,31 +70,32 @@ class LobbyDetailsView(View):
             current_user_model = SquadLinkUserModel.objects.get(
                 user=request.user)
 
-            # form = LobbyAddMembersForm(request.POST)
-
             if current_user_model == lobby.creator:
                 username_search = request.POST['username']
                 user_found = User.objects.get(username=username_search)
-                print("I am the owner: ", user_found.id)
                 user_add_found = SquadLinkUserModel.objects.get(
                     id=user_found.id-2)
 
-                # print("Being added:", user_add_found.user.id,
-                #       user_add_found.user.username, " - user_add", user_add_found.id)
-                # print("creator:", lobby.creator.user.id,
-                #       lobby.creator.user.username, "- user_add", lobby.creator.id)
-
-                if (user_add_found != lobby.creator):
+                if user_add_found and user_add_found != lobby.creator:
                     lobby.squad_members.add(user_add_found)
+                else:
+                    page_contents = dict()
+
+                    if request.user.is_authenticated:
+                        page_contents['user'] = request.user
+                        page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                            user=request.user)
+
+                    page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
+                    page_contents['no_user_found'] = True
+
+                    return render(request, 'squad_page.html', page_contents)
+
             else:
                 user_add_found = current_user_model
-                print("I am not the owner: ", user_add_found.id)
                 lobby.squad_members.add(user_add_found)
 
-            if user_add_found:
-                print(user_add_found.id)
-                # print(SquadLinkUserModel.objects.get(id=user_add.id).pk-2)
-
+            if user_add_found and len(lobby.squad_members) < lobby.squad_size:
                 lobby.save()
 
                 return self.get(request, pk)
@@ -107,7 +108,7 @@ class LobbyDetailsView(View):
                         user=request.user)
 
                 page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
-                page_contents['no_user_found'] = True
+                page_contents['max_capacity_reached'] = True
 
                 return render(request, 'squad_page.html', page_contents)
         else:
@@ -237,7 +238,7 @@ class LobbySearchView(View):
             language_choices = form.cleaned_data.get('languages')
             for language in language_choices:
                 language_filter |= Q(
-                    language__icontains=language_dict[language])
+                    language__icontains=languages_dict[language])
 
             rank_filter = Q()
             rank_lo_bound = form.cleaned_data.get('rank_lower_bound')
