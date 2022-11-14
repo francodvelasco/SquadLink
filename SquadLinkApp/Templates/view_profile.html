@@ -93,10 +93,6 @@
                 Rank: <span style="color:#00FA28">{{ user_add.rank }}</span>
             </div>
 
-            {% comment %} <div id="userdesc">Greetings! I play on SEA, NA (150ms), and JP (60ms). If you prefer it, we
-                can communicate through Discord, just chat with me. Hope we enjoy playing together! Thanks.</div>
-            {% endcomment %}
-
         </div>
 
         <div id="moregamesbg">
@@ -104,11 +100,11 @@
             <div id="moregames">More Games</div>
             <div id="moregamesphoto">
 
-                <div id="gamephoto"></div>
-                <div id="gamephoto1"></div>
-                <div id="gamephoto2"></div>
-                <div id="gamephoto3"></div>
-                <div id="gamephoto4"></div>
+                <a id="gamephoto" href="{% url 'SquadLobby:lobby-search' %}"></a>
+                <a id="gamephoto1" href="{% url 'SquadLobby:lobby-search' %}"></a>
+                <a id="gamephoto2" href="{% url 'SquadLobby:lobby-search' %}"></a>
+                <a id="gamephoto3" href="{% url 'SquadLobby:lobby-search' %}"></a>
+                <a id="gamephoto4" href="{% url 'SquadLobby:lobby-search' %}"></a>
             </div>
         </div>
     </div>
