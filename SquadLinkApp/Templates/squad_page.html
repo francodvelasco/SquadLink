@@ -115,14 +115,10 @@
                 {% if user == lobby.creator.user %}
                 <form method="post" enctype="multipart/form-data">
                     <div id="invitebar">
+                        {% csrf_token %}
 
-                        <div id="invitename">
-
-                            {% csrf_token %}
-
-                            {{ form.username.errors }}
-                            {{ form.username }}
-                        </div>
+                        {{ form.username.errors }}
+                        {{ form.username }}
                         <button type="submit" id="invitebutton">
                             Invite
                         </button>
