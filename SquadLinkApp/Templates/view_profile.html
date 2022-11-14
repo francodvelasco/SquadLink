@@ -47,7 +47,27 @@
 
         <div id="profilegame">
 
-            <div id="profilegamename">Main Game: {{ user_add.game }}</div>
+            <div id="profilegamename">Main Game:
+                <span style="color: rgb(211, 255, 224);">
+                    {% if user_add.game == "VALO" %}
+                    Valorant
+                    {% elif user_add.game == "APEX" %}
+                    Apex Legends
+                    {% elif user_add.game == "DOTA" %}
+                    DOTA 2
+                    {% elif user_add.game == "LEAG" %}
+                    League of Legends
+                    {% elif user_add.game == "MLBB" %}
+                    Mobile Legends
+                    {% elif user_add.game == "POKE" %}
+                    Pokémon Unite
+                    {% elif user_add.game == "CSGO" %}
+                    Counter-Strike: Global Offensive (CS:GO)
+                    {% elif user_add.game == "WOFW" %}
+                    World of Warcraft
+                    {% endif %}
+                </span>
+            </div>
 
             <div id="photo">
 
