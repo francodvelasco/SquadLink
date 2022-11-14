@@ -149,7 +149,7 @@ header {
 
     background: radial-gradient(100% 100% at 50% 0%, #113032 60.42%, #2C5755 100%);
     background-position: top;
-    background-blend-mode: overlay; 
+    background-blend-mode: overlay;
 }
 
 #bannertitle {
@@ -1264,7 +1264,6 @@ header {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-
 }
 
 #squadpage #squadtitle h1 {
@@ -2572,6 +2571,13 @@ header {
 
 #lobbylist .left>* {
     align-self: center;
+}
+
+#lobbylist .left img {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px rgb(255, 255, 255) dashed;
 }
 
 #lobbylist .right {
