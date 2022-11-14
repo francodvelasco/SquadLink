@@ -154,6 +154,12 @@
             <button id="readybutton">Ready!
             </button>
             <p>*Clicking ready will notify all members</p>
+
+            {% elif is_member %}
+
+            <button id="leavebutton" type="submit">Temp Leave Squad
+            </button>
+
             {% else %}
 
             <form method="post" enctype="multipart/form-data">

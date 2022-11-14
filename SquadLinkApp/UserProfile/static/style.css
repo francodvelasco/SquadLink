@@ -1734,6 +1734,23 @@ header {
     align-items: center;
 }
 
+#squadpage #readygroup #leavebutton {
+    width: 120px;
+    height: 35px;
+
+    background: #e27e50;
+    border-radius: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 18px;
+    vertical-align: baseline;
+
+    text-align: center;
+
+    color: #000000;
+}
 
 #squadpage #readygroup #readybutton {
     width: 120px;
@@ -1752,6 +1769,7 @@ header {
 
     color: #000000;
 }
+
 
 #squadpage #readygroup p {
     position: relative;
