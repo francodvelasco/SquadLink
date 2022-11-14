@@ -75,14 +75,16 @@
                             </svg>
 
                         </div>
+                        {% if user != member.user %}
                         <div class="addfriend">Add Friend</div>
+                        {% endif %}
                     </div>
 
                     {% for member in lobby.squad_members.all %}
                     <div class="member">
                         <div class="photo">
-                            <img src="{{ member.user.profile_image.url }}"
-                                alt="Profile picture of {{member.user.username}}" height="100px">
+                            <img src="{{ member.profile_image.url }}" alt="Profile picture of {{member.user.username}}"
+                                height="100px">
                         </div>
                         <div class="username">{{member.user.username}}<span></span></div>
                         <div class="settings">
@@ -100,7 +102,10 @@
                             </svg>
 
                         </div>
+                        {% if user != member.user %}
                         <div class="addfriend">Add Friend</div>
+                        {% endif %}
+
                     </div>
                     {% endfor %}
 

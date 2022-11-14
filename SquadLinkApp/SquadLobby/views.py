@@ -60,7 +60,7 @@ class LobbyDetailsView(View):
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
             page_contents['form'] = LobbyAddMembersForm()
-            page_contents['is_member'] = page_contents['user_add'] in page_contents['lobby'].squad_members
+            page_contents['is_member'] = page_contents['user_add'] in page_contents['lobby'].squad_members.all()
 
         return render(request, 'squad_page.html', page_contents)
 
