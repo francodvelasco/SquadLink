@@ -9,7 +9,39 @@
 
 <div id="lobbysearch">
     <h1>Search Squad</h1>
-    <div id="box">
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" class="searchbar">
+            {% csrf_token %}
+            <input type="text" placeholder="Search for squad names" name="q">
+            <button type="submit" id="invitebutton">Search</button>
+        </form>
+    </div>
+    <h1>Filters</h1>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" class="filters">
+            <div class="detail">
+                <Label>Game</Label><br>
+            </div>
+            <div class="detail">
+                <Label>Region</Label><br>
+            </div>
+            <div class="detail">
+                <Label>Lowest Rank</Label><br>
+                <Label>Highest Rank</Label><br>
+            </div>
+            <div class="detail">
+                <Label>Squad Size</Label><br>
+            </div>
+            <div class="detail">
+                <Label>Platforms</Label><br>
+            </div>
+            <div class="detail">
+                <Label>Languages</Label><br>
+            </div>
+            <button type="submit" id="invitebutton">Filter</button>
+        </form>
+    </div>
+    {% comment %} <div id="box">
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -26,7 +58,7 @@
                 Search
             </button>
         </form>
-    </div>
+    </div> {% endcomment %}
 </div>
 <div id="createsquadbutton"><a href="{% url 'SquadLobby:lobby-create' %}">Create Squad</a></div>
 
