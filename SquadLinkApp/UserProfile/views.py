@@ -99,6 +99,7 @@ class SquadLinkUserEditView(View):
     def post(self, request):
         if request.user.is_authenticated:
             form = UserAdditionalForm(request.POST, request.FILES)
+            user_add = SquadLinkUserModel.objects.get(user=request.user)
 
             if form.is_valid():
                 profile_image = form.cleaned_data.get('profile_image')
@@ -110,12 +111,12 @@ class SquadLinkUserEditView(View):
                 bio = form.cleaned_data.get('bio')
 
                 user_to_update = SquadLinkUserModel.objects.get(user=request.user)
-                user_to_update.profile_image = profile_image
-                user_to_update.platforms = user_platforms
-                user_to_update.game = user_game
-                user_to_update.rank = rank
-                user_to_update.region = region
-                user_to_update.bio = bio
+                user_to_update.profile_image = profile_image if profile_image else user_add.profile_image
+                user_to_update.platforms = user_platforms if user_platforms else user_add.platforms
+                user_to_update.game = user_game if user_game else user_add.game
+                user_to_update.rank = rank if rank else user_add.rank
+                user_to_update.region = region if region else user_add.region
+                user_to_update.bio = bio if bio else user_add.bio
 
                 user_to_update.save()
 
