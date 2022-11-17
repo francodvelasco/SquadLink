@@ -190,6 +190,11 @@
             {% endif %}
 
         </div>
+        <!-- For Styling -->
+        <form  method="post" id='leave-lobby-form'>
+            {% csrf_token %}
+            <input type='submit' name='leave-lobby' value='Leave Squad' />
+        </form>
     </div>
     <!-- <div id="chatbox">
             <div id="chatheader">

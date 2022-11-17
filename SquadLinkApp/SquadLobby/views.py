@@ -74,6 +74,10 @@ class LobbyDetailsView(View):
             current_user_model = SquadLinkUserModel.objects.get(
                 user=request.user)
 
+            if 'leave-lobby' in request.POST:
+                lobby.squad_members.remove(current_user_model)
+                return redirect('SquadLobby:lobby-list')
+
             if current_user_model == lobby.creator:
                 username_search = request.POST['username']
                 user_found = User.objects.get(username=username_search)
@@ -204,11 +208,32 @@ class LobbySearchView(View):
 
         page_contents['search_form'] = LobbySearchForm()
 
+        if 'game' in request.GET:
+            return self.post(request)
+
         return render(request, 'lobby_search.html', page_contents)
 
     def post(self, request):
-        form = LobbySearchForm(request.POST)
         page_contents = dict()
+
+        if request.user.is_authenticated:
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
+
+        if not request.POST and request.GET:
+            game_filter = Q()
+            game_dict = dict(LobbyCreateForm.GAMES)
+            game_choices = request.GET.get('game')
+            for game in game_choices:
+                game_filter |= Q(game__icontains=game_dict[game])
+            
+            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(
+                search_filter)
+            
+            return render(request, 'lobby_list.html', page_contents)
+
+        form = LobbySearchForm(request.POST)
 
         if form.is_valid():
             search_filter = Q()
@@ -245,7 +270,7 @@ class LobbySearchView(View):
             language_choices = form.cleaned_data.get('languages')
             for language in language_choices:
                 language_filter |= Q(
-                    language__icontains=languages_dict[language])
+                    language__icontains=language_dict[language])
 
             rank_filter = Q()
             rank_lo_bound = form.cleaned_data.get('rank_lower_bound')
@@ -282,21 +307,11 @@ class LobbySearchView(View):
             search_filter &= (platform_filter & game_filter & region_filter &
                               language_filter & rank_filter & squad_size_filter)
 
-            if request.user.is_authenticated:
-                page_contents['user'] = request.user
-                page_contents['user_add'] = SquadLinkUserModel.objects.get(
-                    user=request.user)
-
             page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(
                 search_filter)
 
             return render(request, 'lobby_list.html', page_contents)
         else:
-            if request.user.is_authenticated:
-                page_contents['user'] = request.user
-                page_contents['user_add'] = SquadLinkUserModel.objects.get(
-                    user=request.user)
-
             page_contents['search_form'] = form
             page_contents['search_error'] = 'Invalid Search Query'
 

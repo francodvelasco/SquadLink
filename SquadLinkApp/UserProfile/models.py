@@ -12,6 +12,7 @@ def profile_image_location(request, filename):
 
 class SquadLinkUserModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    friends = models.ManyToManyField('self', blank=True, null=True)
     profile_image = models.ImageField(
         upload_to="upload/", null=True, blank=True)
     platforms = models.CharField(max_length=100, blank=True)

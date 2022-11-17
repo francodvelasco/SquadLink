@@ -89,6 +89,8 @@ class SquadLinkLobby(models.Model):
             lang_dict = dict(LobbyCreateForm.LANGUAGES)
             form_content['languages'] = ', '.join(
                 map(lambda code: lang_dict[code], form_content.get('languages')))
+            
+            form_content['rank_higher_bound'] = form_content.get('rank_upper_bound')
 
             for key, value in form_content.items():
                 setattr(self, key, value)
