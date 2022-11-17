@@ -18,7 +18,7 @@
 
             {% if user == lobby.creator.user %}
             <div id="squadbuttons">
-                <a href={% url 'SquadLobby:lobby-edit' pk=lobby.pk %}>
+                <a href="{% url 'SquadLobby:lobby-edit' pk=lobby.pk %}">
                     <div id="customize"><svg width="21" height="22" viewBox="0 0 21 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.9479 2.70312L18.2162 7.20854L7.11863 18.9226H2.85034V14.4172L13.9479 2.70312Z"
@@ -152,7 +152,7 @@
                     <p>Region: {{ lobby.region }}</p>
                     <p>Platforms: {{ lobby.platforms }}</p>
                     <p>Languages: {{ lobby.languages }}</p>
-                    <p>Lobby Size: {{ lobby.squad_size }}-stack</p>
+                    <p>Lobby Size: {{ lobby.squad_members.all|length|add:"1" }}/{{ lobby.squad_size }}</p>
                 </div>
                 <div id="description">
                     <h3>Description</h3>
@@ -174,6 +174,11 @@
             <button id="leavebutton" type="submit">Temp Leave Squad
             </button>
 
+            {% elif max_capacity_reached %}
+
+            <button id="leavebutton" type="submit" style="background-color:gray">Squad Full
+            </button>
+
             {% else %}
 
             <form method="post" enctype="multipart/form-data">
@@ -183,6 +188,7 @@
             </form>
 
             {% endif %}
+
         </div>
     </div>
     <!-- <div id="chatbox">

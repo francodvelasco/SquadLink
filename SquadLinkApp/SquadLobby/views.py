@@ -53,7 +53,8 @@ class LobbyDetailsView(View):
     def get(self, request, pk):
         page_contents = dict()
 
-        page_contents['lobby'] = SquadLinkLobby.custom_manager.get(pk=pk)
+        lobby = SquadLinkLobby.custom_manager.get(pk=pk)
+        page_contents['lobby'] = lobby
 
         if request.user.is_authenticated:
             page_contents['user'] = request.user
@@ -61,6 +62,9 @@ class LobbyDetailsView(View):
                 user=request.user)
             page_contents['form'] = LobbyAddMembersForm()
             page_contents['is_member'] = page_contents['user_add'] in page_contents['lobby'].squad_members.all()
+
+            page_contents['max_capacity_reached'] = len(
+                lobby.squad_members.all())+1 >= lobby.squad_size
 
         return render(request, 'squad_page.html', page_contents)
 
@@ -86,16 +90,17 @@ class LobbyDetailsView(View):
                         page_contents['user_add'] = SquadLinkUserModel.objects.get(
                             user=request.user)
 
-                    page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
+                    page_contents['lobby'] = SquadLinkLobby.custom_manager.get(
+                        pk=pk)
                     page_contents['no_user_found'] = True
 
                     return render(request, 'squad_page.html', page_contents)
 
             else:
                 user_add_found = current_user_model
-                lobby.squad_members.add(user_add_found)
 
-            if user_add_found and len(lobby.squad_members) < lobby.squad_size:
+            if user_add_found and len(lobby.squad_members.all())+1 < lobby.squad_size:
+                lobby.squad_members.add(user_add_found)
                 lobby.save()
 
                 return self.get(request, pk)
@@ -107,7 +112,8 @@ class LobbyDetailsView(View):
                     page_contents['user_add'] = SquadLinkUserModel.objects.get(
                         user=request.user)
 
-                page_contents['lobby'] = SquadLinkLobby.objects.get(pk=pk)
+                page_contents['lobby'] = SquadLinkLobby.custom_manager.get(
+                    pk=pk)
                 page_contents['max_capacity_reached'] = True
 
                 return render(request, 'squad_page.html', page_contents)
@@ -115,6 +121,7 @@ class LobbyDetailsView(View):
             return redirect('UserProfile:sign-in')
 
 
+# Now unused?
 class LobbyListView(View):
     def get(self, request):
         page_contents = dict()
