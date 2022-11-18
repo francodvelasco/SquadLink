@@ -405,11 +405,11 @@ header {
     position: absolute;
     width: 180px;
     height: 40px;
-    top: 170%;
+    top: 172%;
     left: calc(50% - 200px/2 + 2.5px);
 
     background: #501f3aec;
-    border: 0.5px solid #ffffff60;
+    border: 1px solid #ffffff90;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
@@ -423,7 +423,7 @@ header {
     text-align: center;
     margin: auto;
 
-    color: #ffffffb7;
+    color: #ffffff;
 }
 
 #stickybottom {
@@ -440,11 +440,21 @@ header {
 }
 
 /* register.html */
+#registerbg {
+    position: absolute;
+    width: 105%;
+    height: 100%;
+    left: -2%;
+    top: 8%;
+    background: url(assets/lowpoly2.svg);
+    background-repeat: repeat-y;
+}
+
 #registerbox {
     position: absolute;
     left: 33.61%;
     right: 33.61%;
-    top: 10%;
+    top: 12%;
 
     background: #EFEFEF;
     mix-blend-mode: normal;
@@ -558,11 +568,22 @@ header {
 
 
 /* signin.html */
+#loginbg {
+    position: absolute;
+    width: 105%;
+    height: 100vh;
+    left: -2%;
+    top: 79px;
+    background: url(assets/lowpoly.svg);
+    background-size: cover;
+    background-repeat: repeat-y;
+}
 
 #signinsubmit {
     box-sizing: border-box;
     flex-grow: 0;
     height: 60px;
+    width: 100px;
     margin: 15px 0 20px 0;
 
     background: #00A02D;
@@ -598,12 +619,10 @@ header {
 #custombg {
     position: absolute;
     width: 105%;
-    height: 105%;
+    height: 100vh;
     left: -2%;
-
-    z-index: -1;
-
-    background: linear-gradient(180deg, #2C2F33 0%, #CB2D6F 210.74%);
+    top: 79px;
+    background: url(assets/wavy.svg);
     background-blend-mode: overlay;
     background-size: cover;
 }
@@ -620,25 +639,22 @@ header {
     width: 1066px;
     height: 860px;
     left: calc(50% - 1066px/2 + 3px);
-    top: 124px;
+    top: 100px;
 
 }
 
 #profilebg {
-
     width: 435px;
-    height: 860px;
-
-    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
+    height: 800px;
+    background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
+    outline: 2px solid #31C89F;
     border-radius: 34px;
 }
 
-
 #profilecover {
-
     position: absolute;
     width: 435px;
-    height: 215px;
+    height: 190px;
     left: calc(50% - 435px/2 - 315.5px);
     top: 0px;
 
@@ -653,7 +669,7 @@ header {
     width: 167px;
     height: 167px;
     left: calc(50% - 167px/2 - 315.5px);
-    top: 107px;
+    top: 72px;
     border-radius: 50%;
     aspect-ratio: 1/1;
 }
@@ -666,18 +682,16 @@ header {
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    border: 4px double white;
+    border: 4px double #31C89F;
     aspect-ratio: 1/1;
     object-fit: cover;
 }
 
 #profilename {
-
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 800;
     font-size: 30px;
-    line-height: 80px;
 
     align-items: center;
     text-align: center;
@@ -737,11 +751,8 @@ header {
     width: 615px;
     height: 486px;
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
-    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
+    background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
+    outline: 2px solid #31C89F;
     border-radius: 34px;
 }
 
@@ -771,6 +782,7 @@ header {
     border-radius: 10px;
     background-size: cover;
     background-position: center;
+    outline: 2px solid #31C89F;
 }
 
 #valogamephoto {
@@ -880,7 +892,7 @@ header {
     width: 435px;
     height: 521px;
     left: calc(50% - 435px/2 - 315.5px);
-    top: 286px;
+    top: 250px;
 
     font-family: 'Outfit';
     font-style: normal;
@@ -890,7 +902,7 @@ header {
 
     text-align: center;
 
-    color: #FFFFFF;
+    color: #e8e8e8;
 }
 
 #wrapper1 #detailsleft>* {
@@ -911,7 +923,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 31px;
+    gap: 30px;
 
     width: 391px;
     height: 45px;
@@ -961,7 +973,8 @@ header {
     order: 0;
     flex-grow: 0;
 
-    background: linear-gradient(180deg, #080525 23.96%, #2B2847 100%);
+    background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
+    outline: 2px solid #31C89F;
     border-radius: 34px;
 }
 
@@ -1172,9 +1185,7 @@ header {
     color: #FFFFFF;
 }
 
-
 /* squad_page.html */
-
 #squadpage {
     display: flex;
     flex-direction: row;

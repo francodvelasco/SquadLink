@@ -5,7 +5,7 @@
 {% block content %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <div id="imgtop"></div>
+    <div id="loginbg"></div>
     <div id="registerbox">
         <h2 id="registertitle">Create your account</h2>
         {{ user_forms.non_field_errors }}
@@ -75,7 +75,7 @@
 
         <button type="submit" id="registersubmit">Register</button>
 
-        <div id="alreadyaccount">Already have an account? <a href="{% url 'UserProfile:sign-in' %}">Sign in</a></div>
+        <div id="alreadyaccount">Already have an account? <a href="{% url 'UserProfile:sign-in' %}" style="color:blue">Sign in</a></div>
     
     </div>
 

@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div id="imgtop"></div>
+<div id="loginbg"></div>
 
 <div id="registerbox">
     <form method="post">
@@ -24,7 +24,7 @@
 
         <button type="submit" id="signinsubmit">Log In</button>
     </form>
-    <div id="noaccount">Don't have an account? <a href="{% url 'UserProfile:register' %}">Register</a></div>
+    <div id="noaccount">Don't have an account? <a href="{% url 'UserProfile:register' %}" style="color:blue">Register</a></div>
 
 </div>
 
