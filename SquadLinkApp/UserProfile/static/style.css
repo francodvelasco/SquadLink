@@ -646,9 +646,15 @@ header {
 #profilebg {
     width: 435px;
     height: 800px;
+}
+
+#profilebgcolor {
+    width: 435px;
+    height: 800px;
     background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     outline: 2px solid #31C89F;
     border-radius: 34px;
+    backdrop-filter: blur(10px);
 }
 
 #profilecover {
@@ -723,7 +729,6 @@ header {
 }
 
 #message {
-
     box-sizing: border-box;
     flex-grow: 1;
 
@@ -748,41 +753,44 @@ header {
 
 #profilegame {
     position: relative;
-    width: 615px;
-    height: 486px;
-
+    width: 330px;
+    height: 576px;
+    left: -140px;
     background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     outline: 2px solid #31C89F;
     border-radius: 34px;
+    backdrop-filter: blur(10px);
 }
 
 #profilegamename {
     position: absolute;
-    width: 372px;
-    height: 36px;
-    left: calc(50% - 372px/2 - 79.5px);
-    top: 36px;
+    width: 227px;
+    height: 72px;
+    left: 50px;
+    top: 15px;
 
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
-    line-height: 30px;
+    line-height: 40px;
+    text-align: center;
 
     color: #FFFFFF;
 }
 
 #profilegame>#photo>* {
     position: absolute;
-    width: 198px;
-    height: 319.2px;
-    left: calc(50% - 198px/2 - 163.5px);
-    top: 103px;
+    width: 196px;
+    height: 265px;
+    left: 70px;
+    top: 110px;
 
     border-radius: 10px;
     background-size: cover;
     background-position: center;
     outline: 2px solid #31C89F;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 #valogamephoto {
@@ -821,17 +829,16 @@ header {
 #usernamerank {
     position: absolute;
     width: 288px;
-    height: 120px;
-    left: calc(50% - 288px/2 + 121.5px);
-    top: 103.2px;
+    height: 101px;
+    left: 20px;
+    top: 380px;
 
-    width: 288px;
-    height: 120px;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
     line-height: 50px;
+    text-align: center;
 
     color: #FFFFFF;
 }
@@ -885,7 +892,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    gap: 5px;
+    gap: 0px;
     isolation: isolate;
 
     position: absolute;
@@ -958,6 +965,36 @@ header {
     align-items: center;
 }
 
+#friendslist {
+    position: absolute;
+    width: 270px;
+    height: 481px;
+    left: calc(50% - 330px/2 + 433px);
+    top: 0px;
+
+    background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
+    outline: 2px solid #31C89F;
+    border-radius: 34px;
+    backdrop-filter: blur(10px);
+}
+
+#friendstitle {
+    position: absolute;
+    width: 227px;
+    height: 72px;
+    left: 25px;
+    top: 15px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 40px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
 #moregamesbg {
     display: flex;
     flex-direction: column;
@@ -976,6 +1013,7 @@ header {
     background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     outline: 2px solid #31C89F;
     border-radius: 34px;
+    backdrop-filter: blur(10px);
 }
 
 #moregames {
