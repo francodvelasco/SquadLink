@@ -153,7 +153,6 @@ class SquadLinkUserLogInView(View):
 
         return render(request, 'login.html', page_contents)
 
-
 class SquadLinkUserView(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -165,6 +164,20 @@ class SquadLinkUserView(View):
             return render(request, 'view_profile.html', page_contents)
         else:
             return redirect('UserProfile:sign-in')
+
+class SquadLinkExternalUserView(View):
+    def get(self, request, username):
+        page_contents = dict()
+
+        if request.user.is_authenticated:
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
+        
+        page_contents['username_to_view'] = username
+        page_contents['user_to_view'] = SquadLinkUserModel.objects.get(user__username=username)
+        page_contents['viewing_user_only'] = True
+
+        return render(request, 'FILE-NAME.html', page_contents)
 
 class SquadLinkUserSquadsView(View):
     def get(self, request):
