@@ -1130,7 +1130,7 @@ header {
 
 #friendslist #members .member .addfriend {
     position: absolute;
-    width: 65px;
+    width: 35px;
     height: 17px;
     right: 10px;
     bottom: 10px;
@@ -1139,7 +1139,7 @@ header {
     font-style: normal;
     font-weight: 600;
     font-size: 10px;
-    line-height: 16px;
+    line-height: 18px;
 
     text-align: center;
 
@@ -1777,7 +1777,7 @@ header {
 
 #squadpage #members .member .addfriend {
     position: absolute;
-    width: 65px;
+    width: 35px;
     height: 17px;
     right: 10px;
     bottom: 10px;
@@ -2717,7 +2717,7 @@ header {
 
 #editsquad #members .member .addfriend {
     position: absolute;
-    width: 65px;
+    width: 35px;
     height: 17px;
     right: 10px;
     bottom: 10px;

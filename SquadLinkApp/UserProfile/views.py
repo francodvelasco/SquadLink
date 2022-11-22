@@ -205,7 +205,7 @@ class SquadLinkUserSquadsView(View):
 
 
 class SquadLinkAddFriendsHandler(View):
-    def post(self, request, sender, receiver):
+    def get(self, request, sender, receiver):
         if not request.user.is_authenticated and sender == receiver:
             return redirect('UserProfile:view-profile')
 
@@ -213,13 +213,13 @@ class SquadLinkAddFriendsHandler(View):
         user_to_friend = SquadLinkUserModel.objects.get(id=receiver)
 
         user_friending.requests_sent.add(user_to_friend)
-        user_to_friend.requests_received.add(user_to_friend)
+        user_to_friend.requests_received.add(user_friending)
 
-        return redirect('UserProfile:view-profile')
+        return redirect(request.META.get('HTTP_REFERER'))
 
 
 class SquadLinkConfirmFriendsHandler(View):
-    def post(self, request, sender, receiver):
+    def get(self, request, sender, receiver):
         user_friending = SquadLinkUserModel.objects.get(id=sender)
         user_to_friend = SquadLinkUserModel.objects.get(id=receiver)
 
@@ -229,4 +229,4 @@ class SquadLinkConfirmFriendsHandler(View):
         user_to_friend.friends.add(user_friending)
         user_friending.friends.add(user_to_friend)
 
-        return redirect('UserProfile:view-profile')
+        return redirect(request.META.get('HTTP_REFERER'))
