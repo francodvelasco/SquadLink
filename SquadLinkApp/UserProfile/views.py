@@ -229,10 +229,8 @@ class SquadLinkConfirmFriendsHandler(View):
         user_to_friend.friends.add(user_friending)
         user_friending.friends.add(user_to_friend)
 
-<<<<<<< HEAD
         return redirect(request.META.get('HTTP_REFERER'))
-=======
-        return redirect('UserProfile:view-profile')
+
 
 class SquadLinkRejectRequestHandler(View):
     def get(self, request, sender, receiver):
@@ -241,6 +239,5 @@ class SquadLinkRejectRequestHandler(View):
 
         user_to_friend.requests_received.delete(user_friending)
         user_friending.requests_sent.delete(user_to_friend)
-        
-        return redirect('UserProfile:view-profile')
->>>>>>> 67517aeb9444f9aa599c54daa49e791e158ff10c
+
+        return redirect(request.META.get('HTTP_REFERER'))
