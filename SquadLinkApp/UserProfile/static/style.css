@@ -751,23 +751,32 @@ header {
     cursor: pointer;
 }
 
+#wrapperright * {
+    border: 1px solid red;
+}
+
 #profilegame {
     position: relative;
     width: 330px;
-    height: 576px;
+    height: 100%;
     left: -140px;
     background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     outline: 2px solid #31C89F;
     border-radius: 34px;
     backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+}
+
+#profilegame>* {
+    flex: none;
 }
 
 #profilegamename {
-    position: absolute;
-    width: 227px;
-    height: 72px;
-    left: 50px;
-    top: 15px;
+    width: 100%;
 
     font-family: 'Outfit';
     font-style: normal;
@@ -779,18 +788,34 @@ header {
     color: #FFFFFF;
 }
 
-#profilegame>#photo>* {
-    position: absolute;
-    width: 196px;
-    height: 265px;
-    left: 70px;
-    top: 110px;
+#profilegame>#photo {
+    width: 100%;
+    width: 58%;
+    flex: 1 1;
+}
 
+#profilegame>#photo>* {
+    height: 100%;
     border-radius: 10px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     outline: 2px solid #31C89F;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+}
+
+#usernamerank {
+    width: 100%;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 50px;
+    text-align: center;
+
+    color: #FFFFFF;
 }
 
 #valogamephoto {
@@ -826,22 +851,6 @@ header {
     background: url(assets/wow.jpg);
 }
 
-#usernamerank {
-    position: absolute;
-    width: 288px;
-    height: 101px;
-    left: 20px;
-    top: 380px;
-
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 50px;
-    text-align: center;
-
-    color: #FFFFFF;
-}
 
 #userdesc {
     width: 301px;
@@ -994,6 +1003,179 @@ header {
 
     color: #FFFFFF;
 }
+
+#friendslist #members #memberlist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+    isolation: isolate;
+
+    position: relative;
+    width: 100%;
+    height: 20%;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+
+    overflow: auto;
+    border-radius: 20px;
+}
+
+#friendslist #members .member {
+    position: relative;
+    width: 100%;
+    height: 150px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+
+    background: linear-gradient(360deg, rgba(174, 56, 253, 0.356) 3.95%, rgba(51, 152, 209, 0) 100%);
+
+    mix-blend-mode: normal;
+    border-radius: 20px;
+}
+
+
+#friendslist #members .member .photo {
+    position: absolute;
+    height: 65%;
+    aspect-ratio: 1/1;
+    left: 3%;
+    top: 0;
+
+    border-radius: 20px;
+    border: 1px dotted gray;
+}
+
+#friendslist #members .member .photo img {
+
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#friendslist #members .member .username {
+    position: absolute;
+    height: 24px;
+    left: 3%;
+    bottom: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 80px;
+    /* or 533% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#friendslist #members .member .settings {
+    position: absolute;
+    height: 18px;
+    right: 5.84%;
+    top: 5px;
+}
+
+#friendslist #members .member .addfriend {
+    position: absolute;
+    width: 65px;
+    height: 17px;
+    right: 10px;
+    bottom: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+
+    text-align: center;
+
+    color: #1A1A1A;
+
+    background: #8AE969;
+    border-radius: 10px;
+}
+
+#friendslist #members #invitebar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    position: relative;
+    width: 100%;
+    height: 33px;
+    left: 0;
+    bottom: 10px;
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    z-index: 4;
+}
+
+#friendslist #members #invitebar #id_username {
+    box-sizing: border-box;
+
+    height: 30px;
+    padding-left: 5px;
+
+    background: #FFFFFF;
+
+    border: 2px solid #AAAAAA;
+    border-radius: 4px;
+
+    flex: 1 1;
+    order: 0;
+    flex-grow: 1;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 30px;
+
+    color: #111111;
+
+}
+
+#friendslist #members #invitebar #invitebutton {
+    width: 73px;
+    height: 30px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 23px;
+
+    text-align: center;
+
+    color: #F0F0F0;
+
+    background: #47A588;
+    border-radius: 10px;
+}
+
+/*  */
 
 #moregamesbg {
     display: flex;
