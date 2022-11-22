@@ -117,6 +117,11 @@ header {
     cursor: pointer;
 }
 
+#rightheader>div,
+#rightheader>a:hover {
+    color: rgb(82, 220, 255);
+}
+
 #rightheader>a {
     all: none;
     text-decoration: none;
@@ -2770,22 +2775,24 @@ header {
 
 #lobbylist h1 {
     text-align: center;
-    font-style: normal;
+    font-style: bold;
     font-weight: 800;
     font-size: 48px;
     margin: 0px 0 5px 0;
 
     color: #FFFFFF;
     flex: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #lobbylist #box {
     position: relative;
-    width: 80%;
+    width: 60%;
     max-width: 1200px;
     min-width: 800px;
-    background: linear-gradient(180deg, #0F292F 0%, #292F3F 100%);
+    background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     border-radius: 34px;
+    backdrop-filter: blur(10px);
     padding: 25px;
 
     max-height: calc(100% - 80px);
@@ -2793,6 +2800,7 @@ header {
     flex: none;
     overflow-y: auto;
 }
+
 
 #lobbylist ul {
     color: #FFFFFF;
@@ -2811,6 +2819,7 @@ header {
     text-decoration: inherit;
     margin: 0 0 20px 0;
     background: linear-gradient(140deg, #58a2b3 0%, #a31d8d 100%);
+    backdrop-filter: blur(10px);
     border-radius: 34px;
     padding: 25px;
 
@@ -2821,6 +2830,7 @@ header {
 
 #lobbylist .owned {
     background: linear-gradient(140deg, rgb(153, 19, 41) 0%, #c780bb 100%);
+    backdrop-filter: blur(10px);
     border: 3px solid #3a0707;
     box-shadow: 2px 2px 5px #2c1a1a;
 }
@@ -2992,4 +3002,109 @@ header {
     align-items: center;
     border-radius: 20px;
     padding: 10px 20px;
+}
+
+#mysquads {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+
+    height: calc(100% - 150px);
+}
+
+#mysquads #box {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    min-width: 800px;
+    background: linear-gradient(180deg, #0F292F 0%, #292F3F 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    max-height: calc(100% - 80px);
+
+    flex: none;
+    overflow-y: auto;
+}
+
+#mysquads ul {
+    color: #FFFFFF;
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0;
+    height: auto;
+
+    margin: 0;
+}
+
+#mysquads a {
+    padding: 0px;
+    margin: 0px;
+    color: inherit;
+    text-decoration: inherit;
+    margin: 0 0 20px 0;
+    background: linear-gradient(140deg, #58a2b3 0%, #a31d8d 100%);
+    border-radius: 34px;
+    padding: 25px;
+
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+#mysquads .owned {
+    background: linear-gradient(140deg, rgb(153, 19, 41) 0%, #c780bb 100%);
+    border: 3px solid #3a0707;
+    box-shadow: 2px 2px 5px #2c1a1a;
+}
+
+#mysquads li {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+    width: 100%;
+    margin: 0;
+}
+
+#mysquads li>div {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#mysquads h3 {
+    margin: 0;
+    text-align: center;
+}
+
+#mysquads .left {
+    text-align: center;
+}
+
+#mysquads .left>* {
+    align-self: center;
+}
+
+#mysquads .left img {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px rgb(255, 255, 255) dashed;
+}
+
+#mysquads .right {
+    gap: 10px;
+}
+
+#mysquads .right p {
+    margin: 0;
 }

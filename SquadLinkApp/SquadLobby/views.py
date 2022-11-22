@@ -146,6 +146,27 @@ class LobbyListView(View):
 
         return render(request, 'lobby_list.html', page_contents)
 
+#temporary
+class MyLobbyListView(View):
+    def get(self, request):
+        page_contents = dict()
+
+        if request.user.is_authenticated:
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
+
+        if request.GET.get('from_friends'):
+            friend_filter = Q()
+            for friend in page_contents['user_add'].friends.all():
+                friend_filter |= Q(creator=friend)
+            
+            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(friend_filter)
+        else:
+            page_contents['lobbies'] = SquadLinkLobby.custom_manager.all()
+
+        return render(request, 'mylobby_list.html', page_contents)
+
 
 class LobbyEditView(View):
     def get(self, request, pk):

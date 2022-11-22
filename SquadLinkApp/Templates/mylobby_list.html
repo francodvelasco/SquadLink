@@ -5,18 +5,15 @@
 {% load static %}
 {% block content %}
 
-<div id="custombg"></div>
+<div id="regbg"></div>
 
 <div id="lobbylist">
-    <h1>Squads</h1>
+    <h1>My Squads</h1>
     <div id="box">
         <ul>
             {% for lobby in lobbies %}
-            {% if user == lobby.creator.user %}
-            <a class="owned" href={% url 'SquadLobby:lobby-details' pk=lobby.pk %}>
-                {% else %}
+            {% if user_add in lobby.squad_members.all %}
                 <a href={% url 'SquadLobby:lobby-details' pk=lobby.pk %}>
-                    {% endif %}
                     <li>
                         <div class="left">
                             <h3>{{ lobby.squad_name }}</h3>
@@ -33,7 +30,8 @@
                         </div>
                     </li>
                 </a>
-                {% endfor %}
+            {% endif %}
+            {% endfor %}    
 
         </ul>
     </div>
