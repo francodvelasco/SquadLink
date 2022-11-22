@@ -751,15 +751,11 @@ header {
     cursor: pointer;
 }
 
-#wrapperright * {
-    border: 1px solid red;
-}
 
 #profilegame {
     position: relative;
     width: 330px;
     height: 100%;
-    left: -140px;
     background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     outline: 2px solid #31C89F;
     border-radius: 34px;
@@ -951,8 +947,10 @@ header {
     justify-content: center;
     align-items: center;
     padding: 0px;
+    padding-top: 18px;
     gap: 28px;
 
+    position: relative;
     width: 615px;
     height: 771px;
 
@@ -962,6 +960,15 @@ header {
     flex: none;
     order: 1;
     flex-grow: 0;
+}
+
+#wrapperright>#wrapperrighttop {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    gap: 20px;
+
+    flex: 1 1;
 }
 
 #profilebuttons {
@@ -975,33 +982,48 @@ header {
 }
 
 #friendslist {
-    position: absolute;
-    width: 270px;
-    height: 481px;
-    left: calc(50% - 330px/2 + 433px);
-    top: 0px;
-
+    position: relative;
+    height: 100%;
     background: linear-gradient(180deg, rgba(8, 5, 37, 0.6) 23.96%, rgba(43, 40, 71, 0.6) 100%);
     outline: 2px solid #31C89F;
     border-radius: 34px;
     backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+
+    flex: auto;
 }
 
+
 #friendstitle {
-    position: absolute;
-    width: 227px;
-    height: 72px;
-    left: 25px;
-    top: 15px;
+    width: 100%;
 
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
-    line-height: 40px;
     text-align: center;
 
     color: #FFFFFF;
+    flex: none;
+}
+
+#friendslist #members {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 15px;
+    isolation: isolate;
+
+    width: 100%;
+
+    flex: 1 1;
+    overflow: auto;
+    order: 0;
+    align-self: stretch;
+    border-radius: 30px;
 }
 
 #friendslist #members #memberlist {
@@ -1021,8 +1043,6 @@ header {
     align-self: stretch;
     flex-grow: 1;
 
-    overflow: auto;
-    border-radius: 20px;
 }
 
 #friendslist #members .member {
@@ -1085,6 +1105,27 @@ header {
     height: 18px;
     right: 5.84%;
     top: 5px;
+}
+
+#friendslist #members .member .messagefriend {
+    position: absolute;
+    width: 65px;
+    height: 17px;
+    right: 10px;
+    bottom: 10px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    background: #2584B9;
+    border-radius: 10px;
 }
 
 #friendslist #members .member .addfriend {
@@ -1153,7 +1194,7 @@ header {
 
 }
 
-#friendslist #members #invitebar #invitebutton {
+#friendslist #invitebar #invitebutton {
     width: 73px;
     height: 30px;
 

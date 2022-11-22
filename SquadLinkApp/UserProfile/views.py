@@ -110,7 +110,8 @@ class SquadLinkUserEditView(View):
                 region = form.cleaned_data.get('region')
                 bio = form.cleaned_data.get('bio')
 
-                user_to_update = SquadLinkUserModel.objects.get(user=request.user)
+                user_to_update = SquadLinkUserModel.objects.get(
+                    user=request.user)
                 user_to_update.profile_image = profile_image if profile_image else user_add.profile_image
                 user_to_update.platforms = user_platforms if user_platforms else user_add.platforms
                 user_to_update.game = user_game if user_game else user_add.game
@@ -153,6 +154,7 @@ class SquadLinkUserLogInView(View):
 
         return render(request, 'login.html', page_contents)
 
+
 class SquadLinkUserView(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -165,19 +167,26 @@ class SquadLinkUserView(View):
         else:
             return redirect('UserProfile:sign-in')
 
+
 class SquadLinkExternalUserView(View):
     def get(self, request, username):
         page_contents = dict()
 
         if request.user.is_authenticated:
             page_contents['user'] = request.user
-            page_contents['user_add'] = SquadLinkUserModel.objects.get(user=request.user)
-        
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
+
         page_contents['username_to_view'] = username
-        page_contents['user_to_view'] = SquadLinkUserModel.objects.get(user__username=username)
+        page_contents['user_to_view'] = SquadLinkUserModel.objects.get(
+            user__username=username)
         page_contents['viewing_user_only'] = True
 
-        return render(request, 'FILE-NAME.html', page_contents)
+        if page_contents['user_add'] == page_contents['user_to_view']:
+            return redirect('UserProfile:view-profile')
+
+        return render(request, 'view_external_user.html', page_contents)
+
 
 class SquadLinkUserSquadsView(View):
     def get(self, request):
@@ -194,6 +203,7 @@ class SquadLinkUserSquadsView(View):
         else:
             return redirect('UserProfile:sign-in')
 
+
 class SquadLinkAddFriendsHandler(View):
     def post(self, request, sender, receiver):
         if not request.user.is_authenticated and sender == receiver:
@@ -206,6 +216,7 @@ class SquadLinkAddFriendsHandler(View):
         user_to_friend.requests_received.add(user_to_friend)
 
         return redirect('UserProfile:view-profile')
+
 
 class SquadLinkConfirmFriendsHandler(View):
     def post(self, request, sender, receiver):

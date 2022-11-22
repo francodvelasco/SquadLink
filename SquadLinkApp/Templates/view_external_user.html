@@ -10,32 +10,22 @@
     <div id="profilebg">
         <div id="profilebgcolor"></div>
         <div id="profilecover"></div>
-        <div id="settingsbutton">
-            <a href={% url 'UserProfile:edit-profile' %}>
-
-                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11.5 1.375L15.25 5.33333L5.5 15.625H1.75V11.6667L11.5 1.375Z" stroke="white"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                Customize
-            </a>
-        </div>
 
         <div id="profilepic">
-            <img src="{{ user_add.profile_image.url }}" alt="Profile Image of {{ user.username }}" width="192"
+            <img src="{{ user_to_view.profile_image.url }}" alt="Profile Image of {{ user.username }}" width="192"
                 height="192">
         </div>
 
         <div id="detailsleft">
-            <div id="profilename">{{user.username}}</div>
-            <p><u>Bio</u><br>{{ user_add.bio }}</p>
-            <p><u>Region</u><br>{{ user_add.region }}</p>
-            <p><u>Platforms</u><br>{{ user_add.platforms }}</p>
+            <div id="profilename">{{user_to_view.username}}</div>
+            <p><u>Bio</u><br>{{ user_to_view.bio }}</p>
+            <p><u>Region</u><br>{{ user_to_view.region }}</p>
+            <p><u>Platforms</u><br>{{ user_to_view.platforms }}</p>
             <br>
-            <!-- <div id="wrapperbuttons">
+            <div id="wrapperbuttons">
                 <div id="addfriend">Add Friend</div>
                 <div id="message">Message</div>
-            </div> -->
+            </div>
         </div>
     </div>
 
@@ -46,49 +36,49 @@
                 <div id="profilegamename">
                     Main Game:<br>
                     <span style="color: rgb(211, 255, 224);">
-                        {% if user_add.game == "VALO" %}
+                        {% if user_to_view.game == "VALO" %}
                         Valorant
-                        {% elif user_add.game == "APEX" %}
+                        {% elif user_to_view.game == "APEX" %}
                         Apex Legends
-                        {% elif user_add.game == "DOTA" %}
+                        {% elif user_to_view.game == "DOTA" %}
                         DOTA 2
-                        {% elif user_add.game == "LEAG" %}
+                        {% elif user_to_view.game == "LEAG" %}
                         League of Legends
-                        {% elif user_add.game == "MLBB" %}
+                        {% elif user_to_view.game == "MLBB" %}
                         Mobile Legends
-                        {% elif user_add.game == "POKE" %}
+                        {% elif user_to_view.game == "POKE" %}
                         Pokémon Unite
-                        {% elif user_add.game == "CSGO" %}
+                        {% elif user_to_view.game == "CSGO" %}
                         Counter-Strike: Global Offensive (CS:GO)
-                        {% elif user_add.game == "WOFW" %}
+                        {% elif user_to_view.game == "WOFW" %}
                         World of Warcraft
                         {% endif %}
                     </span>
                 </div>
 
                 <div id="photo">
-                    {% if user_add.game == "VALO" %}
+                    {% if user_to_view.game == "VALO" %}
                     <div id="valogamephoto"></div>
-                    {% elif user_add.game == "APEX" %}
+                    {% elif user_to_view.game == "APEX" %}
                     <div id="apexgamephoto"></div>
-                    {% elif user_add.game == "DOTA" %}
+                    {% elif user_to_view.game == "DOTA" %}
                     <div id="dotagamephoto"></div>
-                    {% elif user_add.game == "LEAG" %}
+                    {% elif user_to_view.game == "LEAG" %}
                     <div id="lolgamephoto"></div>
-                    {% elif user_add.game == "MLBB" %}
+                    {% elif user_to_view.game == "MLBB" %}
                     <div id="mlbbgamephoto"></div>
-                    {% elif user_add.game == "POKE" %}
+                    {% elif user_to_view.game == "POKE" %}
                     <div id="pokegamephoto"></div>
-                    {% elif user_add.game == "CSGO" %}
+                    {% elif user_to_view.game == "CSGO" %}
                     <div id="csgogamephoto"></div>
-                    {% elif user_add.game == "WOFW" %}
+                    {% elif user_to_view.game == "WOFW" %}
                     <div id="wofwgamephoto"></div>
                     {% endif %}
                 </div>
 
                 <div id="usernamerank">
                     <!-- Tagline: <span style="color:#4D7EFF">{{ user.username }}</span><br> -->
-                    Rank: <span style="color:#00FA28">{{ user_add.rank }}</span>
+                    Rank: <span style="color:#00FA28">{{ user_to_view.rank }}</span>
                 </div>
 
             </div>
@@ -99,12 +89,11 @@
                 <div id="members">
 
 
-                    {% for friend in user_add.friends.all %}
-                    {% if user != friend.user %}
+                    {% for friend in user_to_view.friends.all %}
+                    {% if user_to_view != friend.user %}
                     <div class="member">
                         <div class="photo">
                             <a href="{% url 'UserProfile:view-external-profile' username=friend.user.username%}">
-
                                 <img src="{{ friend.profile_image.url }}"
                                     alt="Profile picture of {{member.user.username}}" height="100px">
                             </a>
@@ -127,7 +116,9 @@
                                     stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <div class="messagefriend">Message</div>
+                        {% if user != friend.user %}
+                        <div class="addfriend">Add</div>
+                        {% endif %}
 
                     </div>
                     {% endif %}

@@ -55,10 +55,14 @@
 
                     <div class="member">
                         <div class="photo">
-                            <img src="{{ lobby.creator.profile_image.url }}"
-                                alt="Profile picture of {{lobby.creator.user.username}}" height="100px">
+                            <a href="{% url 'UserProfile:view-external-profile' username=lobby.creator.user.username%}">
+                                <img src="{{ lobby.creator.profile_image.url }}"
+                                    alt="Profile picture of {{lobby.creator.user.username}}" height="100px">
+                            </a>
                         </div>
-                        <div class="username">{{lobby.creator.user.username}}
+                        <div class="username">
+                            <a
+                                href="{% url 'UserProfile:view-external-profile' username=lobby.creator.user.username%}">{{lobby.creator.user.username}}</a>
                         </div>
 
                         {% if user != lobby.creator.user %}
@@ -83,10 +87,15 @@
                     {% for member in lobby.squad_members.all %}
                     <div class="member">
                         <div class="photo">
-                            <img src="{{ member.profile_image.url }}" alt="Profile picture of {{member.user.username}}"
-                                height="100px">
+                            <a href="{% url 'UserProfile:view-external-profile' username=member.user.username%}">
+                                <img src="{{ member.profile_image.url }}"
+                                    alt="Profile picture of {{member.user.username}}" height="100px">
+                            </a>
                         </div>
-                        <div class="username">{{member.user.username}}<span></span></div>
+                        <div class="username">
+                            <a
+                                href="{% url 'UserProfile:view-external-profile' username=member.user.username%}">{{member.user.username}}<span></span></a>
+                        </div>
 
                         {% if user != member.user %}
                         <div class="settings">
@@ -190,11 +199,6 @@
             {% endif %}
 
         </div>
-        <!-- For Styling -->
-        <form  method="post" id='leave-lobby-form'>
-            {% csrf_token %}
-            <input type='submit' name='leave-lobby' value='Leave Squad' />
-        </form>
     </div>
     <!-- <div id="chatbox">
             <div id="chatheader">
