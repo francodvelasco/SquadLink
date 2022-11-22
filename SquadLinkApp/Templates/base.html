@@ -17,13 +17,10 @@
     <header>
         <div id="headertitle">SquadLink</div>
         <div id="rightheader">
-            <a href="{% url 'home' %}">
-                Home
-            </a>
+            <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'SquadLobby:lobby-search' %}">Squad Search</a>
-            <a href="{% url 'UserProfile:view-profile' %}">
-                Account
-            </a>
+            <a href="{% url 'SquadLobby:my-lobby-list' %}">My Squads</a>
+            <a href="{% url 'UserProfile:view-profile' %}">Account</a>
         </div>
     </header>
     <main>
