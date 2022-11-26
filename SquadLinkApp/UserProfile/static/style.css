@@ -9,6 +9,8 @@ body {
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -65,8 +67,6 @@ header {
     height: 80px;
     left: 0px;
     top: 0px;
-
-    background: linear-gradient(180deg, #0F292F 50%, #14A098 155%);
 }
 
 #headertitle {
@@ -89,7 +89,11 @@ header {
     color: #FFFFFF;
 }
 
-#rightheader {
+#headertitle span {
+    color: cyan;
+}
+
+/* #rightheader {
     position: absolute;
     width: 40%;
     max-width: 80%;
@@ -125,6 +129,73 @@ header {
 #rightheader>a {
     all: none;
     text-decoration: none;
+} */
+
+.navbar {
+    background: linear-gradient(180deg, #0F292F 50%, #14A098 155%);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 72%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    left: 300px;
+}
+
+.navbar ul li {
+    width: 170px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    /* background-color: blue; */
+}
+
+.navbar ul li a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: rgb(82, 220, 255);
+}
+
+.fas {
+    float: right;
+    padding-top: 3px;
+}
+
+.dropdown {
+    display: none;
+}
+
+.navbar ul li:hover .dropdown {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: rgb(24,84,84, .7);
+    
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.navbar ul li:hover .dropdown ul {
+    display: block;
+    margin: 10px;
+}
+
+.navbar ul li:hover .dropdown ul li {
+    width: 150px;
+    padding: 10px;
 }
 
 #imgtop {
@@ -203,8 +274,6 @@ header {
     display: flex;
     gap: 20px;
     align-items: center;
-
-
 }
 
 #registerbutton {

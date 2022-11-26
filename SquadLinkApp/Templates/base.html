@@ -9,20 +9,37 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title> SquadLink | {% block title %} {% endblock %}</title>
 </head>
 
 <body>
     <header>
-        <div id="headertitle">SquadLink</div>
-        <div id="rightheader">
+        <div class="navbar">
+            <div id="headertitle">Squad<span>Link</span></div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'SquadLobby:lobby-search' %}">Squads <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="{% url 'SquadLobby:lobby-search' %}">Squad Search</a></li>
+                            <li><a href="{% url 'SquadLobby:my-lobby-list' %}">My Squads</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="{% url 'UserProfile:view-profile' %}">Account</a></li>
+                </ul>
+            </div>
+
+        {% comment %} <div id="rightheader">
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'SquadLobby:lobby-search' %}">Squad Search</a>
             <a href="{% url 'SquadLobby:my-lobby-list' %}">My Squads</a>
             <a href="{% url 'UserProfile:view-profile' %}">Account</a>
-        </div>
+        </div> {% endcomment %}
     </header>
+
     <main>
         {% block content %}
         {% endblock %}
