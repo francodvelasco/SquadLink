@@ -344,3 +344,49 @@ class LobbySearchView(View):
             page_contents['search_error'] = 'Invalid Search Query'
 
             return render(request, 'lobby_search.html', page_contents)
+
+class LobbyKickUserHandler(View):
+    def get(self, request, lobby, to_kick):
+        page_contents = dict()
+
+        if request.user.is_authenticated:
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
+            lobby = SquadLinkLobby.custom_manager.get(pk=lobby)
+
+            if page_contents['lobby'].creator != page_contents['user_add']:
+                return redirect('SquadLobby:lobby-details', pk=lobby)
+            
+            user_to_kick = SquadLinkUserModel.objects.get(id=to_kick)
+            lobby.squad_members.remove(user_to_kick)
+            lobby.save()
+
+            page_contents['lobby'] = lobby
+
+            return render(request, 'FILE-NAME.html', page_contents)
+        else:
+            return redirect('SquadLobby:lobby-details', pk=lobby)
+
+class LobbyTransferOwnerHandler(View):
+    def get(self, request, lobby, transfer_to):
+        page_contents = dict()
+
+        if request.user.is_authenticated:
+            page_contents['user'] = request.user
+            page_contents['user_add'] = SquadLinkUserModel.objects.get(
+                user=request.user)
+            lobby = SquadLinkLobby.custom_manager.get(pk=lobby)
+
+            if page_contents['lobby'].creator != page_contents['user_add']:
+                return redirect('SquadLobby:lobby-details', pk=lobby)
+            
+            transfer_to_user = SquadLinkUserModel.objects.get(id=transfer_to)
+            lobby.creator = transfer_to_user
+            lobby.save()
+
+            page_contents['lobby'] = lobby
+
+            return render(request, 'FILE-NAME.html', page_contents)
+        else:
+            return redirect('SquadLobby:lobby-details', pk=lobby)
