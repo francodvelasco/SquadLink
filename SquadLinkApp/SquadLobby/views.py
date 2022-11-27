@@ -383,6 +383,8 @@ class LobbyTransferOwnerHandler(View):
             
             transfer_to_user = SquadLinkUserModel.objects.get(id=transfer_to)
             lobby.creator = transfer_to_user
+            lobby.squad_members.remove(transfer_to_user)
+            lobby.squad_members.add(page_contents['user_add'])
             lobby.save()
 
             page_contents['lobby'] = lobby
