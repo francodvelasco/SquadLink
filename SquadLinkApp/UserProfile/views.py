@@ -206,44 +206,13 @@ class SquadLinkUserSquadsView(View):
 
 class SquadLinkAddFriendsHandler(View):
     def get(self, request, sender, receiver):
-        if not request.user.is_authenticated and sender == receiver:
+        if not request.user.is_authenticated or sender == receiver:
             return redirect('UserProfile:view-profile')
 
         user_friending = SquadLinkUserModel.objects.get(id=sender)
         user_to_friend = SquadLinkUserModel.objects.get(id=receiver)
 
-        user_friending.requests_sent.add(user_to_friend)
-        user_to_friend.requests_received.add(user_friending)
-
-        user_friending.save()
-        user_to_friend.save()
-
-        return redirect(request.META.get('HTTP_REFERER'))
-
-
-class SquadLinkConfirmFriendsHandler(View):
-    def get(self, request, sender, receiver):
-        user_friending = SquadLinkUserModel.objects.get(id=sender)
-        user_to_friend = SquadLinkUserModel.objects.get(id=receiver)
-
-        user_to_friend.requests_received.delete(user_friending)
-        user_friending.requests_sent.delete(user_to_friend)
-
-        user_to_friend.friends.add(user_friending)
         user_friending.friends.add(user_to_friend)
-
-        user_friending.save()
-        user_to_friend.save()
-
-        return redirect(request.META.get('HTTP_REFERER'))
-
-class SquadLinkRejectRequestHandler(View):
-    def get(self, request, sender, receiver):
-        user_friending = SquadLinkUserModel.objects.get(id=sender)
-        user_to_friend = SquadLinkUserModel.objects.get(id=receiver)
-
-        user_to_friend.requests_received.delete(user_friending)
-        user_friending.requests_sent.delete(user_to_friend)
 
         user_friending.save()
         user_to_friend.save()
