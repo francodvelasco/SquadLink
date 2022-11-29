@@ -195,8 +195,9 @@
 
             {% elif is_member %}
 
-            <button id="leavebutton" type="submit">Temp Leave Squad
-            </button>
+            <a id="leavebutton" href="{% url 'SquadLobby:kick-user' lobby=lobby.id to_kick=user_add.id %}"
+                style="border: 2px solid black;line-height: 30px;">Leave Squad
+            </a>
 
             {% elif max_capacity_reached %}
 
