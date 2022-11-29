@@ -12,8 +12,13 @@
     <div id="box">
         <ul>
             {% for lobby in lobbies %}
-            {% if user_add in lobby.squad_members.all %}
+            {% if user_add in lobby.squad_members.all or user_add == lobby.creator%}
+
+            {% if user_add == lobby.creator %}
+            <a class="owned" href={% url 'SquadLobby:lobby-details' pk=lobby.pk %}>
+                {% else %}
                 <a href={% url 'SquadLobby:lobby-details' pk=lobby.pk %}>
+                    {% endif %}
                     <li>
                         <div class="left">
                             <h3>{{ lobby.squad_name }}</h3>
@@ -30,8 +35,8 @@
                         </div>
                     </li>
                 </a>
-            {% endif %}
-            {% endfor %}    
+                {% endif %}
+                {% endfor %}
 
         </ul>
     </div>
