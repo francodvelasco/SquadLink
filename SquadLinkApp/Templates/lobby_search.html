@@ -9,68 +9,15 @@
 
 <div id="lobbysearch">
     <h1>Search Squad</h1>
-    <div class="container">
+    {% comment %} <div class="container">
         <form method="post" enctype="multipart/form-data" class="searchbar">
             {% csrf_token %}
             <input type="text" placeholder="Search for squad names" name="q">
             <button type="submit" id="invitebutton">Search</button>
         </form>
-    </div>
-    <h1>Filters</h1>
-    <div class="container">
-        <form method="post" enctype="multipart/form-data" class="filters">
-            <div class="detail">
-                <Label>Game</Label><br>
-            </div>
-            <div class="detail">
-                <Label>Region</Label><br>
-            </div>
-            <div class="detail">
-                <Label>Lowest Rank</Label><br>
-                <Label>Highest Rank</Label><br>
-            </div>
-            <div class="detail">
-                <Label>Squad Size</Label><br>
-            </div>
-            <div class="detail">
-                <Label>Platforms</Label><br>
-            </div>
-            <div class="detail">
-                <Label>Languages</Label><br>
-            </div>
-            <button type="submit" id="invitebutton">Filter</button>
-        </form>
-    </div>
-    
-    <h1>My Squads</h1>
-    <div class="mysquads">
-        <ul>
-            {% for lobby in lobbies %}
-            {% if user in lobby.squad_members.all %}
-                <a href={% url 'SquadLobby:lobby-details' pk=lobby.pk %}>
-                    <li>
-                        <div class="left">
-                            <h3>{{ lobby.squad_name }}</h3>
-                            <img src="{{ lobby.photo.url }}" alt="Squad Photo of {{ lobby.squad_name }}" height="100px">
-                            <h3>{{ lobby.game }}</h3>
-                            <i>{{ lobby.description }}</i>
-                        </div>
-                        <div class="right">
-                            <p><b>Rank:</b> {{ lobby.rank_lower_bound }} - {{ lobby.rank_higher_bound }}</p>
-                            <p>Languages: {{ lobby.languages }}</p>
-                            <p>Region: {{ lobby.region }}</p>
-                            <p>Platforms: {{ lobby.platforms }}</p>
-                            <p>Members: {{ lobby.squad_members.all|length|add:"1" }}/{{ lobby.squad_size }}</p>
-                        </div>
-                    </li>
-                </a>
-                {% endif %}
-                {% endfor %}
-        </ul>
-    </div>
-    
-    {% comment %} <div id="box">
+    </div> {% endcomment %}
 
+    <div id="box">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -82,11 +29,11 @@
                 {{ form.squad_name }}
             </div>
 
-            <button type="submit" id="invitebutton">
+            <button type="submit" id="searchbutton">
                 Search
             </button>
         </form>
-    </div> {% endcomment %}
+    </div>
 </div>
 
 <div id="createsquadbutton"><a href="{% url 'SquadLobby:lobby-create' %}">Create Squad</a></div>
