@@ -182,8 +182,8 @@ header {
     position: absolute;
     left: 0;
     top: 100%;
-    background-color: rgb(24,84,84, .7);
-    
+    background-color: rgb(24, 84, 84, .7);
+
     border-radius: 10px;
     backdrop-filter: blur(10px);
 }
@@ -1868,6 +1868,11 @@ header {
 
     background: #8AE969;
     border-radius: 10px;
+}
+
+.removefriend {
+    background: #fd9583 !important;
+    color: #1A1A1A !important;
 }
 
 #squadpage #members #invitebar {

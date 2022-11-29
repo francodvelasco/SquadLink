@@ -218,3 +218,19 @@ class SquadLinkAddFriendsHandler(View):
         user_to_friend.save()
 
         return redirect(request.META.get('HTTP_REFERER'))
+
+
+class SquadLinkRemoveFriendsHandler(View):
+    def get(self, request, sender, receiver):
+        if not request.user.is_authenticated or sender == receiver:
+            return redirect('UserProfile:view-profile')
+
+        user_removing = SquadLinkUserModel.objects.get(id=sender)
+        user_to_remove = SquadLinkUserModel.objects.get(id=receiver)
+
+        user_removing.friends.remove(user_to_remove)
+
+        user_removing.save()
+        user_to_remove.save()
+
+        return redirect(request.META.get('HTTP_REFERER'))

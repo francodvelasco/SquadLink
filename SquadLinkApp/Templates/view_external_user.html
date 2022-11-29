@@ -23,8 +23,16 @@
             <p><u>Platforms</u><br>{{ user_to_view.platforms }}</p>
             <br>
             <div id="wrapperbuttons">
-                <div id="addfriend">Add Friend</div>
+
+                {% if user_add in user_to_view.friends.all %}
+                <a id="addfriend" class="removefriend"
+                    href="{% url 'UserProfile:remove-friend' sender=user_add.id receiver=user_to_view.id %}">Unfriend</a>
+
                 <div id="message">Message</div>
+                {% else %}
+                <a id="addfriend"
+                    href="{% url 'UserProfile:add-friend' sender=user_add.id receiver=user_to_view.id %}">Add</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -117,13 +125,29 @@
                             </svg>
                         </div>
                         {% if user != friend.user %}
-                        <div class="addfriend">Add</div>
+
+                        {% if user_add in friend.friends.all %}
+                        <a class="addfriend removefriend"
+                            href="{% url 'UserProfile:remove-friend' sender=user_add.id receiver=friend.id %}">Unfriend</a>
+                        {% else %}
+                        <a class="addfriend"
+                            href="{% url 'UserProfile:add-friend' sender=user_add.id receiver=friend.id %}">Add</a>
+                        {% endif %}
+
                         {% endif %}
 
                     </div>
                     {% endif %}
                     {% endfor %}
 
+                    {% if user_to_view.friends.all %}
+
+                    {% else %}
+                    <p style="text-align:center; padding: 0 20px 0 20px; width: 100%; color:grey;">They have no friends
+                        yet, <br>add
+                        them!
+                    </p>
+                    {% endif %}
 
                 </div>
 
