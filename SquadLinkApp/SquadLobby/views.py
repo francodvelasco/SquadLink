@@ -184,6 +184,7 @@ class LobbyEditView(View):
             return redirect('UserProfile:sign-in')
 
         lobby = SquadLinkLobby.custom_manager.get(pk=pk)
+        page_contents['lobby'] = lobby
 
         # Only the lobby creator can edit the lobby
         # Future iteration: query parameter to show error
