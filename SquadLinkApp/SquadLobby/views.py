@@ -139,14 +139,17 @@ class LobbyListView(View):
             friend_filter = Q()
             for friend in page_contents['user_add'].friends.all():
                 friend_filter |= Q(creator=friend)
-            
-            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(friend_filter)
+
+            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(
+                friend_filter)
         else:
             page_contents['lobbies'] = SquadLinkLobby.custom_manager.all()
 
         return render(request, 'lobby_list.html', page_contents)
 
-#temporary
+# temporary
+
+
 class MyLobbyListView(View):
     def get(self, request):
         page_contents = dict()
@@ -160,8 +163,9 @@ class MyLobbyListView(View):
             friend_filter = Q()
             for friend in page_contents['user_add'].friends.all():
                 friend_filter |= Q(creator=friend)
-            
-            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(friend_filter)
+
+            page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(
+                friend_filter)
         else:
             page_contents['lobbies'] = SquadLinkLobby.custom_manager.all()
 
@@ -255,10 +259,10 @@ class LobbySearchView(View):
             game_choices = request.GET.get('game')
             for game in game_choices:
                 game_filter |= Q(game__icontains=game_dict[game])
-            
+
             page_contents['lobbies'] = SquadLinkLobby.custom_manager.filter(
                 search_filter)
-            
+
             return render(request, 'lobby_list.html', page_contents)
 
         form = LobbySearchForm(request.POST)
@@ -345,6 +349,7 @@ class LobbySearchView(View):
 
             return render(request, 'lobby_search.html', page_contents)
 
+
 class LobbyKickUserHandler(View):
     def get(self, request, lobby, to_kick):
         page_contents = dict()
@@ -354,19 +359,29 @@ class LobbyKickUserHandler(View):
             page_contents['user_add'] = SquadLinkUserModel.objects.get(
                 user=request.user)
             lobby = SquadLinkLobby.custom_manager.get(pk=lobby)
-
-            if page_contents['lobby'].creator != page_contents['user_add']:
-                return redirect('SquadLobby:lobby-details', pk=lobby)
-            
             user_to_kick = SquadLinkUserModel.objects.get(id=to_kick)
-            lobby.squad_members.remove(user_to_kick)
-            lobby.save()
 
-            page_contents['lobby'] = lobby
+            if lobby.creator == page_contents['user_add']:
+                lobby.squad_members.remove(user_to_kick)
+                lobby.save()
 
-            return render(request, 'FILE-NAME.html', page_contents)
+                page_contents['lobby'] = lobby
+
+                return redirect(request.META.get('HTTP_REFERER'))
+            elif page_contents['user_add'] == user_to_kick:
+
+                lobby.squad_members.remove(user_to_kick)
+                lobby.save()
+
+                page_contents['lobby'] = lobby
+
+                return redirect(request.META.get('HTTP_REFERER'))
+
+            return redirect('SquadLobby:lobby-details', pk=lobby)
+
         else:
             return redirect('SquadLobby:lobby-details', pk=lobby)
+
 
 class LobbyTransferOwnerHandler(View):
     def get(self, request, lobby, transfer_to):
@@ -380,7 +395,7 @@ class LobbyTransferOwnerHandler(View):
 
             if page_contents['lobby'].creator != page_contents['user_add']:
                 return redirect('SquadLobby:lobby-details', pk=lobby)
-            
+
             transfer_to_user = SquadLinkUserModel.objects.get(id=transfer_to)
             lobby.creator = transfer_to_user
             lobby.squad_members.remove(transfer_to_user)

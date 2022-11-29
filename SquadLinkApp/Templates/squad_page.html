@@ -61,7 +61,8 @@
                             </a>
                         </div>
                         <div class="username">
-                            <a href="{% url 'UserProfile:view-external-profile' username=lobby.creator.user.username%}">{{lobby.creator.user.username}}</a>
+                            <a
+                                href="{% url 'UserProfile:view-external-profile' username=lobby.creator.user.username%}">{{lobby.creator.user.username}}</a>
                         </div>
 
                         {% if user != lobby.creator.user %}
@@ -80,9 +81,14 @@
                             </svg>
                         </div>
 
+                        {% if user_add in lobby.creator.friends.all %}
+                        <a class="addfriend removefriend"
+                            href="{% url 'UserProfile:remove-friend' sender=user_add.id receiver=lobby.creator.id %}">Unfriend</a>
+
+                        {% else %}
                         <a class="addfriend"
-                            href="{% url 'UserProfile:add-friend' sender=user_add.id receiver=lobby.creator.id %}">Add
-                        </a>
+                            href="{% url 'UserProfile:add-friend' sender=user_add.id receiver=lobby.creator.id %}">Add</a>
+                        {% endif %}
                         {% endif %}
                     </div>
 
@@ -114,8 +120,14 @@
                                     stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
+                        {% if user_add in member.friends.all %}
+                        <a class="addfriend removefriend"
+                            href="{% url 'UserProfile:remove-friend' sender=user_add.id receiver=member.id %}">Unfriend</a>
+
+                        {% else %}
                         <a class="addfriend"
                             href="{% url 'UserProfile:add-friend' sender=user_add.id receiver=member.id %}">Add</a>
+                        {% endif %}
                         {% endif %}
 
                     </div>
@@ -183,8 +195,9 @@
 
             {% elif is_member %}
 
-            <button id="leavebutton" type="submit">Temp Leave Squad
-            </button>
+            <a id="leavebutton" href="{% url 'SquadLobby:kick-user' lobby=lobby.id to_kick=user_add.id %}"
+                style="border: 2px solid black;line-height: 30px;">Leave Squad
+            </a>
 
             {% elif max_capacity_reached %}
 

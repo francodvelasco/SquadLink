@@ -97,7 +97,7 @@
                 <div id="friendstitle">Friends List:</div>
 
                 <div id="members">
-                    {% for friend in user_add.requests_received.all %}
+                    <!-- {% for friend in user_add.requests_received.all %}
                     {% if user != friend.user %}
                     <div class="member">
                         <div class="photo">
@@ -128,7 +128,7 @@
                         <div class="addfriend">Accept Request</div>
                     </div>
                     {% endif %}
-                    {% endfor %}
+                    {% endfor %} -->
 
 
                     {% for friend in user_add.friends.all %}
@@ -159,14 +159,29 @@
                                     stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <div class="messagefriend">Message</div>
+                        <!-- <div class="messagefriend">Message</div> -->
+
+                        <a class="addfriend removefriend"
+                            href="{% url 'UserProfile:remove-friend' sender=user_add.id receiver=friend.id %}">Unfriend</a>
+
+
 
                     </div>
                     {% endif %}
                     {% endfor %}
 
+                    {% if user_add.friends.all %}
 
-                    {% for friend in user_add.requests_sent.all %}
+                    {% else %}
+                    <p style="text-align:center; padding: 0 20px 0 20px; width: 100%; color:grey;">You have no friends
+                        yet, <br>add
+                        some!
+                    </p>
+                    {% endif %}
+
+
+
+                    <!-- {% for friend in user_add.requests_sent.all %}
                     {% if user != friend.user %}
                     <div class="member">
                         <div class="photo">
@@ -197,7 +212,7 @@
                         <div class="addfriend">Cancel Request</div>
                     </div>
                     {% endif %}
-                    {% endfor %}
+                    {% endfor %} -->
                 </div>
 
                 <!-- <div id="invitebar">
