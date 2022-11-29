@@ -244,6 +244,8 @@ class LobbySearchView(View):
         if 'game' in request.GET:
             return self.post(request)
 
+        page_contents['lobbies'] = SquadLinkLobby.custom_manager.all()
+
         return render(request, 'lobby_search.html', page_contents)
 
     def post(self, request):
